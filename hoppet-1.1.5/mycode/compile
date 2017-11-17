@@ -1,0 +1,2 @@
+#!/bin/bash
+g++ -o evolution evolution.cc -L../src -L/usr/local/gfortran/lib/ -lhoppet_v1 -lm -lgfortran -lgsl -lgslcblas
