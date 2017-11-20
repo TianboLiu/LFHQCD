@@ -1,4 +1,0 @@
-
-export PATH=${PWD}/external/src:${PATH}
-export LD_LIBRARY_PATH=${PWD}/external/src:${LD_LIBRARY_PATH}
-
