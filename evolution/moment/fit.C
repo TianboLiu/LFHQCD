@@ -81,8 +81,8 @@ const double mc = 1.28;
 const double mb = 4.18;
 const double mt = 173.1;
 
-const double Q0 = sqrt(0.75);
-const double Q1 = sqrt(10.0);
+const double Q0 = 0.866;
+const double Q1 = 3.162;
 
 double FitFunction(const double * par){
   a0 = par[0];
@@ -90,7 +90,7 @@ double FitFunction(const double * par){
   double pdf[AllNum];
   double xu = 0;
   double xd = 0;
-  int points = 100;
+  int points = 1000;
   double x = 0;
   for (int i = 0; i < points; i++){
     x = 0.5 / points + 1.0 / points * i;
@@ -120,7 +120,7 @@ int main(const int argc, const char * argv[]){
   const int Npar = 1;
   ROOT::Math::Minimizer * min = ROOT::Math::Factory::CreateMinimizer("Minuit2", "Migrad");
   min->SetMaxFunctionCalls(100000);
-  min->SetTolerance(1.0e-3);
+  min->SetTolerance(1.0e-4);
   min->SetPrintLevel(1);
   ROOT::Math::Functor f(&FitFunction, Npar);
   min->SetFunction(f);

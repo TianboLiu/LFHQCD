@@ -13,26 +13,26 @@ static const int HalfNum = 6;
 static const double AlphasMz=0.1181; //from world average value
 static const double Mz = 91.1876;
 
-
+double a0 = 1.0;
 // definition of our initial condition function
 void (* model)(const double & x, const double & Q, double * pdf);
 void model0(const double & x, const double & Q, double * pdf);
 void model1(const double & x, const double & Q, double * pdf);
 void model2(const double & x, const double & Q, double * pdf);
 void model3(const double & x, const double & Q, double * pdf);
-void model4(const double & x, const double & Q, double * pdf);
-void model5(const double & x, const double & Q, double * pdf);
-void model6(const double & x, const double & Q, double * pdf);
-void model7(const double & x, const double & Q, double * pdf);
-void model8(const double & x, const double & Q, double * pdf);
-void model9(const double & x, const double & Q, double * pdf);
-void model10(const double & x, const double & Q, double * pdf);
+//void model4(const double & x, const double & Q, double * pdf);
+//void model5(const double & x, const double & Q, double * pdf);
+//void model6(const double & x, const double & Q, double * pdf);
+//void model7(const double & x, const double & Q, double * pdf);
+//void model8(const double & x, const double & Q, double * pdf);
+//void model9(const double & x, const double & Q, double * pdf);
+//void model10(const double & x, const double & Q, double * pdf);
 
 //----------------------------------------------------------------------
 int main(const int argc, const char * argv[]){
   
-  if (argc < 6){
-    cout << "./evolution <scheme> <nloop> <model> <Q0> <Q>" << endl;
+  if (argc < 7){
+    cout << "./evolution <scheme> <nloop> <model> <Q0> <Q> <a>" << endl;
     return 0;
   }
 
@@ -57,7 +57,6 @@ int main(const int argc, const char * argv[]){
   //Set thresholds with quark MSbar masses
   hoppetSetMSbarMassVFN(mc, mb, mt);
 
-
   //Set input PDF
   const int opt = atoi(argv[3]);
   if (opt == 0)//model choices
@@ -68,23 +67,24 @@ int main(const int argc, const char * argv[]){
     model = & model2;
   else if (opt == 3)
     model = & model3;
-  else if (opt == 4)
-    model = & model4;
-  else if (opt == 5)
-    model = & model5;
-  else if (opt == 6)
-    model = & model6;
-  else if (opt == 7)
-    model = & model7;
-  else if (opt == 8)
-    model = & model8;
-  else if (opt == 9)
-    model = & model9;
-  else if (opt == 10)
-    model = & model10;
+  // else if (opt == 4)
+  //   model = & model4;
+  // else if (opt == 5)
+  //   model = & model5;
+  // else if (opt == 6)
+  //   model = & model6;
+  // else if (opt == 7)
+  //   model = & model7;
+  // else if (opt == 8)
+  //   model = & model8;
+  // else if (opt == 9)
+  //   model = & model9;
+  // else if (opt == 10)
+  //   model = & model10;
   else
     return 0;
 
+  a0 = atof(argv[6]);//parameter
   //Evolve PDF
   hoppetEvolve(AlphasMz, Mz, nloop, muR_Q, model, Q0);
   
@@ -114,94 +114,47 @@ int main(const int argc, const char * argv[]){
   return 0; 
 }
 
-
-
-
-//-------------------------------------------------------------------------
-
-double qx0(const double x, const double tau){//massless
-  double result = gsl_sf_gamma(tau - 0.5) / (sqrt(M_PI) * gsl_sf_gamma(tau - 1.0)) * pow(x, -0.5) * pow(1.0 - x, tau - 2.0);
-  return result;
-}
-
-double qxmass(const double x, const double tau, const double m){//exponential mass correction
-  double lambda = pow(0.5482, 2);
-  double result = qx0(x, tau) * exp(-m * m / (lambda * x * (1.0 - x)));
-  return result;//not normalized
-}
-
-double qxlongi(const double x, const double tau, const double m){//longitudinal mass correction
-  double lambda = pow(0.5482, 2);
-  double eta = 4.0 * m * m / lambda;
-  double result =  qx0(x, tau) * pow(x * (1.0 - x), eta);
-  return result;//not normalized
-}
-
-double qxalpha(const double x, const double tau, const double alpha){//modified beta-function representation
-  double lambda = pow(0.5482, 2);
-  double result = gsl_sf_gamma(tau - 0.5) / (sqrt(M_PI) * gsl_sf_gamma(tau - 1.0)) * pow(1.0 - pow(1.0 - x, alpha), -0.5) * pow(1.0 - x, alpha * tau - alpha - 1.0);
-  return result;
-}
-
-double ux(const double x){//u(x)=x e^[x(1-x)]
-  return x * exp(x * (1.0 - x));
-}
-
-double dux(const double x){//u'(x)
-  return (1.0 + x - 2.0 * x * x) * exp(x * (1.0 - x));
-}
-
-double qxu(const double x, const double tau){//modified by u(x)
-  double lambda = pow(0.5482, 2);
-  double result = gsl_sf_gamma(tau - 0.5) / (sqrt(M_PI) * gsl_sf_gamma(tau - 1.0)) * pow(ux(x), -0.5) * dux(x) * pow(1.0 - ux(x), tau - 2.0);
-  return result;
-}
-
-double ux1(const double x, const double a = 1.0){//u(x)=ax+bx^2+(1-a-b)x^3
-  //0<a<3
+double U1(const double x, const double a){
   double b = 3.0 - 2.0 * a;
-  return a * x + b * x * x + (1.0 - a - b) * pow(x, 3);
+  return a * x + b * pow(x, 2) + (1.0 - a - b) * pow(x, 3);
 }
 
-double dux1(const double x, const double a = 1.0){
+double dU1(const double x, const double a){
   double b = 3.0 - 2.0 * a;
-  return a + 2.0 * b * x + 3.0 * (1.0 - a - b) * x * x;
+  return a + 2.0 * b * x + 3.0 * (1.0 - a - b) * pow(x, 2);
 }
 
-double qxu1(const double x, const double tau, const double a = 1.0){//modified by u(x)
-  double lambda = pow(0.5482, 2);
-  double result = gsl_sf_gamma(tau - 0.5) / (sqrt(M_PI) * gsl_sf_gamma(tau - 1.0)) * pow(ux1(x, a), -0.5) * dux1(x, a) * pow(1.0 - ux1(x, a), tau - 2.0);
+double qx1(const double x, const double tau, const double a){
+  //double lambda = pow(0.5482, 2);
+  double result = gsl_sf_gamma(tau - 0.5) / (sqrt(M_PI) * gsl_sf_gamma(tau - 1.0)) * pow(U1(x, a), -0.5) * dU1(x, a) * pow(1.0 - U1(x, a), tau - 2.0);
   return result;
 }
 
-double ux2(const double x, const double a = 1.5){//u(x)=x^[a(1-x)]
+double U2(const double x, const double a){
   return pow(x, a * (1.0 - x));
 }
 
-double dux2(const double x, const double a = 1.5){//
+double dU2(const double x, const double a){
   return a * pow(x, a * (1.0 - x)) * ((1.0 - x) / x - log(x));
 }
 
-double qxu2(const double x, const double tau, const double a = 1.5){//modified by u(x)
-  double lambda = pow(0.5482, 2);
-  double result = gsl_sf_gamma(tau - 0.5) / (sqrt(M_PI) * gsl_sf_gamma(tau - 1.0)) * pow(ux2(x, a), -0.5) * dux2(x, a) * pow(1.0 - ux2(x, a), tau - 2.0);
+double qx2(const double x, const double tau, const double a){
+  //double lambda = pow(0.5482, 2);
+  double result = gsl_sf_gamma(tau - 0.5) / (sqrt(M_PI) * gsl_sf_gamma(tau - 1.0)) * pow(U2(x, a), -0.5) * dU2(x, a) * pow(1.0 - U2(x, a), tau - 2.0);
   return result;
 }
 
-void  model0(const double & x, const double & Q, double * pdf){//proton massless
+void model0(const double & x, const double & Q, double * pdf){//proton poly
   double r = 1.5;
-  double q3 = qx0(x, 3.0);
-  double q4 = qx0(x, 4.0);
-  
+  double q3 = qx1(x, 3.0, a0);
+  double q4 = qx1(x, 4.0, a0);
   pdf[-6+HalfNum] = 0; //tbar
   pdf[-5+HalfNum] = 0; //bbar
   pdf[-4+HalfNum] = 0; //cbar
   pdf[-3+HalfNum] = 0; //sbar
   pdf[-2+HalfNum] = 0; //ubar
-  pdf[-1+HalfNum] = 0; //dbar
-  
+  pdf[-1+HalfNum] = 0; //dbar 
   pdf[ 0+HalfNum] = 0; //gluon
-
   pdf[ 1+HalfNum] = x * ((1.0 - 2.0 / 3.0 * r) * q3 + 2.0 / 3.0 * r * q4); //d
   pdf[ 2+HalfNum] = x * ((2.0 - 1.0 / 3.0 * r) * q3 + 1.0 / 3.0 * r * q4); //u
   pdf[ 3+HalfNum] = 0; //s
@@ -210,21 +163,17 @@ void  model0(const double & x, const double & Q, double * pdf){//proton massless
   pdf[ 6+HalfNum] = 0; //t
 }
 
-void  model1(const double & x, const double & Q, double * pdf){//proton exponential mass
+void model1(const double & x, const double & Q, double * pdf){//proton diehl
   double r = 1.5;
-  double m = 0.050;
-  double q3 = qxmass(x, 3.0, m) / 0.770764;
-  double q4 = qxmass(x, 4.0, m) / 0.727216;
-  
+  double q3 = qx2(x, 3.0, a0);
+  double q4 = qx2(x, 4.0, a0);
   pdf[-6+HalfNum] = 0; //tbar
   pdf[-5+HalfNum] = 0; //bbar
   pdf[-4+HalfNum] = 0; //cbar
   pdf[-3+HalfNum] = 0; //sbar
   pdf[-2+HalfNum] = 0; //ubar
-  pdf[-1+HalfNum] = 0; //dbar
-  
+  pdf[-1+HalfNum] = 0; //dbar 
   pdf[ 0+HalfNum] = 0; //gluon
-
   pdf[ 1+HalfNum] = x * ((1.0 - 2.0 / 3.0 * r) * q3 + 2.0 / 3.0 * r * q4); //d
   pdf[ 2+HalfNum] = x * ((2.0 - 1.0 / 3.0 * r) * q3 + 1.0 / 3.0 * r * q4); //u
   pdf[ 3+HalfNum] = 0; //s
@@ -233,144 +182,10 @@ void  model1(const double & x, const double & Q, double * pdf){//proton exponent
   pdf[ 6+HalfNum] = 0; //t
 }
 
-void  model2(const double & x, const double & Q, double * pdf){//proton longitudinal mass
-  double r = 1.5;
-  double m = 0.050;
-  double q3 = qxlongi(x, 3.0, m) / 0.908328;
-  double q4 = qxlongi(x, 4.0, m) / 0.899495;
-  
-  pdf[-6+HalfNum] = 0; //tbar
-  pdf[-5+HalfNum] = 0; //bbar
-  pdf[-4+HalfNum] = 0; //cbar
-  pdf[-3+HalfNum] = 0; //sbar
-  pdf[-2+HalfNum] = 0; //ubar
-  pdf[-1+HalfNum] = 0; //dbar
-  
-  pdf[ 0+HalfNum] = 0; //gluon
-
-  pdf[ 1+HalfNum] = x * ((1.0 - 2.0 / 3.0 * r) * q3 + 2.0 / 3.0 * r * q4); //d
-  pdf[ 2+HalfNum] = x * ((2.0 - 1.0 / 3.0 * r) * q3 + 1.0 / 3.0 * r * q4); //u
-  pdf[ 3+HalfNum] = 0; //s
-  pdf[ 4+HalfNum] = 0; //c
-  pdf[ 5+HalfNum] = 0; //b
-  pdf[ 6+HalfNum] = 0; //t
-}
-
-void  model3(const double & x, const double & Q, double * pdf){//proton massless with alpha 1.5
-  double r = 1.5;
-  double q3 = qxalpha(x, 3.0, 1.5);
-  double q4 = qxalpha(x, 4.0, 1.5);
-  
-  pdf[-6+HalfNum] = 0; //tbar
-  pdf[-5+HalfNum] = 0; //bbar
-  pdf[-4+HalfNum] = 0; //cbar
-  pdf[-3+HalfNum] = 0; //sbar
-  pdf[-2+HalfNum] = 0; //ubar
-  pdf[-1+HalfNum] = 0; //dbar
-  
-  pdf[ 0+HalfNum] = 0; //gluon
-
-  pdf[ 1+HalfNum] = x * ((1.0 - 2.0 / 3.0 * r) * q3 + 2.0 / 3.0 * r * q4); //d
-  pdf[ 2+HalfNum] = x * ((2.0 - 1.0 / 3.0 * r) * q3 + 1.0 / 3.0 * r * q4); //u
-  pdf[ 3+HalfNum] = 0; //s
-  pdf[ 4+HalfNum] = 0; //c
-  pdf[ 5+HalfNum] = 0; //b
-  pdf[ 6+HalfNum] = 0; //t
-}
-
-void  model4(const double & x, const double & Q, double * pdf){//proton massless with alpha 2.0
-  double r = 1.5;
-  double q3 = qxalpha(x, 3.0, 2.0);
-  double q4 = qxalpha(x, 4.0, 2.0);
-  
-  pdf[-6+HalfNum] = 0; //tbar
-  pdf[-5+HalfNum] = 0; //bbar
-  pdf[-4+HalfNum] = 0; //cbar
-  pdf[-3+HalfNum] = 0; //sbar
-  pdf[-2+HalfNum] = 0; //ubar
-  pdf[-1+HalfNum] = 0; //dbar
-  
-  pdf[ 0+HalfNum] = 0; //gluon
-
-  pdf[ 1+HalfNum] = x * ((1.0 - 2.0 / 3.0 * r) * q3 + 2.0 / 3.0 * r * q4); //d
-  pdf[ 2+HalfNum] = x * ((2.0 - 1.0 / 3.0 * r) * q3 + 1.0 / 3.0 * r * q4); //u
-  pdf[ 3+HalfNum] = 0; //s
-  pdf[ 4+HalfNum] = 0; //c
-  pdf[ 5+HalfNum] = 0; //b
-  pdf[ 6+HalfNum] = 0; //t
-}
-
-void  model5(const double & x, const double & Q, double * pdf){//proton massless with u(x) modification
-  double r = 1.5;
-  double q3 = qxu(x, 3.0);
-  double q4 = qxu(x, 4.0);
-  
-  pdf[-6+HalfNum] = 0; //tbar
-  pdf[-5+HalfNum] = 0; //bbar
-  pdf[-4+HalfNum] = 0; //cbar
-  pdf[-3+HalfNum] = 0; //sbar
-  pdf[-2+HalfNum] = 0; //ubar
-  pdf[-1+HalfNum] = 0; //dbar
-  
-  pdf[ 0+HalfNum] = 0; //gluon
-
-  pdf[ 1+HalfNum] = x * ((1.0 - 2.0 / 3.0 * r) * q3 + 2.0 / 3.0 * r * q4); //d
-  pdf[ 2+HalfNum] = x * ((2.0 - 1.0 / 3.0 * r) * q3 + 1.0 / 3.0 * r * q4); //u
-  pdf[ 3+HalfNum] = 0; //s
-  pdf[ 4+HalfNum] = 0; //c
-  pdf[ 5+HalfNum] = 0; //b
-  pdf[ 6+HalfNum] = 0; //t
-}
-
-
-void  model6(const double & x, const double & Q, double * pdf){//proton massless with u(x) modification
-  double r = 1.5;
-  double q3 = qxu1(x, 3.0, 0.0);
-  double q4 = qxu1(x, 4.0, 0.0);
-  
-  pdf[-6+HalfNum] = 0; //tbar
-  pdf[-5+HalfNum] = 0; //bbar
-  pdf[-4+HalfNum] = 0; //cbar
-  pdf[-3+HalfNum] = 0; //sbar
-  pdf[-2+HalfNum] = 0; //ubar
-  pdf[-1+HalfNum] = 0; //dbar
-  
-  pdf[ 0+HalfNum] = 0; //gluon
-
-  pdf[ 1+HalfNum] = x * ((1.0 - 2.0 / 3.0 * r) * q3 + 2.0 / 3.0 * r * q4); //d
-  pdf[ 2+HalfNum] = x * ((2.0 - 1.0 / 3.0 * r) * q3 + 1.0 / 3.0 * r * q4); //u
-  pdf[ 3+HalfNum] = 0; //s
-  pdf[ 4+HalfNum] = 0; //c
-  pdf[ 5+HalfNum] = 0; //b
-  pdf[ 6+HalfNum] = 0; //t
-}
-
-void  model7(const double & x, const double & Q, double * pdf){//proton massless with u(x) modification
-  double r = 1.5;
-  double q3 = qxu1(x, 3.0, 0.5);
-  double q4 = qxu1(x, 4.0, 0.5);
-  
-  pdf[-6+HalfNum] = 0; //tbar
-  pdf[-5+HalfNum] = 0; //bbar
-  pdf[-4+HalfNum] = 0; //cbar
-  pdf[-3+HalfNum] = 0; //sbar
-  pdf[-2+HalfNum] = 0; //ubar
-  pdf[-1+HalfNum] = 0; //dbar
-  
-  pdf[ 0+HalfNum] = 0; //gluon
-
-  pdf[ 1+HalfNum] = x * ((1.0 - 2.0 / 3.0 * r) * q3 + 2.0 / 3.0 * r * q4); //d
-  pdf[ 2+HalfNum] = x * ((2.0 - 1.0 / 3.0 * r) * q3 + 1.0 / 3.0 * r * q4); //u
-  pdf[ 3+HalfNum] = 0; //s
-  pdf[ 4+HalfNum] = 0; //c
-  pdf[ 5+HalfNum] = 0; //b
-  pdf[ 6+HalfNum] = 0; //t
-}
-
-void  model8(const double & x, const double & Q, double * pdf){//pion massless with u(x) modification
+void  model2(const double & x, const double & Q, double * pdf){//pion poly
   double gamma = 0.125;
-  double q2 = qxu1(x, 2.0, 0.5);
-  double q4 = qxu1(x, 4.0, 0.5);
+  double q2 = qx1(x, 2.0, a0);
+  double q4 = qx1(x, 4.0, a0);
   
   pdf[-6+HalfNum] = 0; //tbar
   pdf[-5+HalfNum] = 0; //bbar
@@ -389,32 +204,10 @@ void  model8(const double & x, const double & Q, double * pdf){//pion massless w
   pdf[ 6+HalfNum] = 0; //t
 }
 
-void  model9(const double & x, const double & Q, double * pdf){//proton massless with u(x) modification
-  double r = 1.5;
-  double q3 = qxu2(x, 3.0, 1.5);
-  double q4 = qxu2(x, 4.0, 1.5);
-  
-  pdf[-6+HalfNum] = 0; //tbar
-  pdf[-5+HalfNum] = 0; //bbar
-  pdf[-4+HalfNum] = 0; //cbar
-  pdf[-3+HalfNum] = 0; //sbar
-  pdf[-2+HalfNum] = 0; //ubar
-  pdf[-1+HalfNum] = 0; //dbar
-  
-  pdf[ 0+HalfNum] = 0; //gluon
-
-  pdf[ 1+HalfNum] = x * ((1.0 - 2.0 / 3.0 * r) * q3 + 2.0 / 3.0 * r * q4); //d
-  pdf[ 2+HalfNum] = x * ((2.0 - 1.0 / 3.0 * r) * q3 + 1.0 / 3.0 * r * q4); //u
-  pdf[ 3+HalfNum] = 0; //s
-  pdf[ 4+HalfNum] = 0; //c
-  pdf[ 5+HalfNum] = 0; //b
-  pdf[ 6+HalfNum] = 0; //t
-}
-
-void  model10(const double & x, const double & Q, double * pdf){//pion massless with u(x) modification
+void  model3(const double & x, const double & Q, double * pdf){//pion diehl
   double gamma = 0.125;
-  double q2 = qxu2(x, 2.0, 1.5);
-  double q4 = qxu2(x, 4.0, 1.5);
+  double q2 = qx2(x, 2.0, a0);
+  double q4 = qx2(x, 4.0, a0);
   
   pdf[-6+HalfNum] = 0; //tbar
   pdf[-5+HalfNum] = 0; //bbar
@@ -432,3 +225,5 @@ void  model10(const double & x, const double & Q, double * pdf){//pion massless 
   pdf[ 5+HalfNum] = 0; //b
   pdf[ 6+HalfNum] = 0; //t
 }
+
+//-------------------------------------------------------------------------
