@@ -46,6 +46,34 @@ double qx2(const double x, const double tau, const double a){
   return result;
 }
 
+double U3(const double x, const double a){
+  return pow(x, a * (1.0 - x * x));
+}
+
+double dU3(const double x, const double a){
+  return a * pow(x, a * (1.0 - x * x)) * ((1.0 - x * x) / x - 2.0 * x * log(x));
+}
+
+double qx3(const double x, const double tau, const double a){
+  //double lambda = pow(0.5482, 2);
+  double result = gsl_sf_gamma(tau - 0.5) / (sqrt(M_PI) * gsl_sf_gamma(tau - 1.0)) * pow(U3(x, a), -0.5) * dU3(x, a) * pow(1.0 - U3(x, a), tau - 2.0);
+  return result;
+}
+
+double U4(const double x, const double a){
+  return pow(x, 1.0 - x) * exp(-a * pow(1.0 - x, 2));
+}
+
+double dU4(const double x, const double a){
+  return 2.0 * a * (1.0 - x) * pow(x, 1.0 - x) * exp(-a * pow(1.0 - x, 2)) + pow(x, 1.0 - x) * exp(-a * pow(1.0 - x, 2)) * ((1.0 - x) / x - log(x));
+}
+
+double qx4(const double x, const double tau, const double a){
+  //double lambda = pow(0.5482, 2);
+  double result = gsl_sf_gamma(tau - 0.5) / (sqrt(M_PI) * gsl_sf_gamma(tau - 1.0)) * pow(U4(x, a), -0.5) * dU4(x, a) * pow(1.0 - U4(x, a), tau - 2.0);
+  return result;
+}
+
 double (* qx)(const double x, const double tau, const double a);
 
 double a0 = 1.0;
@@ -81,7 +109,8 @@ const double mc = 1.28;
 const double mb = 4.18;
 const double mt = 173.1;
 
-const double Q0 = 0.866;
+//const double Q0 = 0.866;
+const double Q0 = 1.057;
 const double Q1 = 3.162;
 
 double FitFunction(const double * par){
@@ -111,6 +140,10 @@ int main(const int argc, const char * argv[]){
     qx = & qx1;
   else if (opt == 2)
     qx = & qx2;
+  else if (opt == 3)
+    qx = & qx3;
+  else if (opt == 4)
+    qx = & qx4;
   else
     return 0;
 

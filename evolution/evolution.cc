@@ -20,10 +20,10 @@ void model0(const double & x, const double & Q, double * pdf);
 void model1(const double & x, const double & Q, double * pdf);
 void model2(const double & x, const double & Q, double * pdf);
 void model3(const double & x, const double & Q, double * pdf);
-//void model4(const double & x, const double & Q, double * pdf);
-//void model5(const double & x, const double & Q, double * pdf);
-//void model6(const double & x, const double & Q, double * pdf);
-//void model7(const double & x, const double & Q, double * pdf);
+void model4(const double & x, const double & Q, double * pdf);
+void model5(const double & x, const double & Q, double * pdf);
+void model6(const double & x, const double & Q, double * pdf);
+void model7(const double & x, const double & Q, double * pdf);
 //void model8(const double & x, const double & Q, double * pdf);
 //void model9(const double & x, const double & Q, double * pdf);
 //void model10(const double & x, const double & Q, double * pdf);
@@ -67,14 +67,14 @@ int main(const int argc, const char * argv[]){
     model = & model2;
   else if (opt == 3)
     model = & model3;
-  // else if (opt == 4)
-  //   model = & model4;
-  // else if (opt == 5)
-  //   model = & model5;
-  // else if (opt == 6)
-  //   model = & model6;
-  // else if (opt == 7)
-  //   model = & model7;
+  else if (opt == 4)
+    model = & model4;
+  else if (opt == 5)
+    model = & model5;
+  else if (opt == 6)
+    model = & model6;
+  else if (opt == 7)
+    model = & model7;
   // else if (opt == 8)
   //   model = & model8;
   // else if (opt == 9)
@@ -141,6 +141,34 @@ double dU2(const double x, const double a){
 double qx2(const double x, const double tau, const double a){
   //double lambda = pow(0.5482, 2);
   double result = gsl_sf_gamma(tau - 0.5) / (sqrt(M_PI) * gsl_sf_gamma(tau - 1.0)) * pow(U2(x, a), -0.5) * dU2(x, a) * pow(1.0 - U2(x, a), tau - 2.0);
+  return result;
+}
+
+double U3(const double x, const double a){
+  return pow(x, a * (1.0 - x * x));
+}
+
+double dU3(const double x, const double a){
+  return a * pow(x, a * (1.0 - x * x)) * ((1.0 - x * x) / x - 2.0 * x * log(x));
+}
+
+double qx3(const double x, const double tau, const double a){
+  //double lambda = pow(0.5482, 2);
+  double result = gsl_sf_gamma(tau - 0.5) / (sqrt(M_PI) * gsl_sf_gamma(tau - 1.0)) * pow(U3(x, a), -0.5) * dU3(x, a) * pow(1.0 - U3(x, a), tau - 2.0);
+  return result;
+}
+
+double U4(const double x, const double a){
+  return pow(x, 1.0 - x) * exp(-a * pow(1.0 - x, 2));
+}
+
+double dU4(const double x, const double a){
+  return 2.0 * a * (1.0 - x) * pow(x, 1.0 - x) * exp(-a * pow(1.0 - x, 2)) + pow(x, 1.0 - x) * exp(-a * pow(1.0 - x, 2)) * ((1.0 - x) / x - log(x));
+}
+
+double qx4(const double x, const double tau, const double a){
+  //double lambda = pow(0.5482, 2);
+  double result = gsl_sf_gamma(tau - 0.5) / (sqrt(M_PI) * gsl_sf_gamma(tau - 1.0)) * pow(U4(x, a), -0.5) * dU4(x, a) * pow(1.0 - U4(x, a), tau - 2.0);
   return result;
 }
 
@@ -226,4 +254,85 @@ void  model3(const double & x, const double & Q, double * pdf){//pion diehl
   pdf[ 6+HalfNum] = 0; //t
 }
 
+void model4(const double & x, const double & Q, double * pdf){//proton poly
+  double r = 1.5;
+  double q3 = qx3(x, 3.0, a0);
+  double q4 = qx3(x, 4.0, a0);
+  pdf[-6+HalfNum] = 0; //tbar
+  pdf[-5+HalfNum] = 0; //bbar
+  pdf[-4+HalfNum] = 0; //cbar
+  pdf[-3+HalfNum] = 0; //sbar
+  pdf[-2+HalfNum] = 0; //ubar
+  pdf[-1+HalfNum] = 0; //dbar 
+  pdf[ 0+HalfNum] = 0; //gluon
+  pdf[ 1+HalfNum] = x * ((1.0 - 2.0 / 3.0 * r) * q3 + 2.0 / 3.0 * r * q4); //d
+  pdf[ 2+HalfNum] = x * ((2.0 - 1.0 / 3.0 * r) * q3 + 1.0 / 3.0 * r * q4); //u
+  pdf[ 3+HalfNum] = 0; //s
+  pdf[ 4+HalfNum] = 0; //c
+  pdf[ 5+HalfNum] = 0; //b
+  pdf[ 6+HalfNum] = 0; //t
+}
+
+void  model5(const double & x, const double & Q, double * pdf){//pion diehl
+  double gamma = 0.125;
+  double q2 = qx3(x, 2.0, a0);
+  double q4 = qx3(x, 4.0, a0);
+  
+  pdf[-6+HalfNum] = 0; //tbar
+  pdf[-5+HalfNum] = 0; //bbar
+  pdf[-4+HalfNum] = 0; //cbar
+  pdf[-3+HalfNum] = 0; //sbar
+  pdf[-2+HalfNum] = 0; //ubar
+  pdf[-1+HalfNum] = x * ((1.0 - gamma) * q2 + gamma * q4); //dbar
+  
+  pdf[ 0+HalfNum] = 0; //gluon
+
+  pdf[ 1+HalfNum] = 0; //d
+  pdf[ 2+HalfNum] = x * ((1.0 - gamma) * q2 + gamma * q4); //u
+  pdf[ 3+HalfNum] = 0; //s
+  pdf[ 4+HalfNum] = 0; //c
+  pdf[ 5+HalfNum] = 0; //b
+  pdf[ 6+HalfNum] = 0; //t
+}
+
+void model6(const double & x, const double & Q, double * pdf){//proton 4
+  double r = 1.5;
+  double q3 = qx4(x, 3.0, a0);
+  double q4 = qx4(x, 4.0, a0);
+  pdf[-6+HalfNum] = 0; //tbar
+  pdf[-5+HalfNum] = 0; //bbar
+  pdf[-4+HalfNum] = 0; //cbar
+  pdf[-3+HalfNum] = 0; //sbar
+  pdf[-2+HalfNum] = 0; //ubar
+  pdf[-1+HalfNum] = 0; //dbar 
+  pdf[ 0+HalfNum] = 0; //gluon
+  pdf[ 1+HalfNum] = x * ((1.0 - 2.0 / 3.0 * r) * q3 + 2.0 / 3.0 * r * q4); //d
+  pdf[ 2+HalfNum] = x * ((2.0 - 1.0 / 3.0 * r) * q3 + 1.0 / 3.0 * r * q4); //u
+  pdf[ 3+HalfNum] = 0; //s
+  pdf[ 4+HalfNum] = 0; //c
+  pdf[ 5+HalfNum] = 0; //b
+  pdf[ 6+HalfNum] = 0; //t
+}
+
+void  model7(const double & x, const double & Q, double * pdf){//pion 4
+  double gamma = 0.125;
+  double q2 = qx4(x, 2.0, a0);
+  double q4 = qx4(x, 4.0, a0);
+  
+  pdf[-6+HalfNum] = 0; //tbar
+  pdf[-5+HalfNum] = 0; //bbar
+  pdf[-4+HalfNum] = 0; //cbar
+  pdf[-3+HalfNum] = 0; //sbar
+  pdf[-2+HalfNum] = 0; //ubar
+  pdf[-1+HalfNum] = x * ((1.0 - gamma) * q2 + gamma * q4); //dbar
+  
+  pdf[ 0+HalfNum] = 0; //gluon
+
+  pdf[ 1+HalfNum] = 0; //d
+  pdf[ 2+HalfNum] = x * ((1.0 - gamma) * q2 + gamma * q4); //u
+  pdf[ 3+HalfNum] = 0; //s
+  pdf[ 4+HalfNum] = 0; //c
+  pdf[ 5+HalfNum] = 0; //b
+  pdf[ 6+HalfNum] = 0; //t
+}
 //-------------------------------------------------------------------------
