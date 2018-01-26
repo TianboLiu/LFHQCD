@@ -41,12 +41,13 @@ int main(const int argc, const char * argv[]){
   return 0;
 }
 
+double Q2 = 1.057 * 1.057;
 double xuv(const LHAPDF::PDF * xf){
   double step = 1.0 / points;
   double x0 = step / 2.0;
   double sum = 0;
   for (int i = 0; i < points; i++){
-    sum += xf->xfxQ2(2, x0 + step * i, 10.0) - xf->xfxQ2(-2, x0 + step * i, 10.0);
+    sum += xf->xfxQ2(2, x0 + step * i, Q2) - xf->xfxQ2(-2, x0 + step * i, Q2);
   }
   sum *= step;
   return sum;
@@ -57,7 +58,7 @@ double xdv(const LHAPDF::PDF * xf){
   double x0 = step / 2.0;
   double sum = 0;
   for (int i = 0; i < points; i++){
-    sum += xf->xfxQ2(1, x0 + step * i, 10.0) - xf->xfxQ2(-1, x0 + step * i, 10.0);
+    sum += xf->xfxQ2(1, x0 + step * i, Q2) - xf->xfxQ2(-1, x0 + step * i, Q2);
   }
   sum *= step;
   return sum;
