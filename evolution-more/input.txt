@@ -1,0 +1,11 @@
+nloop:  	3
+Q0^2:   	1.117
+Q^2:    	10.0
+alphaS:   	0.1181
+Q_alpha:  	91.1872
+scheme:  	1
+model:  	0
+parameter-a	0.507
+parameter-r	1.5
+parameter-gamma	0.125
+
