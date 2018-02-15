@@ -16,6 +16,7 @@ double a0 = 1, r0 = 1, gamma0 = 1;
 void (* model)(const double & x, const double & Q, double * pdf);
 void model0(const double & x, const double & Q, double * pdf);
 void model1(const double & x, const double & Q, double * pdf);
+void model2(const double & x, const double & Q, double * pdf);
 
 //----------------------------------------------------------------------
 int main(const int argc, const char * argv[]){
@@ -72,6 +73,8 @@ int main(const int argc, const char * argv[]){
     model = & model0;
   else if (opt == 1)
     model = & model1;
+  else if (opt == 2)
+    model = & model2;
   else
     return 0;
 
@@ -173,3 +176,24 @@ void  model1(const double & x, const double & Q, double * pdf){//pion
   pdf[ 6+HalfNum] = 0; //t
 }
 //-------------------------------------------------------------------------
+
+
+void model2(const double & x, const double & Q, double * pdf){//proton
+  double r = r0;
+  double q3 = qx(x, 3.0);
+  double q4 = qx(x, 4.0);
+  double q5 = 0.2 * qx(x, 5.0);
+  pdf[-6+HalfNum] = 0; //tbar
+  pdf[-5+HalfNum] = 0; //bbar
+  pdf[-4+HalfNum] = 0; //cbar
+  pdf[-3+HalfNum] = 0; //sbar
+  pdf[-2+HalfNum] = x * q5; //ubar
+  pdf[-1+HalfNum] = x * q5; //dbar 
+  pdf[ 0+HalfNum] = 0; //gluon
+  pdf[ 1+HalfNum] = x * ((1.0 - 2.0 / 3.0 * r) * q3 + 2.0 / 3.0 * r * q4) + x * q5; //d
+  pdf[ 2+HalfNum] = x * ((2.0 - 1.0 / 3.0 * r) * q3 + 1.0 / 3.0 * r * q4) + x * q5; //u
+  pdf[ 3+HalfNum] = 0; //s
+  pdf[ 4+HalfNum] = 0; //c
+  pdf[ 5+HalfNum] = 0; //b
+  pdf[ 6+HalfNum] = 0; //t
+}
