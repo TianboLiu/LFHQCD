@@ -100,12 +100,23 @@ int main(const int argc, const char * argv[]){
   fprintf(fs, "Q0 = %.1f GeV\t Q = %.1f GeV\n", Q0, Q);
   fprintf(fs, "x\t x*uv\t x*dv\t x*(uv-dv)\n");
 
-  int Xspots = 1000;//X grid size
-  for (int i = 0; i < Xspots; i++){
-    x = pow(10.0, 4.0 / Xspots * i - 4.0);
+  double X1[500], X2[500];
+  for (int i = 0; i < 500; i++){
+    X1[i] = pow(10.0, -4.0 + 0.004 * i);
+    X2[i] = 0.01 + (1.0 - 0.01) / 499 * i;
+  }
+  for (int i = 0; i < 500; i++){
+    x = X1[i];
     hoppetEval(x, Q, pdf);
     fprintf(fs, "%.3E\t%.3E\t%.3E\t%.3E\n",
-	   x, pdf[2+HalfNum] - pdf[-2+HalfNum], pdf[1+HalfNum] - pdf[-1+HalfNum],
+	    x, pdf[2+HalfNum] - pdf[-2+HalfNum], pdf[1+HalfNum] - pdf[-1+HalfNum],
+	    pdf[2+HalfNum] - pdf[-2+HalfNum] - pdf[1+HalfNum] + pdf[-1+HalfNum]);
+  }
+  for (int i = 0; i < 500; i++){
+    x = X2[i];
+    hoppetEval(x, Q, pdf);
+    fprintf(fs, "%.3E\t%.3E\t%.3E\t%.3E\n",
+	    x, pdf[2+HalfNum] - pdf[-2+HalfNum], pdf[1+HalfNum] - pdf[-1+HalfNum],
 	    pdf[2+HalfNum] - pdf[-2+HalfNum] - pdf[1+HalfNum] + pdf[-1+HalfNum]);
   }
 
