@@ -96,8 +96,8 @@ int main(const int argc, const char * argv[]){
   FILE * fs = fopen("xf.dat", "w");
   
   //print out the headlines
-  printf("Q0 = %.1f GeV\t Q = %.1f GeV\n", Q0, Q);
-  fprintf(fs, "Q0 = %.1f GeV\t Q = %.1f GeV\n", Q0, Q);
+  printf("Q0 = %.3f GeV\t Q = %.3f GeV\n", Q0, Q);
+  fprintf(fs, "Q0 = %.3f GeV\t Q = %.3f GeV\n", Q0, Q);
   fprintf(fs, "x\t x*uv\t x*dv\t x*(uv-dv)\n");
 
   double X1[500], X2[500];
