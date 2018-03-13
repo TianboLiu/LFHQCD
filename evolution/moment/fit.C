@@ -129,7 +129,9 @@ double FitFunction(const double * par){
   }
   xu = xu / points;
   xd = xd / points;
-  double chi2 = pow((xu - 0.2594) / 0.0038, 2) + pow((xd - 0.1083) / 0.0045, 2);
+  double chi2 = ( pow((xu - 0.259354) / 0.00381516, 2) + pow((xd - 0.108311) / 0.00452759, 2)
+		+ pow((xu - 0.260886) / 0.00404576, 2) + pow((xd - 0.109922) / 0.00279584, 2)
+		+ pow((xu - 0.264130) / 0.00678998, 2) + pow((xd - 0.107934) / 0.00458031, 2) ) / 3.0;
   return chi2;
 }
 
