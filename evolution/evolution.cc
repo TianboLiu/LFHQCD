@@ -265,10 +265,10 @@ void  model3(const double & x, const double & Q, double * pdf){//pion diehl
   pdf[ 6+HalfNum] = 0; //t
 }
 
-void model4(const double & x, const double & Q, double * pdf){//proton poly
-  double r = 1.5;
-  double q3 = qx3(x, 3.0, a0);
-  double q4 = qx3(x, 4.0, a0);
+void model4(const double & x, const double & Q, double * pdf){//proton r=1
+  double r = 1.0;
+  double q3 = qx4(x, 3.0, a0);
+  double q4 = qx4(x, 4.0, a0);
   pdf[-6+HalfNum] = 0; //tbar
   pdf[-5+HalfNum] = 0; //bbar
   pdf[-4+HalfNum] = 0; //cbar
