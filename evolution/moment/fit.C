@@ -78,7 +78,7 @@ double (* qx)(const double x, const double tau, const double a);
 
 double a0 = 1.0;
 void model(const double & x, const double & Q, double * pdf){
-  double r = 1.5;
+  double r = 1.0;
   double q3 = qx(x, 3.0, a0);
   double q4 = qx(x, 4.0, a0);
   pdf[-6+HalfNum] = 0; //tbar
