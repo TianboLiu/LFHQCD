@@ -1,0 +1,836 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     28917,        827]
+NotebookOptionsPosition[     27119,        766]
+NotebookOutlinePosition[     27988,        794]
+CellTagsIndexPosition[     27945,        791]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Spin and OAM", "Title",
+ CellChangeTimes->{{3.733141154758603*^9, 3.733141160753737*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Initialize", "Section",
+ CellChangeTimes->{{3.733141171723784*^9, 3.733141174009489*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.733141176746149*^9, 3.733141190852283*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"Format", "[", 
+    RowBox[{"\[Mu]", ",", "TraditionalForm"}], "]"}], ":=", 
+   RowBox[{"Style", "[", 
+    RowBox[{"\"\<\[Mu]\>\"", ",", 
+     RowBox[{"FontColor", "\[Rule]", "Blue"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Format", "[", 
+    RowBox[{"Sq", ",", "TraditionalForm"}], "]"}], ":=", 
+   RowBox[{"Style", "[", 
+    RowBox[{"\"\<\[CapitalDelta]\[CapitalSigma]\>\"", ",", 
+     RowBox[{"FontColor", "\[Rule]", "Magenta"}], ",", 
+     RowBox[{"FontFamily", "\[Rule]", "\"\<Times New Roman\>\""}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Format", "[", 
+    RowBox[{"Sg", ",", "TraditionalForm"}], "]"}], ":=", 
+   RowBox[{"Style", "[", 
+    RowBox[{"\"\<\[CapitalDelta]G\>\"", ",", 
+     RowBox[{"FontColor", "\[Rule]", "Magenta"}], ",", 
+     RowBox[{"FontFamily", "\[Rule]", "\"\<Times New Roman\>\""}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Format", "[", 
+    RowBox[{"Lq", ",", "TraditionalForm"}], "]"}], ":=", 
+   RowBox[{"Style", "[", 
+    RowBox[{"\"\<\!\(\*SubscriptBox[\(L\), \(q\)]\)\>\"", ",", 
+     RowBox[{"FontColor", "\[Rule]", "Magenta"}], ",", 
+     RowBox[{"FontFamily", "\[Rule]", "\"\<Times New Roman\>\""}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Format", "[", 
+    RowBox[{"Lg", ",", "TraditionalForm"}], "]"}], ":=", 
+   RowBox[{"Style", "[", 
+    RowBox[{"\"\<\!\(\*SubscriptBox[\(L\), \(g\)]\)\>\"", ",", 
+     RowBox[{"FontColor", "\[Rule]", "Magenta"}], ",", 
+     RowBox[{"FontFamily", "\[Rule]", "\"\<Times New Roman\>\""}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Format", "[", 
+    RowBox[{"Q0", ",", "TraditionalForm"}], "]"}], ":=", 
+   RowBox[{"Style", "[", 
+    RowBox[{"\"\<\!\(\*SubscriptBox[\(Q\), \(0\)]\)\>\"", ",", 
+     RowBox[{"FontColor", "\[Rule]", "Blue"}], ",", 
+     RowBox[{"FontFamily", "\[Rule]", "\"\<Times New Roman\>\""}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Format", "[", 
+    RowBox[{"Q", ",", "TraditionalForm"}], "]"}], ":=", 
+   RowBox[{"Style", "[", 
+    RowBox[{"\"\<Q\>\"", ",", 
+     RowBox[{"FontColor", "\[Rule]", "Blue"}], ",", 
+     RowBox[{"FontFamily", "\[Rule]", "\"\<Times New Roman\>\""}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Format", "[", 
+    RowBox[{"alphas", ",", "TraditionalForm"}], "]"}], ":=", 
+   RowBox[{"Style", "[", 
+    RowBox[{"\"\<\!\(\*SubscriptBox[\(\[Alpha]\), \(s\)]\)\>\"", ",", 
+     RowBox[{"FontColor", "\[Rule]", 
+      RowBox[{"RGBColor", "[", 
+       RowBox[{"0", ",", "0.6", ",", "1"}], "]"}]}], ",", 
+     RowBox[{"FontFamily", "\[Rule]", "\"\<Times New Roman\>\""}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Format", "[", 
+    RowBox[{"as", ",", "TraditionalForm"}], "]"}], ":=", 
+   RowBox[{"Style", "[", 
+    RowBox[{"\"\<\!\(\*SubscriptBox[\(a\), \(s\)]\)\>\"", ",", 
+     RowBox[{"FontColor", "\[Rule]", 
+      RowBox[{"RGBColor", "[", 
+       RowBox[{"0", ",", "0.6", ",", "1"}], "]"}]}], ",", 
+     RowBox[{"FontFamily", "\[Rule]", "\"\<Times New Roman\>\""}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Format", "[", 
+    RowBox[{"nf", ",", "TraditionalForm"}], "]"}], ":=", 
+   RowBox[{"Style", "[", 
+    RowBox[{"\"\<\!\(\*SubscriptBox[\(n\), \(f\)]\)\>\"", ",", 
+     RowBox[{"FontFamily", "\[Rule]", "\"\<Times New Roman\>\""}]}], "]"}]}], 
+  ";"}]}], "Input",
+ CellChangeTimes->{{3.733141196879726*^9, 3.733141332904544*^9}, {
+  3.733142250265183*^9, 3.733142423973604*^9}, {3.7331424582858343`*^9, 
+  3.733142459176989*^9}, {3.733148962628331*^9, 3.733148992178565*^9}, {
+  3.7331490634051113`*^9, 3.733149170031041*^9}, {3.733149518451881*^9, 
+  3.733149579325005*^9}, {3.733155899975089*^9, 3.7331559293637123`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Leading order", "Section",
+ CellChangeTimes->{{3.7331489464424562`*^9, 3.733148953287166*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"alphas", "[", "\[Mu]_", "]"}], ":=", 
+   FractionBox[
+    RowBox[{"4", " ", "\[Pi]"}], 
+    RowBox[{
+     SubscriptBox["\[Beta]", "0"], " ", 
+     RowBox[{"Log", "[", 
+      FractionBox[
+       SuperscriptBox["\[Mu]", "2"], 
+       SuperscriptBox["\[CapitalLambda]", "2"]], "]"}]}]]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"as", "[", "\[Mu]_", "]"}], ":=", 
+   FractionBox[
+    RowBox[{"alphas", "[", "\[Mu]", "]"}], 
+    RowBox[{"4", " ", "\[Pi]"}]]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.733148958465077*^9, 3.733148958568104*^9}, {
+  3.733149193468483*^9, 3.7331492264523897`*^9}, {3.733149269787713*^9, 
+  3.73314932061474*^9}, {3.7331494744553556`*^9, 3.7331494778535433`*^9}, {
+  3.733150030130189*^9, 3.733150095767302*^9}, {3.7331507269478073`*^9, 
+  3.7331507294284678`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"DSolve", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"Sq", "'"}], "[", "\[Mu]", "]"}], "\[Equal]", "0"}], ",", 
+       RowBox[{
+        RowBox[{"Sq", "[", "Q0", "]"}], "\[Equal]", 
+        SubscriptBox["\[CapitalDelta]\[CapitalSigma]", "0"]}]}], "}"}], ",", 
+     RowBox[{"Sq", "[", "\[Mu]", "]"}], ",", "\[Mu]"}], "]"}], "[", 
+   RowBox[{"[", 
+    RowBox[{"1", ",", "1"}], "]"}], "]"}], "//", "TraditionalForm"}]], "Input",\
+
+ CellChangeTimes->{{3.733150107025977*^9, 3.733150207130563*^9}, {
+  3.733150237579624*^9, 3.733150238125585*^9}, {3.733150307009197*^9, 
+  3.733150348962634*^9}, {3.73315040766295*^9, 3.733150415260292*^9}, {
+  3.733154397655963*^9, 3.733154473961671*^9}, {3.733154520269026*^9, 
+  3.7331545809766607`*^9}, {3.7331546476628942`*^9, 3.733154649095477*^9}, {
+  3.7331546852774754`*^9, 3.733154702365013*^9}, {3.733154852628372*^9, 
+  3.733154871927395*^9}, {3.7331549279136477`*^9, 3.7331549502238283`*^9}, {
+  3.73315509473881*^9, 3.733155121136104*^9}, {3.733155155340652*^9, 
+  3.733155159731873*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    FormBox[
+     StyleBox["\<\"\[CapitalDelta]\[CapitalSigma]\"\>",
+      StripOnInput->False,
+      FontFamily->"Times New Roman",
+      FontColor->RGBColor[1, 0, 1]],
+     TraditionalForm], "(", 
+    FormBox[
+     StyleBox["\<\"\[Mu]\"\>",
+      StripOnInput->False,
+      FontColor->RGBColor[0, 0, 1]],
+     TraditionalForm], ")"}], "\[Rule]", 
+   SubscriptBox["\[CapitalDelta]\[CapitalSigma]", "0"]}], 
+  TraditionalForm]], "Output",
+ CellChangeTimes->{{3.733154694101618*^9, 3.7331547195991163`*^9}, {
+   3.7331548581551113`*^9, 3.733154876001659*^9}, {3.733154929453602*^9, 
+   3.733154963234899*^9}, {3.733155113999928*^9, 3.733155121909213*^9}, 
+   3.733155160565297*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"\[CapitalDelta]\[CapitalSigma]", "[", "\[Mu]_", "]"}], ":=", 
+   SubscriptBox["\[CapitalDelta]\[CapitalSigma]", "0"]}], ";"}]], "Input",
+ CellChangeTimes->{{3.733150358303692*^9, 3.733150360347418*^9}, {
+  3.733150429856595*^9, 3.733150479769884*^9}, {3.7331552014464397`*^9, 
+  3.733155219515983*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"DSolve", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         FractionBox["\[Mu]", "2"], 
+         RowBox[{"D", "[", 
+          RowBox[{
+           RowBox[{"Sg", "[", "\[Mu]", "]"}], ",", "\[Mu]"}], "]"}]}], 
+        "\[Equal]", 
+        RowBox[{
+         RowBox[{"4", " ", 
+          RowBox[{"as", "[", "\[Mu]", "]"}], " ", 
+          RowBox[{"\[CapitalDelta]\[CapitalSigma]", "[", "\[Mu]", "]"}]}], 
+         "+", 
+         RowBox[{
+          SubscriptBox["\[Beta]", "0"], " ", 
+          RowBox[{"as", "[", "\[Mu]", "]"}], " ", 
+          RowBox[{"Sg", "[", "\[Mu]", "]"}]}]}]}], ",", 
+       RowBox[{
+        RowBox[{"Sg", "[", "Q0", "]"}], "\[Equal]", 
+        SubscriptBox["\[CapitalDelta]G", "0"]}]}], "}"}], ",", 
+     RowBox[{"Sg", "[", "\[Mu]", "]"}], ",", "\[Mu]"}], "]"}], "[", 
+   RowBox[{"[", 
+    RowBox[{"1", ",", "1"}], "]"}], "]"}], "//", "TraditionalForm"}]], "Input",\
+
+ CellChangeTimes->{{3.73315045058591*^9, 3.733150577144556*^9}, {
+  3.733150624256958*^9, 3.7331506775351686`*^9}, {3.733150740382442*^9, 
+  3.7331507531746798`*^9}, {3.733154324628237*^9, 3.7331543873962793`*^9}, {
+  3.733155254122217*^9, 3.733155326900158*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{
+   RowBox[{
+    FormBox[
+     StyleBox["\<\"\[CapitalDelta]G\"\>",
+      StripOnInput->False,
+      FontFamily->"Times New Roman",
+      FontColor->RGBColor[1, 0, 1]],
+     TraditionalForm], "(", 
+    FormBox[
+     StyleBox["\<\"\[Mu]\"\>",
+      StripOnInput->False,
+      FontColor->RGBColor[0, 0, 1]],
+     TraditionalForm], ")"}], "\[Rule]", 
+   FractionBox[
+    RowBox[{
+     RowBox[{
+      SubscriptBox["\[Beta]", "0"], " ", 
+      SubscriptBox["\[CapitalDelta]G", "0"], " ", 
+      RowBox[{"log", "(", 
+       FractionBox[
+        SuperscriptBox[
+         FormBox[
+          StyleBox["\<\"\[Mu]\"\>",
+           StripOnInput->False,
+           FontColor->RGBColor[0, 0, 1]],
+          TraditionalForm], "2"], 
+        SuperscriptBox["\[CapitalLambda]", "2"]], ")"}]}], "+", 
+     RowBox[{"4", " ", 
+      SubscriptBox["\[CapitalDelta]\[CapitalSigma]", "0"], " ", 
+      RowBox[{"log", "(", 
+       FractionBox[
+        SuperscriptBox[
+         FormBox[
+          StyleBox["\<\"\[Mu]\"\>",
+           StripOnInput->False,
+           FontColor->RGBColor[0, 0, 1]],
+          TraditionalForm], "2"], 
+        SuperscriptBox["\[CapitalLambda]", "2"]], ")"}]}], "-", 
+     RowBox[{"4", " ", 
+      SubscriptBox["\[CapitalDelta]\[CapitalSigma]", "0"], " ", 
+      RowBox[{"log", "(", 
+       FractionBox[
+        SuperscriptBox[
+         FormBox[
+          StyleBox["\<\"\\!\\(\\*SubscriptBox[\\(Q\\), \\(0\\)]\\)\"\>",
+           StripOnInput->False,
+           FontFamily->"Times New Roman",
+           FontColor->RGBColor[0, 0, 1]],
+          TraditionalForm], "2"], 
+        SuperscriptBox["\[CapitalLambda]", "2"]], ")"}]}]}], 
+    RowBox[{
+     SubscriptBox["\[Beta]", "0"], " ", 
+     RowBox[{"log", "(", 
+      FractionBox[
+       SuperscriptBox[
+        FormBox[
+         StyleBox["\<\"\\!\\(\\*SubscriptBox[\\(Q\\), \\(0\\)]\\)\"\>",
+          StripOnInput->False,
+          FontFamily->"Times New Roman",
+          FontColor->RGBColor[0, 0, 1]],
+         TraditionalForm], "2"], 
+       SuperscriptBox["\[CapitalLambda]", "2"]], ")"}]}]]}], 
+  TraditionalForm]], "Output",
+ CellChangeTimes->{{3.733150453729961*^9, 3.733150499292742*^9}, 
+   3.733150678127961*^9, {3.733150734588161*^9, 3.73315075543891*^9}, 
+   3.733154387919756*^9, 3.733154459984952*^9, {3.7331552679109983`*^9, 
+   3.733155295016519*^9}, 3.733155328041532*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"\[CapitalDelta]G", "[", "\[Mu]_", "]"}], ":=", 
+   RowBox[{
+    FractionBox[
+     RowBox[{
+      RowBox[{
+       SubscriptBox["\[Beta]", "0"], " ", 
+       SubscriptBox["\[CapitalDelta]G", "0"], " ", 
+       RowBox[{"Log", "[", 
+        FractionBox[
+         SuperscriptBox["\[Mu]", "2"], 
+         SuperscriptBox["\[CapitalLambda]", "2"]], "]"}]}], "+", 
+      RowBox[{"4", " ", 
+       SubscriptBox["\[CapitalDelta]\[CapitalSigma]", "0"], " ", 
+       RowBox[{"Log", "[", 
+        FractionBox[
+         SuperscriptBox["\[Mu]", "2"], 
+         SuperscriptBox["\[CapitalLambda]", "2"]], "]"}]}]}], 
+     RowBox[{
+      SubscriptBox["\[Beta]", "0"], " ", 
+      RowBox[{"Log", "[", 
+       FractionBox[
+        SuperscriptBox[
+         SubscriptBox["Q", "0"], "2"], 
+        SuperscriptBox["\[CapitalLambda]", "2"]], "]"}]}]], "-", 
+    FractionBox[
+     RowBox[{"4", " ", 
+      SubscriptBox["\[CapitalDelta]\[CapitalSigma]", "0"]}], 
+     SubscriptBox["\[Beta]", "0"]]}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.733155298626109*^9, 3.7331553033750267`*^9}, {
+  3.7331553822849216`*^9, 3.733155566497931*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"DSolve", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{
+       FractionBox["\[Mu]", "2"], 
+       RowBox[{"D", "[", 
+        RowBox[{
+         RowBox[{"(", GridBox[{
+            {
+             RowBox[{"Lq", "[", "\[Mu]", "]"}]},
+            {
+             RowBox[{"Lg", "[", "\[Mu]", "]"}]}
+           }], ")"}], ",", "\[Mu]"}], "]"}]}], "\[Equal]", 
+      RowBox[{
+       RowBox[{"-", 
+        RowBox[{"as", "[", "\[Mu]", "]"}]}], 
+       RowBox[{
+        RowBox[{"(", GridBox[{
+           {
+            FractionBox["32", "9"], 
+            RowBox[{
+             FractionBox[
+              RowBox[{"-", "2"}], "3"], " ", "nf"}]},
+           {
+            FractionBox[
+             RowBox[{"-", "32"}], "9"], 
+            RowBox[{
+             FractionBox["2", "3"], " ", "nf"}]}
+          }], ")"}], ".", 
+        RowBox[{"(", GridBox[{
+           {
+            RowBox[{"Lq", "[", "\[Mu]", "]"}]},
+           {
+            RowBox[{"Lg", "[", "\[Mu]", "]"}]}
+          }], ")"}]}]}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"Lq", "[", "\[Mu]", "]"}], ",", 
+      RowBox[{"Lg", "[", "\[Mu]", "]"}]}], "}"}], ",", "\[Mu]"}], "]"}], "//",
+   "TraditionalForm"}]], "Input",
+ CellChangeTimes->{{3.7331558164493856`*^9, 3.733155893854418*^9}, {
+   3.733155940342431*^9, 3.7331559613793*^9}, {3.733157129438974*^9, 
+   3.733157262313365*^9}, {3.7331573028833227`*^9, 3.7331573065884943`*^9}, {
+   3.7331576341737423`*^9, 3.733157658557213*^9}, {3.733157700764258*^9, 
+   3.733157761313501*^9}, 3.733157805002553*^9, {3.733157856234412*^9, 
+   3.733157859569251*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"DSolve", "::", "nolist"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"List encountered within \
+\[NoBreak]\\!\\({\\(\\({\\(\\({1\\/2\\\\ \[Mu]\\\\ \
+\\(\\(\\(\\(\\*SuperscriptBox[\\\"Lq\\\", \\\"\[Prime]\\\", \
+Rule[MultilineFunction, None]]\\)\\)[\[Mu]]\\)\\)}\\)\\), \\(\\({1\\/2\\\\ \
+\[Mu]\\\\ \\(\\(\\(\\(\\*SuperscriptBox[\\\"Lg\\\", \\\"\[Prime]\\\", \
+Rule[MultilineFunction, None]]\\)\\)[\[Mu]]\\)\\)}\\)\\)}\\)\\) \[Equal] \
+\\(\\({\\(\\({\\(-\\(\\(\\(\\(\\(\\(\\(-\\(\\(2\\/3\\)\\)\\)\\)\\\\ nf\\\\ \
+\\(\\(Lg[\[Mu]]\\)\\)\\)\\) + \\(32\\\\ \\(\\(Lq[\[Mu]]\\)\\)\\)\\/9\\)\\/\\(\
+\\(\\(Log[\\(\\(\\(\\(Power[\\(\\(\[LeftSkeleton] 2 \
+\[RightSkeleton]\\)\\)]\\)\\)\\\\ \\(\\(Power[\\(\\(\[LeftSkeleton] 2 \
+\[RightSkeleton]\\)\\)]\\)\\)\\)\\)]\\)\\)\\\\ \
+\[Beta]\\_0\\)\\)\\)\\)}\\)\\), \\(\\({\\(-\\(\\(\\(\\(\\(2\\/3\\\\ nf\\\\ \
+\\(\\(Lg[\[Mu]]\\)\\)\\)\\) - \\(32\\\\ \\(\\(Lq[\[Mu]]\\)\\)\\)\\/9\\)\\/\\(\
+\\(\\(Log[\\(\\(\\(\\(Power[\\(\\(\[LeftSkeleton] 2 \
+\[RightSkeleton]\\)\\)]\\)\\)\\\\ \\(\\(Power[\\(\\(\[LeftSkeleton] 2 \
+\[RightSkeleton]\\)\\)]\\)\\)\\)\\)]\\)\\)\\\\ \
+\[Beta]\\_0\\)\\)\\)\\)}\\)\\)}\\)\\)}\\)\[NoBreak]. There should be no lists \
+on either side of the equations. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/DSolve/nolist\\\", ButtonNote -> \
+\\\"DSolve::nolist\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{
+  3.733157770768302*^9, 3.7331578057745523`*^9, {3.733157856740617*^9, 
+   3.733157859915422*^9}}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"DSolve", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+         {
+          RowBox[{
+           FractionBox["1", "2"], " ", 
+           FormBox[
+            StyleBox["\<\"\[Mu]\"\>",
+             StripOnInput->False,
+             FontColor->RGBColor[0, 0, 1]],
+            TraditionalForm], " ", 
+           RowBox[{
+            SuperscriptBox[
+             FormBox[
+              StyleBox["\<\"\\!\\(\\*SubscriptBox[\\(L\\), \\(q\\)]\\)\"\>",
+               StripOnInput->False,
+               FontFamily->"Times New Roman",
+               FontColor->RGBColor[1, 0, 1]],
+              TraditionalForm], "\[Prime]",
+             MultilineFunction->None], "(", 
+            FormBox[
+             StyleBox["\<\"\[Mu]\"\>",
+              StripOnInput->False,
+              FontColor->RGBColor[0, 0, 1]],
+             TraditionalForm], ")"}]}]},
+         {
+          RowBox[{
+           FractionBox["1", "2"], " ", 
+           FormBox[
+            StyleBox["\<\"\[Mu]\"\>",
+             StripOnInput->False,
+             FontColor->RGBColor[0, 0, 1]],
+            TraditionalForm], " ", 
+           RowBox[{
+            SuperscriptBox[
+             FormBox[
+              StyleBox["\<\"\\!\\(\\*SubscriptBox[\\(L\\), \\(g\\)]\\)\"\>",
+               StripOnInput->False,
+               FontFamily->"Times New Roman",
+               FontColor->RGBColor[1, 0, 1]],
+              TraditionalForm], "\[Prime]",
+             MultilineFunction->None], "(", 
+            FormBox[
+             StyleBox["\<\"\[Mu]\"\>",
+              StripOnInput->False,
+              FontColor->RGBColor[0, 0, 1]],
+             TraditionalForm], ")"}]}]}
+        },
+        GridBoxAlignment->{
+         "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+          "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+        GridBoxSpacings->{"Columns" -> {
+            Offset[0.27999999999999997`], {
+             Offset[0.7]}, 
+            Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, 
+          "Rows" -> {
+            Offset[0.2], {
+             Offset[0.4]}, 
+            Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}], 
+      "\[LongEqual]", 
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+         {
+          RowBox[{"-", 
+           FractionBox[
+            RowBox[{
+             FractionBox[
+              RowBox[{"32", " ", 
+               RowBox[{
+                FormBox[
+                 StyleBox["\<\"\\!\\(\\*SubscriptBox[\\(L\\), \\(q\\)]\\)\"\>",
+                  StripOnInput->False,
+                  FontFamily->"Times New Roman",
+                  FontColor->RGBColor[1, 0, 1]],
+                 TraditionalForm], "(", 
+                FormBox[
+                 StyleBox["\<\"\[Mu]\"\>",
+                  StripOnInput->False,
+                  FontColor->RGBColor[0, 0, 1]],
+                 TraditionalForm], ")"}]}], "9"], "-", 
+             RowBox[{
+              FractionBox["2", "3"], " ", 
+              FormBox[
+               StyleBox["\<\"\\!\\(\\*SubscriptBox[\\(n\\), \\(f\\)]\\)\"\>",
+                StripOnInput->False,
+                FontFamily->"Times New Roman"],
+               TraditionalForm], " ", 
+              RowBox[{
+               FormBox[
+                
+                StyleBox["\<\"\\!\\(\\*SubscriptBox[\\(L\\), \\(g\\)]\\)\"\>",
+                 
+                 StripOnInput->False,
+                 FontFamily->"Times New Roman",
+                 FontColor->RGBColor[1, 0, 1]],
+                TraditionalForm], "(", 
+               FormBox[
+                StyleBox["\<\"\[Mu]\"\>",
+                 StripOnInput->False,
+                 FontColor->RGBColor[0, 0, 1]],
+                TraditionalForm], ")"}]}]}], 
+            RowBox[{
+             SubscriptBox["\[Beta]", "0"], " ", 
+             RowBox[{"log", "(", 
+              FractionBox[
+               SuperscriptBox[
+                FormBox[
+                 StyleBox["\<\"\[Mu]\"\>",
+                  StripOnInput->False,
+                  FontColor->RGBColor[0, 0, 1]],
+                 TraditionalForm], "2"], 
+               SuperscriptBox["\[CapitalLambda]", "2"]], ")"}]}]]}]},
+         {
+          RowBox[{"-", 
+           FractionBox[
+            RowBox[{
+             RowBox[{
+              FractionBox["2", "3"], " ", 
+              FormBox[
+               StyleBox["\<\"\\!\\(\\*SubscriptBox[\\(n\\), \\(f\\)]\\)\"\>",
+                StripOnInput->False,
+                FontFamily->"Times New Roman"],
+               TraditionalForm], " ", 
+              RowBox[{
+               FormBox[
+                
+                StyleBox["\<\"\\!\\(\\*SubscriptBox[\\(L\\), \\(g\\)]\\)\"\>",
+                 
+                 StripOnInput->False,
+                 FontFamily->"Times New Roman",
+                 FontColor->RGBColor[1, 0, 1]],
+                TraditionalForm], "(", 
+               FormBox[
+                StyleBox["\<\"\[Mu]\"\>",
+                 StripOnInput->False,
+                 FontColor->RGBColor[0, 0, 1]],
+                TraditionalForm], ")"}]}], "-", 
+             FractionBox[
+              RowBox[{"32", " ", 
+               RowBox[{
+                FormBox[
+                 StyleBox["\<\"\\!\\(\\*SubscriptBox[\\(L\\), \\(q\\)]\\)\"\>",
+                  StripOnInput->False,
+                  FontFamily->"Times New Roman",
+                  FontColor->RGBColor[1, 0, 1]],
+                 TraditionalForm], "(", 
+                FormBox[
+                 StyleBox["\<\"\[Mu]\"\>",
+                  StripOnInput->False,
+                  FontColor->RGBColor[0, 0, 1]],
+                 TraditionalForm], ")"}]}], "9"]}], 
+            RowBox[{
+             SubscriptBox["\[Beta]", "0"], " ", 
+             RowBox[{"log", "(", 
+              FractionBox[
+               SuperscriptBox[
+                FormBox[
+                 StyleBox["\<\"\[Mu]\"\>",
+                  StripOnInput->False,
+                  FontColor->RGBColor[0, 0, 1]],
+                 TraditionalForm], "2"], 
+               SuperscriptBox["\[CapitalLambda]", "2"]], ")"}]}]]}]}
+        },
+        GridBoxAlignment->{
+         "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+          "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+        GridBoxSpacings->{"Columns" -> {
+            Offset[0.27999999999999997`], {
+             Offset[0.7]}, 
+            Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, 
+          "Rows" -> {
+            Offset[0.2], {
+             Offset[0.4]}, 
+            Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}]}], "}"}],
+     ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{
+       FormBox[
+        StyleBox["\<\"\\!\\(\\*SubscriptBox[\\(L\\), \\(q\\)]\\)\"\>",
+         StripOnInput->False,
+         FontFamily->"Times New Roman",
+         FontColor->RGBColor[1, 0, 1]],
+        TraditionalForm], "(", 
+       FormBox[
+        StyleBox["\<\"\[Mu]\"\>",
+         StripOnInput->False,
+         FontColor->RGBColor[0, 0, 1]],
+        TraditionalForm], ")"}], ",", 
+      RowBox[{
+       FormBox[
+        StyleBox["\<\"\\!\\(\\*SubscriptBox[\\(L\\), \\(g\\)]\\)\"\>",
+         StripOnInput->False,
+         FontFamily->"Times New Roman",
+         FontColor->RGBColor[1, 0, 1]],
+        TraditionalForm], "(", 
+       FormBox[
+        StyleBox["\<\"\[Mu]\"\>",
+         StripOnInput->False,
+         FontColor->RGBColor[0, 0, 1]],
+        TraditionalForm], ")"}]}], "}"}], ",", 
+    FormBox[
+     StyleBox["\<\"\[Mu]\"\>",
+      StripOnInput->False,
+      FontColor->RGBColor[0, 0, 1]],
+     TraditionalForm]}], "]"}], TraditionalForm]], "Output",
+ CellChangeTimes->{{3.7331578567480993`*^9, 3.733157859924836*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"D", "[", 
+  RowBox[{
+   RowBox[{"(", GridBox[{
+      {
+       SuperscriptBox["x", "2"]},
+      {"x"}
+     }], ")"}], ",", "x"}], "]"}]], "Input",
+ CellChangeTimes->{{3.7331574681318502`*^9, 3.7331574700675793`*^9}, {
+  3.733157594717924*^9, 3.733157619889382*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"2", " ", "x"}], "}"}], ",", 
+   RowBox[{"{", "1", "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.7331576093048153`*^9, 3.733157620659955*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"A", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"4", ",", 
+       RowBox[{"-", "6"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", 
+       RowBox[{"-", "1"}]}], "}"}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"X", "[", "t_", "]"}], "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"x", "[", "t", "]"}], ",", 
+     RowBox[{"y", "[", "t", "]"}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"system", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"X", "'"}], "[", "t", "]"}], "\[Equal]", 
+    RowBox[{"A", ".", 
+     RowBox[{"X", "[", "t", "]"}]}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"sol", "=", 
+  RowBox[{"DSolve", "[", 
+   RowBox[{"system", ",", 
+    RowBox[{"{", 
+     RowBox[{"x", ",", "y"}], "}"}], ",", "t"}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.733157895574623*^9, 3.733157930113853*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"DSolve", "::", "nolist"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"List encountered within \
+\[NoBreak]\\!\\({\\(\\({\\(\\(\\(\\(\\*SuperscriptBox[\\\"x\\\", \\\"\[Prime]\
+\\\", Rule[MultilineFunction, None]]\\)\\)[t]\\)\\), \
+\\(\\(\\(\\(\\*SuperscriptBox[\\\"y\\\", \\\"\[Prime]\\\", \
+Rule[MultilineFunction, None]]\\)\\)[t]\\)\\)}\\)\\) \[Equal] \
+\\(\\({\\(\\(\\(\\(4\\\\ \\(\\(x[t]\\)\\)\\)\\) - \\(\\(6\\\\ \
+\\(\\(y[t]\\)\\)\\)\\)\\)\\), \\(\\(\\(\\(x[t]\\)\\) - \
+\\(\\(y[t]\\)\\)\\)\\)}\\)\\)}\\)\[NoBreak]. There should be no lists on \
+either side of the equations. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/DSolve/nolist\\\", ButtonNote -> \
+\\\"DSolve::nolist\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.733157931533498*^9}],
+
+Cell[BoxData[
+ RowBox[{"DSolve", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{
+       SuperscriptBox["x", "\[Prime]",
+        MultilineFunction->None], "[", "t", "]"}], ",", 
+      RowBox[{
+       SuperscriptBox["y", "\[Prime]",
+        MultilineFunction->None], "[", "t", "]"}]}], "}"}], "\[Equal]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"4", " ", 
+        RowBox[{"x", "[", "t", "]"}]}], "-", 
+       RowBox[{"6", " ", 
+        RowBox[{"y", "[", "t", "]"}]}]}], ",", 
+      RowBox[{
+       RowBox[{"x", "[", "t", "]"}], "-", 
+       RowBox[{"y", "[", "t", "]"}]}]}], "}"}]}], ",", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", "y"}], "}"}], ",", "t"}], "]"}]], "Output",
+ CellChangeTimes->{3.7331579315349283`*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1440, 799},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+ShowSelection->True,
+Magnification:>FEPrivate`If[
+  FEPrivate`Equal[FEPrivate`$VersionNumber, 6.], 1.5, 1.5 Inherited],
+FrontEndVersion->"8.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (November 6, \
+2010)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> 
+     FrontEnd`FileName[{"Report"}, "StandardReport.nb", CharacterEncoding -> 
+       "UTF-8"]]]}, WindowSize -> {740, 699}, 
+  WindowMargins -> {{343, Automatic}, {Automatic, 0}}, Visible -> False, 
+  FrontEndVersion -> 
+  "8.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (November 6, 2010)", 
+  StyleDefinitions -> "PrivateStylesheetFormatting.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 95, 1, 111, "Title"],
+Cell[CellGroupData[{
+Cell[699, 27, 95, 1, 103, "Section"],
+Cell[797, 30, 157, 3, 54, "Input"],
+Cell[957, 35, 3938, 97, 277, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4932, 137, 100, 1, 103, "Section"],
+Cell[5035, 140, 865, 23, 158, "Input"],
+Cell[CellGroupData[{
+Cell[5925, 167, 1136, 25, 56, "Input"],
+Cell[7064, 194, 727, 20, 77, "Output"]
+}, Open  ]],
+Cell[7806, 217, 349, 7, 56, "Input"],
+Cell[CellGroupData[{
+Cell[8180, 228, 1242, 33, 77, "Input"],
+Cell[9425, 263, 2378, 68, 149, "Output"]
+}, Open  ]],
+Cell[11818, 334, 1157, 32, 124, "Input"],
+Cell[CellGroupData[{
+Cell[13000, 370, 1633, 48, 108, "Input"],
+Cell[14636, 420, 1599, 28, 130, "Message"],
+Cell[16238, 450, 7667, 209, 212, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[23942, 664, 288, 9, 80, "Input"],
+Cell[24233, 675, 214, 6, 72, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[24484, 686, 931, 30, 125, "Input"],
+Cell[25418, 718, 893, 17, 35, "Message"],
+Cell[26314, 737, 765, 24, 72, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
