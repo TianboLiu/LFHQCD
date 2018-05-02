@@ -18,9 +18,9 @@ double a0 = 1.0;
 void (* model)(const double & x, const double & Q, double * pdf);
 void model0(const double & x, const double & Q, double * pdf);
 void model1(const double & x, const double & Q, double * pdf);
-//void model2(const double & x, const double & Q, double * pdf);
-//void model3(const double & x, const double & Q, double * pdf);
-//void model4(const double & x, const double & Q, double * pdf);
+void model2(const double & x, const double & Q, double * pdf);
+void model3(const double & x, const double & Q, double * pdf);
+void model4(const double & x, const double & Q, double * pdf);
 //void model5(const double & x, const double & Q, double * pdf);
 //void model6(const double & x, const double & Q, double * pdf);
 //void model7(const double & x, const double & Q, double * pdf);
@@ -63,12 +63,12 @@ int main(const int argc, const char * argv[]){
     model = & model0;
   else if (opt == 1)
     model = & model1;
-  //else if (opt == 2)
-  //  model = & model2;
-  //else if (opt == 3)
-  //  model = & model3;
-  //else if (opt == 4)
-  //  model = & model4;
+  else if (opt == 2)
+   model = & model2;
+  else if (opt == 3)
+   model = & model3;
+  else if (opt == 4)
+   model = & model4;
   //else if (opt == 5)
   //  model = & model5;
   //else if (opt == 6)
@@ -100,23 +100,18 @@ int main(const int argc, const char * argv[]){
   fprintf(fs, "Q0 = %.3f GeV\t Q = %.3f GeV\n", Q0, Q);
   fprintf(fs, "x\t x*(uv-dv)\n");
 
-  double X1[500], X2[500];
+  double X[1000];
   for (int i = 0; i < 500; i++){
-    X1[i] = pow(10.0, -4.0 + 0.004 * i);
-    X2[i] = 0.01 + (1.0 - 0.01) / 499 * i;
+    X[i] = pow(10.0, -4.0 + 0.004 * i);
+    X[i+500] = 0.01 + (1.0 - 0.01) / 499 * i;
   }
-  for (int i = 0; i < 500; i++){
-    x = X1[i];
+  for (int i = 0; i < 1000; i++){
+    x = X[i];
     hoppetEval(x, Q, pdf);
-    fprintf(fs, "%.3E\t%.3E\n",
-	    x, (pdf[2+HalfNum] - pdf[-2+HalfNum]) - (pdf[1+HalfNum] - pdf[-1+HalfNum]));
+    fprintf(fs, "%.3E\t%.3E\t%.3E\n",
+	    x, (pdf[2+HalfNum] - pdf[-2+HalfNum]) - (pdf[1+HalfNum] - pdf[-1+HalfNum]), (pdf[2+HalfNum] + pdf[-2+HalfNum]) - (pdf[1+HalfNum] + pdf[-1+HalfNum]));
   }
-  for (int i = 0; i < 500; i++){
-    x = X2[i];
-    hoppetEval(x, Q, pdf);
-    fprintf(fs, "%.3E\t%.3E\n",
-	    x, (pdf[2+HalfNum] - pdf[-2+HalfNum]) - (pdf[1+HalfNum] - pdf[-1+HalfNum]));
-  }
+
 
   fclose(fs);
 
@@ -132,7 +127,7 @@ double dwx(const double x, const double a){
 }
 
 void model0(const double & x, const double & Q, double * pdf){//proton poly
-  double qv = (1.0 - wx(x, a0)) * dwx(x, a0);
+  double qv = 2.0 * (1.0 - wx(x, a0)) * dwx(x, a0);
 
   pdf[-6+HalfNum] = 0; //tbar
   pdf[-5+HalfNum] = 0; //bbar
@@ -141,7 +136,7 @@ void model0(const double & x, const double & Q, double * pdf){//proton poly
   pdf[-2+HalfNum] = 0; //ubar
   pdf[-1+HalfNum] = 0; //dbar 
   pdf[ 0+HalfNum] = 0; //gluon
-  pdf[ 1+HalfNum] = x * 0; //d
+  pdf[ 1+HalfNum] = 0; //d
   pdf[ 2+HalfNum] = x * qv; //u
   pdf[ 3+HalfNum] = 0; //s
   pdf[ 4+HalfNum] = 0; //c
@@ -150,7 +145,8 @@ void model0(const double & x, const double & Q, double * pdf){//proton poly
 }
 
 void model1(const double & x, const double & Q, double * pdf){//proton poly
-  double qv = (1.0 - wx(x, a0)) * dwx(x, a0);
+  double q3 = 2.0 * (1.0 - wx(x, a0)) * dwx(x, a0);
+  double q5 = 4.0 * pow(1.0 - wx(x, a0), 3) * dwx(x, a0);
 
   pdf[-6+HalfNum] = 0; //tbar
   pdf[-5+HalfNum] = 0; //bbar
@@ -159,8 +155,63 @@ void model1(const double & x, const double & Q, double * pdf){//proton poly
   pdf[-2+HalfNum] = 0; //ubar
   pdf[-1+HalfNum] = 0; //dbar 
   pdf[ 0+HalfNum] = 0; //gluon
-  pdf[ 1+HalfNum] = -0.25 * x * qv; //d
-  pdf[ 2+HalfNum] = 0.75 * x * qv; //u
+  pdf[ 1+HalfNum] = 0; //d
+  pdf[ 2+HalfNum] = 0.7 * x * q3 + 0.3 * x * q5; //u
+  pdf[ 3+HalfNum] = 0; //s
+  pdf[ 4+HalfNum] = 0; //c
+  pdf[ 5+HalfNum] = 0; //b
+  pdf[ 6+HalfNum] = 0; //t
+}
+
+void model2(const double & x, const double & Q, double * pdf){//proton poly
+  double q3 = 2.0 * (1.0 - wx(x, a0)) * dwx(x, a0);
+  double q5 = 4.0 * pow(1.0 - wx(x, a0), 3) * dwx(x, a0);
+
+  pdf[-6+HalfNum] = 0; //tbar
+  pdf[-5+HalfNum] = 0; //bbar
+  pdf[-4+HalfNum] = 0; //cbar
+  pdf[-3+HalfNum] = 0; //sbar
+  pdf[-2+HalfNum] = 0; //ubar
+  pdf[-1+HalfNum] = 0; //dbar 
+  pdf[ 0+HalfNum] = 0; //gluon
+  pdf[ 1+HalfNum] = 0; //d
+  pdf[ 2+HalfNum] = 0.6 * x * q3 + 0.4 * x * q5; //u
+  pdf[ 3+HalfNum] = 0; //s
+  pdf[ 4+HalfNum] = 0; //c
+  pdf[ 5+HalfNum] = 0; //b
+  pdf[ 6+HalfNum] = 0; //t
+}
+void model3(const double & x, const double & Q, double * pdf){//proton poly
+  double q3 = 2.0 * (1.0 - wx(x, a0)) * dwx(x, a0);
+  double q5 = 4.0 * pow(1.0 - wx(x, a0), 3) * dwx(x, a0);
+
+  pdf[-6+HalfNum] = 0; //tbar
+  pdf[-5+HalfNum] = 0; //bbar
+  pdf[-4+HalfNum] = 0; //cbar
+  pdf[-3+HalfNum] = 0; //sbar
+  pdf[-2+HalfNum] = 0; //ubar
+  pdf[-1+HalfNum] = 0; //dbar 
+  pdf[ 0+HalfNum] = 0; //gluon
+  pdf[ 1+HalfNum] = 0; //d
+  pdf[ 2+HalfNum] = 0.5 * x * q3 + 0.5 * x * q5; //u
+  pdf[ 3+HalfNum] = 0; //s
+  pdf[ 4+HalfNum] = 0; //c
+  pdf[ 5+HalfNum] = 0; //b
+  pdf[ 6+HalfNum] = 0; //t
+}
+void model4(const double & x, const double & Q, double * pdf){//proton poly
+  double q3 = 2.0 * (1.0 - wx(x, a0)) * dwx(x, a0);
+  double q5 = 4.0 * pow(1.0 - wx(x, a0), 3) * dwx(x, a0);
+
+  pdf[-6+HalfNum] = 0; //tbar
+  pdf[-5+HalfNum] = 0; //bbar
+  pdf[-4+HalfNum] = 0; //cbar
+  pdf[-3+HalfNum] = 0; //sbar
+  pdf[-2+HalfNum] = 0; //ubar
+  pdf[-1+HalfNum] = 0; //dbar 
+  pdf[ 0+HalfNum] = 0; //gluon
+  pdf[ 1+HalfNum] = 0; //d
+  pdf[ 2+HalfNum] = 0.4 * x * q3 + 0.6 * x * q5; //u
   pdf[ 3+HalfNum] = 0; //s
   pdf[ 4+HalfNum] = 0; //c
   pdf[ 5+HalfNum] = 0; //b

@@ -28,18 +28,23 @@ int main(const int argc, const char * argv[]){
 
   FILE * fs = fopen("fs.dat", "w");
   fprintf(fs, "NNPDFpol 1.1, Q = %.3f GeV\n", Q);
-  fprintf(fs, "x\t x(uv-dv)\t error\n");
+  fprintf(fs, "x\t x(uv-dv)\t error\t x(u+-d+)\t error\n");
 
-  double central, diff;
+  double central1, diff1;
+  double central2, diff2;
 
   for (int i = 0; i < 1000; i++){
-    central = (xf0->xfxQ(2, X[i], Q) -  xf0->xfxQ(-2, X[i], Q)) - (xf0->xfxQ(1, X[i], Q) -  xf0->xfxQ(-1, X[i], Q));
-    diff = 0;
+    central1 = (xf0->xfxQ(2, X[i], Q) -  xf0->xfxQ(-2, X[i], Q)) - (xf0->xfxQ(1, X[i], Q) -  xf0->xfxQ(-1, X[i], Q));
+    diff1 = 0;
+    central2 = (xf0->xfxQ(2, X[i], Q) +  xf0->xfxQ(-2, X[i], Q)) - (xf0->xfxQ(1, X[i], Q) + xf0->xfxQ(-1, X[i], Q));
+    diff2 = 0;
     for (int j = 1; j <= 100; j++){
-      diff += pow( (xf[j]->xfxQ(2, X[i], Q) -  xf[j]->xfxQ(-2, X[i], Q)) - (xf[j]->xfxQ(1, X[i], Q) -  xf[j]->xfxQ(-1, X[i], Q)) - central, 2);
+      diff1 += pow( (xf[j]->xfxQ(2, X[i], Q) -  xf[j]->xfxQ(-2, X[i], Q)) - (xf[j]->xfxQ(1, X[i], Q) -  xf[j]->xfxQ(-1, X[i], Q)) - central1, 2);
+      diff2 += pow( (xf[j]->xfxQ(2, X[i], Q) +  xf[j]->xfxQ(-2, X[i], Q)) - (xf[j]->xfxQ(1, X[i], Q) +  xf[j]->xfxQ(-1, X[i], Q)) - central1, 2);
     }
-    diff = sqrt(diff / 100);
-    fprintf(fs, "%.6E\t %.6E\t %.6E\n", X[i], central, diff);
+    diff1 = sqrt(diff1 / 100);
+    diff2 = sqrt(diff2 / 100);
+    fprintf(fs, "%.6E\t %.6E\t %.6E\t %.6E\t %.6E\n", X[i], central1, diff1, central2, diff2);
   }
 
   fclose(fs);
