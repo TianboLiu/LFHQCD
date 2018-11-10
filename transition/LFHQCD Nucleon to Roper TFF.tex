@@ -1,0 +1,261 @@
+%\documentclass[12pt,draft]{article}
+\documentclass[12pt]{article}
+%\usepackage[ngerman]{babel}
+%\usepackage{graphicx}
+%\usepackage{epstopdf}
+%\usepackage{showkeys}
+\setlength{\textheight}{200mm}
+\setlength{\textwidth}{180mm} \setlength{\oddsidemargin}{-0.5cm}
+\setlength{\evensidemargin}{-3cm}
+\newcommand{\redt}{\textcolor{red}}
+\newcommand{\bluet}{\textcolor{blue}}
+\newcommand{\greent}{\textcolor{green}}
+\newcommand{\magent}{\textcolor{magenta}}
+\usepackage{graphicx}
+\usepackage{epsfig}
+\usepackage[usenames]{color}
+\usepackage[colorlinks=true, urlcolor=navyblue, linkcolor=navyblue, citecolor=navyblue]{hyperref}
+
+\definecolor{navyblue}{rgb}{0,0.08,0.45}
+
+\setlength{\parskip}{2mm}
+
+\renewcommand{\textfraction}{0}
+\renewcommand{\topfraction}{1}
+\renewcommand{\bottomfraction}{1}
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\enq}{\end{equation}}
+\newcommand{\beqa}{\begin{eqnarray}}
+\newcommand{\beqast}{\begin{eqnarray*}}
+\newcommand{\enqa}{\end{eqnarray}}
+\newcommand{\enqast}{\end{eqnarray*}}
+\newcommand{\nn}{\nonumber}
+
+\newcommand{\bec}{\begin{center}}
+\newcommand{\enc}{\end{center}}
+\newcommand{\beqo}{\begin{quote}}
+\newcommand{\enqo}{\end{quote}}
+\newcommand{\bem}{\begin{minipage}}
+\newcommand{\enm}{\end{minipage}}
+\newcommand{\fn}{\footnote}
+\newcommand{\mbf}{\mathbf}
+
+\newcommand{\lb}{\label}
+\newcommand{\rf}{\ref}
+\newcommand{\ct}{\cite}
+\newcommand{\req}[1]{(\ref{#1})}
+
+\newcommand{\pa}{\partial}
+\newcommand{\half}{\textstyle \frac{1}{2}}
+\newcommand{\thalf}{\textstyle \frac{3}{2}}
+
+
+\newcommand{\cC}{{\cal C}}
+\newcommand{\cD}{{\cal D}}
+\newcommand{\cF}{{\cal F}}
+\newcommand{\cG}{{\cal G}}
+\newcommand{\cH}{{\cal H}}
+\newcommand{\cL}{{\cal L}}
+\newcommand{\cM}{{\cal M}}
+\newcommand{\cN}{{\cal N}}
+\newcommand{\cS}{{\cal S}}
+\newcommand{\cT}{{\cal T}}
+
+\newcommand{\bA}{\mbox{\bf A}}
+\newcommand{\bB}{\mbox{\bf B}}
+\newcommand{\bF}{\mbox{\bf F}}
+\newcommand{\bG}{\mbox{\bf G}}
+\newcommand{\bD}{\mbox{\bf D}}
+\newcommand{\bU}{\mbox{\bf U}}
+\newcommand{\bV}{\mbox{\bf V}}
+
+\newcommand{\al}{\alpha}
+\newcommand{\be}{\beta}
+\newcommand{\ga}{\gamma}
+\newcommand{\de}{\delta}
+\newcommand{\ep}{\epsilon}
+\newcommand{\ze}{\zeta}
+\newcommand{\et}{\eta}
+%\newcommand{\th}{\theta}
+\newcommand{\io}{\iota}
+\newcommand{\ka}{\kappa}
+\newcommand{\la}{\lambda}
+\newcommand{\rh}{\rho}
+\newcommand{\si}{\sigma}
+\newcommand{\varsi}{\varsigma}
+\newcommand{\ta}{\tau}
+\newcommand{\up}{\upsilon}
+\newcommand{\ph}{\phi}
+\newcommand{\vp}{\varphi}
+\newcommand{\ch}{\chi}
+\newcommand{\ps}{\psi}
+\newcommand{\om}{\omega}
+\newcommand{\omis}{\omega_{!!!!!!!! \iota}}
+\newcommand{\Al}{\Alpha}
+\newcommand{\Be}{B}
+\newcommand{\Ga}{\Gamma}
+\newcommand{\De}{\Delta}
+\newcommand{\Ep}{E}
+\newcommand{\Ze}{Z}
+\newcommand{\Et}{H}
+\newcommand{\Th}{\Theta}
+\newcommand{\Ka}{K}
+\newcommand{\La}{\Lambda}
+\newcommand{\Rh}{P}
+\newcommand{\Si}{\Sigma}
+\newcommand{\Ta}{T}
+\newcommand{\Up}{\Upsilon}
+\newcommand{\Ph}{\Phi}
+\newcommand{\Ch}{X}
+\newcommand{\Ps}{\Psi}
+\newcommand{\Om}{\Omega}
+
+\begin{document}
+
+\centerline{\large \bf Holographic Nucleon to Roper Transition Form Factor}
+
+\vspace{10pt}
+
+\centerline{HLFHS Collaboration}
+
+\vspace{10pt}
+
+\centerline{\today}
+
+\vspace{20pt}
+
+
+Twist-$\ta$ effective AdS WFs:
+\beqa
+\Psi_+^{n,\ta}(z) = \ka^{\ta -1} \sqrt{\frac{2 \Ga(n+1)}{\Ga(n + \tau - 1)}} \, z^{1/2 + \ta}
+e^{- \ka^2 z^2/2}  L_n^{\ta -2}(\ka^2 z^2), \label{Psip}\\
+\Psi_-^{n, \ta}(z) = \ka^\ta \sqrt{\frac{1}{n + \tau - 1}} \, \sqrt{\frac{2 \Ga(n+1)}{\Ga(n + \tau - 1)}} \, z^{3/2 + \ta}
+e^{- \ka^2 z^2/2} L_n^{\ta -1}(\ka^2 z^2). \label{Psim}
+\enqa
+The effective WFs $\Psi_\pm$ are orthonormal
+\beq
+\int \frac{dz}{z^4} \, \Psi_\pm^{n', \ta}(z)  \Psi_\pm^{n, \ta}(z) = \de_{n',n}.
+\enq
+
+
+
+To compute the Dirac transition form factor 
+\beq
+F_1(Q^2)_{N \to N^*} = \int  \frac{dz}{z^4} \Psi_+^{N^*}(z) V(Q^2,z) \Psi_+^{N}(z),
+\enq
+we use the integral representation of the bulk-to-boundary propagator~\cite{Grigoryan:2007my}
+\beq
+V(Q^2,z) = \ka^2 z^2 \int_0^1 \frac{dx}{(1-x)^2} x^{Q^2/ 4 \ka^2} e^{- \ka^2 z^2 x /(1-x)}.
+\enq
+Thus
+\beq
+F_1(Q^2)_{N \to N^*} = \ka^2 \int_0^1 \frac{dx}{(1-x)^2} x^{Q^2/ 4 \ka^2} \int  \frac{dz}{z^2} \, e^{- \ka^2 z^2 x /(1-x)} 
+\Psi_+^{N^*}(z)  \Psi_+^{N}(z), \label{F1intxz}
+\enq
+Integrating \req{F1intxz} over the variable $z$ using \req{Psip} we find
+\beq
+F_1^\ta(Q^2)_{N \to N^*} =  \sqrt{\tau - 1} \int_0^1 dx\, (\tau x - 1)  (1-x)^{\ta - 2}  \, x^{Q^2/ 4 \ka^2} .
+\enq
+Finally, integrating over $x$ we find
+\beq
+F_1^\ta(Q^2)_{N \to N^*} = \sqrt{\tau - 1}   \, \frac{\frac{Q^2}{4 \ka^2}}{\ta + \frac{Q^2}{4 \ka^2}}
+ \frac{ \Ga(\ta) \Ga\left(1\! + \! \frac{Q^2}{4 \ka^2}\right)}{\Ga\left(\tau \! + \! \frac{Q^2}{4 \ka^2}\right)}. \label{F1TFF}
+\enq
+
+Recall that the elastic form factor for twist-$\ta$ is given by~\cite{Brodsky:2007hb} 
+\beq \label{FF1}
+F_\ta(Q^2) = \Ga(\tau)  
+\frac{\Ga\left(1\! + \! \frac{Q^2}{4 \ka^2}\right)}{\Ga\left(\tau \! + \! \frac{Q^2}{4 \ka^2}\right)}.
+\enq
+For integer twist $\ta = N$, with $N$ the number of constituents  for a given Fock component,  we can simplify \req{FF1} by using the recurrence formula
+\begin{equation} 
+\Gamma(N+z) = (N - 1 + z) (N - 2 + z) \dots (1 + z) \Gamma(1+z).
+\end{equation}
+We find
+\beq  \label{Ftaukappa}
+F_\tau(Q^2) = \frac{(\ta-1)!}{\left(1 + \!\frac{Q^2}{4 \kappa^2} \right) \!
+ \left(2 + \! \frac{Q^2}{4 \kappa^2}  \right)  \! \cdots \!
+       \left(\ta \! - \! 1 \! + \!  \frac{Q^2}{4 \kappa^2}  \right)}, 
+\enq
+
+Therefore, for integer twist, we can rewrite \req{F1TFF} as
+\beq \label{NTFF}
+F_1^\tau(Q^2)_{N \to N^*}  = \frac{\sqrt{\ta -1}}{\ta} \, \frac{Q^2}{4 \ka^2} \, F_{\ta+1}(Q^2).
+\enq
+
+
+
+We can express the transition form factor in a universal form valid for axial or vector currents. For doing this, we recall that the form factor in LFHQCD can also be expressed in the Veneziano form~\cite{deTeramond:2018ecg} 
+\beq \label{FBtau} \label{Ftau}
+F_\tau(t) = \frac{1}{N_\tau} B\left(\tau-1, 1 - \al(t) \right),  
+\enq
+where $t = - Q^2$, $N_\tau =  B\left(\ta-1, 1 - \al(0) \right)$  and  $\al(t)$ is a linear Regge trajectory 
+\beq \label{RT}
+\al(t) = \al(0) + \al'  t.
+\enq
+
+
+For integer twist $N = \tau$, \req{Ftau} can be expressed as~\cite{Sufian:2018cpj}
+\beq \label{FtauM}
+F_{\tau}( Q^2) = \frac{1}{\left(1 + \frac{Q^2}{M^2_{n=0}}\right) \left(1 + \frac{Q^2}{M^2_{n=1}} \right) \cdots \left(1 + \frac{Q^2}{M^2_{n =\tau - 2}} \right)},
+\enq
+which is  a product of $\tau -1$ poles located at 
+\beq  \label{M2RT}
+ - Q^2 = M^2_n = \frac{1}{\al'}\bigg(n + 1 - \al(0)\bigg),
+\enq
+the radial excitation spectrum for the exchanged particles in the $t$-channel.
+
+Comparing  \req{Ftaukappa}  and  \req{FtauM} it is clear that the factor $\frac{Q^2}{4 \ka^2}$ in \req{NTFF} corresponds to the lowest pole for $n = 0$ located at 
+\beq  \label{M2RT}
+ - Q^2 = t = \frac{1}{\al'}\bigg(1 - \al(0)\bigg).
+\enq
+Therefore the Veneziano-like form
+\beq \label{TFFal}
+F^\tau_1(Q^2)_{N \to N^*}  = - \frac{1}{\ta} \sqrt{\tau - 1} \,  \frac{\al'  t}{1 - \al(0)} \, \frac{B(\ta, 1 - \al(t))}{B(\ta,1- \al(0))},
+\enq
+valid for axial or vector currents. In particular, the expression for the EM transition form factor  for $\tau = 3$ which follows from \req{TFFal}
+\beq
+F^\tau_1(Q^2)_{N \to N^*} = \frac{\sqrt{2}}{3}  \frac{Q^2}{M_\rho^2} \frac{1}{\left(1 + \frac{Q^2}{M^2_\rho}\right) \left(1 + \frac{Q^2}{M^2_{\rho'}} \right) \left(1 + \frac{Q^2}{M^2_{\rho''}} \right)},
+\enq
+is identical to the expression used in~\cite{deTeramond:2011qp} to compute the Dirac nucleon to Roper transition form factor in the valence approximation.
+
+
+
+\begin{thebibliography}{50}
+
+\bibitem{Grigoryan:2007my} 
+  H.~R.~Grigoryan and A.~V.~Radyushkin,
+  Structure of vector mesons in holographic model with linear confinement,
+  Phys.\ Rev.\ D {\bf 76}, 095007 (2007)
+  [{\tt arXiv:0706.1543 [hep-ph]}].
+  
+ 
+\bibitem{Brodsky:2007hb} 
+  S.~J.~Brodsky and G.~F.~de Teramond,
+  Light-Front Dynamics and AdS/QCD Correspondence: The Pion Form Factor in the Space- and Time-Like Regions,
+  Phys.\ Rev.\ D {\bf 77}, 056007 (2008)
+  [{\tt arXiv:0707.3859 [hep-ph]}]. 
+  
+  
+\bibitem{deTeramond:2018ecg} 
+   G.~F.~de Teramond,  T.~Liu, R.~S.~Sufian, H.~G.~Dosch, S.~J.~Brodsky, A.~Deur  [HLFHS Collaboration],
+  Universality of Generalized Parton Distributions in Light-Front Holographic QCD,
+  Phys.\ Rev.\ Lett.\  {\bf 120}, no. 18, 182001 (2018)
+  [{\tt arXiv:1801.09154 [hep-ph]}].  
+  
+
+\bibitem{Sufian:2018cpj} 
+  R.~S.~Sufian, T.~Liu, G.~F.~de Teramond, H.~G.~Dosch, S.~J.~Brodsky, A.~Deur, M.~T.~Islam and B.~Q.~Ma [HLFHS Collaboration],
+  Nonperturbative strange-quark sea from lattice QCD, light-front holography, and meson-baryon fluctuation models,''
+ {\tt  arXiv:1809.04975 [hep-ph]}.
+
+
+\bibitem{deTeramond:2011qp} 
+  G.~F.~de Teramond and S.~J.~Brodsky,
+  Excited Baryons in Holographic QCD,
+  AIP Conf.\ Proc.\  {\bf 1432}, 168 (2012)
+ [{\tt arXiv:1108.0965 [hep-ph]}].
+
+\end{thebibliography}
+
+\end{document}

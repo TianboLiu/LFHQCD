@@ -1,0 +1,1590 @@
+\documentclass[aps,prd,preprint,groupedaddress]{revtex4-1}
+%\documentclass[aps,prd,reprint,groupetaddress]{revtex4-1}
+
+
+\usepackage{graphicx,amsmath,amssymb}
+\usepackage{indentfirst}
+\usepackage[usenames]{color}
+\usepackage[colorlinks=true, urlcolor=navyblue, linkcolor=navyblue, citecolor=navyblue]{hyperref}
+\usepackage{epstopdf}
+\usepackage{enumerate}
+\usepackage{appendix}
+\usepackage{lineno}
+\usepackage{setspace}
+
+
+\graphicspath{{./figures/}}
+
+\input{definitions}
+
+\definecolor{navyblue}{rgb}{0,0.08,0.45}
+\definecolor{darkred}{rgb}{0.8,0.0,0.2}
+
+\begin{document}
+
+{\begin{flushright} 
+\color{magenta} \large \bf PLEASE DO NOT CIRCULATE
+\end{flushright}
+}
+
+\linenumbers 
+
+
+%\preprint{SLAC--PUB--XXXXX}
+
+
+
+\title{\Large  Generalized Parton Distributions in Light-Front Holographic QCD II: DGLAP Evolution and Applications}
+
+
+\author{Guy F. de T\'eramond$^{1}$, Hans G\"{u}nter Dosch$^{2}$, Stanley J. Brodsky$^{3}$,  \\ Alexandre Deur$^{4}$, Raza Sabbir Sufian$^{5}$, Tianbo Liu$^{4}$, Sabrina Cotogno$^{4}$}
+\vspace*{-0.5cm}
+
+
+
+\affiliation{
+$^{1}$\mbox{Universidad de Costa Rica, 11501 San Jos\'e, Costa Rica}\\
+$^{2}$\mbox{Institut f\"{u}r Theoretische Physik der Universit\"{a}t,  D-69120 Heidelberg, Germany}
+$^{3}$\mbox{SLAC National Accelerator Laboratory, Stanford University, Stanford, CA 94309, USA}\\
+$^{4}$\mbox{Thomas Jefferson National Accelerator Facility, Newport News, VA 23606, USA}\\
+$^{5}$Nikhef, Science Park 105, NL-1098 XG Amsterdam, The Netherlands \\Department of Physics and Astronomy, VU University Amsterdam, \\De Boelelaan 1081, NL-1081 HV Amsterdam, The Netherlands}
+
+
+
+
+
+\date{\today}
+
+
+\begin{abstract}
+We study the functional form and analytic structure of light-hadron form factors and generalized parton distributions (GPDs)  at zero skewness in the framework of light-front holographic QCD (LFHQCD), with the constraints imposed by the physical pole structure of the amplitudes and  the  superconformal algebraic structure. We find that the  {\color{blue} $t$-invariant momentum transfer dependence} of the GPDs  is universal and has an exponential Regge behavior determined by the $\rho$ vector-meson trajectory. The small longitudinal momentum fraction-$x$ of the parton distribution functions has universal behavior and is also fixed by the Regge intercept at $t=0$. The large $x$-dependence is not universal and is determined by the leading-twist hard-scattering asymptotic behavior; however, the $x$-dependence of the transverse {\color{blue} width of the impact parameter GPD} is universal.  The simple analytic structure of the GPDs allows us to obtain effective nonperturbative light-front wave functions and distribution functions in momentum and impact space by mapping the AdS forms to their light-front quantized QCD expressions for an arbitrary number of constituents. As an illustration of our results  we examine the unpolarized  GPDs  and transverse space parton distributions for the pion and nucleons. The results presented here provide a framework for the exclusive-inclusive connection which is fully consistent with the LFHQCD results for the hadron spectrum. We also examine briefly the connection of our results with the Veneziano amplitude, which could give further insights into LFHQCD and the underlying superconformal structure.
+
+
+\end{abstract}
+
+%\pacs{11.30.Pb, 12.60.Jv, 12.38.Aw, 11.25.Tq}
+
+ \maketitle
+
+ \tableofcontents
+
+\newpage
+
+
+%%%%%%%%%%%%%%%%%
+\section{Introduction \label{intro}}
+%%%%%%%%%%%%%%%%%
+
+
+Generalized parton distributions (GPDs)~\cite{Mueller:1998fv, Radyushkin:1996nd, Ji:1996ek, GPDsRev} encode multiple information of hadron partonic structure as probed in hard processes and have attracted considerable interest during the last two decades.   GPDs provide the link between  nucleon form factors measured in elastic scattering and longitudinal parton distributions (PDFs) determined from deep-inelastic scattering (DIS).  The GPDs encode information of the three-dimensional spatial structure of the hadrons and its first moment provide measure of the  angular momentum contribution of the constituents to the total spin of the nucleon through Ji's sum rule~\cite{Ji:1996ek}. The GPDs are measured in deeply exclusive leptoproduction, such as deeply virtual Compton scattering (DVCS)~\cite{Pisano:2015iqa} and virtual meson production~\cite{Bedlinskiy:2014tvi}, and have emerged as a comprehensive tool to describe the internal structure of the nucleon.
+{\color{blue} Most noticeable, the Fourier transform of the GPDs gives the transverse spatial distribution of quarks in correlation with their longitudinal momentum~\cite{Burkardt:2000za, Diehl:2002he}.} Important complementary information is encoded in the transverse momentum dependent (TMD) parton distribution functions  measured in high-energy DIS, low transverse momentum Drell-Yan (DY) and semi-inclusive DIS~\cite{Angeles-Martinez:2015sea}.
+
+
+Similar to the PDFs, and TMDs, the GPDs  are nonperturbative  objects in light-front physics which are very hard to compute from first principles,  namely from the quark and gluon degrees of freedom of the QCD Lagrangian. {\color{blue} Lattice QCD calculations of quasi-PDFs based on the prescription given in Ref.~\cite{Ji:2013dva} have been performed in~\cite{Lin:2014zya,  Alexandrou:2015rja,  Alexandrou:2016jqi,  Lin:2017ani}.  While these lattice computations of quasi-PDFs have been encouraging, their comparison with global fits to PDF data are still rather qualitative and limited to the large-$x$ region. Quasi-PDFs calculations on the lattice require more theoretical and numerical improvements for a better comparison with PDFs extracted from the experimental data and extensive research is going into this direction~\cite{altLQCD}.}  Due to the inherent limitations of Euclidean lattice computations one is constrained, in practice, to extract the parton distribution functions from fits to the data using more or less arbitrary parameterizations. Perturbative QCD (pQCD) provides the tools to evolve the parton distributions to different scales, once their functional form is given at a starting scale.
+
+
+In the present article we study the analytic form of parton distribution functions in the context of the AdS/CFT duality~\cite{Maldacena:1997re}, which, as first shown by Polchinski and Strassler~\cite{Polchinski:2001tt}, incorporates the power-law hard-scattering counting rules~\cite{Brodsky:1973kr, Matveev:ra} if one introduces a scale by truncating AdS space.  Deep inelastic scattering was first addressed by the same authors in the context of the gauge/gravity correspondence~\cite{Polchinski:2002jw}, thereby showing that the different Bjorken $x$-regimes can be conveniently addressed in a unified framework.  There has been recent interest in the study of PDFs,  GPDs and TMDs using  the framework of light front holographic QCD (LFHQCD), an approach to hadron structure based on the holographic embedding of light-front dynamics in a higher dimensional gravity theory, with the constraints imposed by the underlying superconformal algebraic structure~\cite{Brodsky:2006uqa, deTeramond:2008ht, deTeramond:2013it, deTeramond:2014asa, Dosch:2015nwa, Brodsky:2014yha}. This effective semiclassical approach to relativistic bound-state equations in QCD captures essential aspects of the confinement dynamics which are not apparent from the QCD Lagrangian, such as the emergence of a mass scale and a unique form of the confinement potential, a zero mass state in the chiral limit: the pion, and universal Regge trajectories for mesons and baryons.
+
+
+Models of parton distribution functions and parton densities based on the LFHQCD framework~\cite{Abidin:2008sb, Vega:2010ns, Gutsche:2013zia, Chakrabarti:2013gra, Sharma:2014voa, Dehghani:2015jva, Mondal:2015uha, Chakrabarti:2015lba, Maji:2015vsa, Mondal:2015fok, Chakrabarti:2016yuw, Chakrabarti:2016yuw, Mondal:2016xsm, Maji:2016yqo, Traini:2016jko, Traini:2016jru, Gutsche:2016gcd, Maji:2017ill, Rinaldi:2017roc, Bacchetta:2017vzh, Mondal:2017lph, Huang:2017gih, Nikkhoo:2017won, Mondal:2017wbf},  or phenomenological extensions thereof, use as a starting point the convenient analytic form of GPDs  for arbitrary twist-$\tau$ found in Ref.~\cite{Brodsky:2007hb}.  This simple analytic form incorporates the correct high-energy power counting rules of form factors~\cite{exclusive-inclusive} and provides a $t$-dependence of the GPDs. Furthermore, using the holographic expression for the GPDs, one can derive effective light-front wave functions (LFWFs), using a  mapping of the  nonperturbative semiclassical analytic expressions in the gravity theory to the light front~\cite{Brodsky:2011xx, deTeramond:2012rt}. Knowledge of the effective LFWFs (or their phenomenological extensions~\cite{Gutsche:2013zia}) is relevant for the computation of form factors and parton distribution functions (PDFs, GPDs, TMDs), not only the  unpolarized parton distributions, but also the  polarization dependent distributions which encode information of the spin density in the nucleon~\cite{Maji:2017ill, Gutsche:2016gcd, Nikkhoo:2017won}. The effective LFWFs can also be used to study the skewness dependence of the GPDs~\cite{Traini:2016jko, Rinaldi:2017roc, Mondal:2017wbf}, and also to compute other parton distributions such as the Wigner distribution functions~\cite{Chakrabarti:2016yuw, Gutsche:2016gcd}, which contain information on the correlations between the spin-spin and the spin-orbital angular momentum of a nucleon and its constituent quarks. The downside of  phenomenological extensions of the holographic model in Refs.~\cite{Gutsche:2013zia, Chakrabarti:2013gra, Sharma:2014voa, Dehghani:2015jva, Mondal:2015uha, Chakrabarti:2015lba, Maji:2015vsa, Mondal:2015fok, Chakrabarti:2016yuw, Chakrabarti:2016yuw, Mondal:2016xsm, Maji:2016yqo,  Gutsche:2016gcd, Maji:2017ill,  Mondal:2017lph, Nikkhoo:2017won}, is the large number of parameters which are required, of the order of two dozen,  to describe simultaneously the nucleon distributions functions and the form factors.
+
+
+Motivated by our recent analysis of the space-like nucleon elastic form factors and their flavor separated form factors in LFHQCD~\cite{Sufian:2016hwn}, we  extend here the previous analytic results for parton distributions and effective LFWFs found in Refs.~\cite{Brodsky:2011xx, deTeramond:2012rt} to include the correct pole structure of the amplitudes, thus the correct Regge behavior,  as well as the constraints from power-conting rules. Our previous analysis of nucleon form factors was carried out for any momentum transfer range, including  asymptotic predictions, with a minimal number of free parameters~\cite{Sufian:2016hwn}. Our results agree with very good accuracy with the available elastic form factor experimental data, after shifting the poles in the analytic expressions for the form factors to their physical location, following the procedure discussed in Ref.~\cite{Brodsky:2014yha}. This shift, however, changes the analytic structure of the parton densities --a problem which has not been examined before, and thus modifies our previous results for the parton distributions functions, such as the GPDs, and the $x$-dependence of the effective LFWFs.  
+
+As it will be shown below, shifting the poles in the time-like region  changes the analytic structure and also entails a change of the Regge $t$-dependence of the GPDs to the physical $\rho$ vector-meson  trajectory, including  its correct slope and intercept at $t = 0$.  The results presented here provide a framework for the exclusive-inclusive connection which is fully consistent with the LFHQCD results for the hadron spectrum. Furthermore, the analytic structure of the form factors leads to a connection with the Veneziano model which could give further insights into the LFHQCD approach to hadron physics.
+
+
+
+The contents of this article are as follows: {\color{blue} In Sec.~\ref{FFHQCD} we examine the analytic structure of form factors and extend our previous results  to remove the inconsistencies between the pole structure of amplitudes and the $\rh$-Regge trajectories. In Sec.~\ref{FFGPD} we obtain the LFHQCD expressions for the GPDs and relate their $t$-evolution to the correct Regge slope and intercept.} We also examine the physical constraints required to single out acceptable solutions.  In Sec.~\ref{epd} we describe the transverse impact dependent parton distribution functions in terms of overlaps of light-front wave functions, and obtain effective two-body LFWFs from the mapping of AdS expressions for arbitrary twist. We also examine the transverse spatial size dependence of a hadron on the quark longitudinal momentum fraction $x$. As an application of our results we discuss the GPDs for the pion in Sec.~\ref{PIONGPD} and for the nucleon in Sec.~\ref{NUCLEONGPD}. Some final comments are given  in Sec.~\ref{conclusion}. 
+%Other useful technical aspects are included in the appendices. 
+In Appendix~\ref{Soper} we describe the light-front wave function representation of form factors and transverse-space parton densities in light-front QCD quantization. 
+
+In a subsequent article we describe the DGLAP QCD evolution of the expressions for the parton distributions, determined at the initial low-energy scale from LFQQCD, to high energy scales in order  to have meaningful comparisons with existing data.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{\lb{FFHQCD} Form Factors in Holographic QCD}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+In holographic QCD form factors are computed from the overlap integral of normalizable modes $\Phi(z)$, which describe hadron bound states in a higher dimensional dual gravity theory, with a non-normalizable mode, $V(q,z)$ according to~\cite{Polchinski:2002jw}
+\beq
+F(q^2) = \int \frac{dz}{z^3} V(q,z) \, \Phi^2(z),
+\enq
+where the bulk-to-boundary propagator $V(q,z)$ represents the classical solution of the action with  zero AdS mass, $\mu=0$. It is the classical field given by
+\beq
+\Phi_\nu(x,z) = \int \frac{d^4 q}{(2 \pi)^4} \, e^{i q\cdot x} \,  \ep_\nu(q) V(q,z),
+\enq
+where $\ep_\nu(q)$ is the polarization vector. The field $\Phi_\nu$  represents the propagation of an external vector current which is conserved in  this  higher-dimensional dual space.  
+
+
+\subsection{Form Factors  in AdS/QCD \lb{adsqcd} }
+
+
+In holographic QCD with a quadratic soft-wall dilaton profile $\phi(z) = \la z^2$~\cite{Karch:2006pv}, one can find an explicit solution for $V(q,z)$ and calculate the form factor analytically.  The result for the elastic form factor of a hadron with twist  $\tau$ is  given in terms of Gamma functions~\cite{Brodsky:2007hb}
+\beq \label{FGtau}
+F_\tau(Q^2) = \Gamma(\tau)
+\frac{\Gamma\left( \frac{Q^2}{4 \la} + 1\right)}{\Gamma\left(\frac{Q^2}{4 \la} + \tau\right)}.
+\enq
+in the limit of zero-mass quarks.
+
+Using the recurrence relation $\Ga(z) = (z-1) \Ga(z-1)$ one can express the form factor \req{FGtau} by the Euler Beta function
+\beq
+B(u,v) =  \frac{\Gamma(u) \Gamma(v)}{\Gamma(u+v)},  \hspace{20pt}  B(u,v) = B(v,u).
+\enq
+We find
+\beq \lb{FBtau}
+F_\tau(Q^2)= N_\ta B\left(\ta-1,\frac{Q^2}{4 \la}+1\right) , 
+\enq
+with normalization $N_\ta =\ta-1$. From the asymptotic behaviour of the Beta function for fixed $u$
+\beq \lb{asb}
+\lim_{v\to \infty}  B(u,v)= \Ga(u) v^{- u} +O(v^{-u-1}),
+\enq
+we recover the hard scattering scaling behaviour~\cite{Brodsky:1973kr, Matveev:ra}
+\beq
+\lim_{Q^2 \to \infty}F_\tau(Q^2)= \Ga[\tau-1] \left(\frac{4 \la }{Q^2}\right)^{\ta-1} +O\left(\frac{4 \la }{Q^2}\right)^\ta.
+\enq
+
+For integer  twist $\tau$ the form factor \req{FGtau} is expressed as a product of $\tau - 1$ pole terms~\cite{Brodsky:2007hb}
+\beq\label{Ftau}
+ F_\tau(Q^2) =  \frac{1}{{\Big(1 + \frac{Q^2}{M^2_0} \Big) }
+ \Big(1 + \frac{Q^2}{M^2_{1}}  \Big)  \cdots
+ \Big(1  + \frac{Q^2}{M^2_{{\tau-2}}} \Big)} ,
+\enq
+with values $M_n^2 = 4  \la  (n+1), \; n=0, \cdots, {\ta-2}$. Thus,  at large photon virtualities~\req{Ftau}  fulfills the quark counting rules~\cite{Brodsky:1973kr, Matveev:ra} and, at the same time, its analytic structure is determined by a series of poles in the time-like region, similar to a generalized vector dominance model~\cite{Sakurai:1960ju}.
+
+The poles appearing in the form factor \req{Ftau} are the poles of the solution $V(q^2,z)$ at values  $q^2 = - Q^2= 4  \la  (n+1)$, and correspond to the eigenvalues of the normalizable solutions (Kaluza-Klein tower). The analytic structure of these poles is also encoded in the meromorphic Digamma function $\psi(z) = \frac{d}{dz} \Gamma(z)$ for a massless vector field propagating in AdS. It corresponds to the two-point function~\cite{Brodsky:2014yha}   
+\beq
+\Si(q^2) \sim \psi\left(\frac{Q^2}{4 \la} + 1\right),
+\enq
+for the vector field in 4-dimensional  Minkowski space. The digamma function has poles at $z = 0, - 1. -2, \cdots$, thus the propagator with poles at $- Q^2 = 4 \la (n + 1)$.
+
+
+In spite of the satisfactory analytical properties of the form factor $F(Q^2)$ in AdS/QCD, there is a serious phenomenological shortcoming. The lowest pole in the form factor for $n = 0$ must correspond to the insertion of the $\rho$ meson:  In this approach its mass squared is  $M_\rh^2= 4 \la$. The value of $\la$ does not only determine the spacing of the eigenvalues in the Kaluza-Klein tower, but also the slope of the $\rho$ Regge trajectory $\al(t)$, with $\alpha(M_J^2) = J$,  which comes out to be too large~\cite{deTeramond:2010ge}. This mismatch has its origin in the different implementations of the gauge/gravity duality in holographic QCD. Indeed, in their seminal article~\cite{Karch:2006pv} Karch {\it et. al.}, introduced the soft-wall model for the treatment of higher spin states in AdS/QCD imposing gauge invariance under gauge transformations in AdS space. This procedure also favors a negative dilaton profile with $\la <0$ and leads to the Kaluza-Klein tower
+\beq \lb{MKKSS}
+M^2_{n,J} = 4 \la (n + J),
+\enq
+for $\la > 0$ and  $J$ is the total angular momentum of the vector meson spectrum.
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[ht]
+\bec
+\includegraphics[width=8.2cm]{VMRT} 
+\enc
+\caption{\lb{alphat} Chew-Frautschi plot for the leading $\rho-\om$ trajectories in AdS/QCD and in LFHQCD. At values $t=M^2$ where $\al(t)$ is an integer, there is a hadron with mass squared $M^2$ and spin $J= \al(M^2)$. The dashed line corresponds to $\al(t) = \frac{t}{M_\rho^2}$ computed from AdS/QCD as described in Sec.~\ref{adsqcd}; the continuous line  $\al(t) = \half + \frac{t}{2 M_\rho^2} = \half + \frac{t}{4 \la}$ is computed from LFHQCD in Sec.~\ref{lfhqcd} with $\sqrt{\la} = M_\rho/2 = 0.5482 \, {\rm GeV}$.}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%
+
+Writing $\al(t) = \al(0) + \al' t$ we find from \req{MKKSS} the Regge slope  $\al' = \frac{1}{4 \la} = \frac{1}{M^2_\rho}$ and the Regge intercept is $\al(0)= 0$ for the leading Regge trajectory, $n=0$, which is compared with the data in Fig.~\ref{alphat}.  As we can see,  the slope is too large by a factor of two.  We shall examine in the next subsection how this discrepancy is resolved in LFHQCD.
+
+
+\subsection{Form Factors in Light Front Holographic QCD \lb{lfhqcd} }
+
+
+In light-front holographic QCD the holographic variable $z$ is identified with the LF invariant separation $\ze$ and the twist $\ta$ is the number of constituents of the hadron plus the value of $L$, the LF orbital angular momentum.  The mapping of the semiclassical bound-state wave equations in AdS to light-front quantized QCD  is not compatible with a gauge invariant formulation in AdS for higher spins as formulated in Ref.~\cite{Karch:2006pv}. Instead, the light front mapping gives a precise relation between the AdS mass $\mu$,  the light-front angular momentum $L$ and the total spin of the hadron $J$, namely~\cite{Brodsky:2014yha}
+\beq \lb{muJL}
+\mu^2 = - (2 - J)^2 - L^2,
+\enq
+with $\mu$ measured in units of the curvature radius of AdS.
+
+The Kaluza Klein tower consists  in LFHQCD of the radial excitations above the ground state with total and orbital angular momentum $J$ and $L$ respectively~\cite{Brodsky:2014yha}:
+\beq \lb{M2LFH}
+M^2_{n, J, L} =  4 \la\left(n  + \frac{J+L}{2}\right),
+\enq
+with $n=0,1,2 \cdots$. From \req{M2LFH} we obtain for  $J = L+1$ and $n=0$  the leading Regge trajectory
+\beq \lb{alLFH}
+\al(t) = \half + \frac{t}{4 \la} = \half + \frac{t}{2 M_\rh^2},
+\enq
+which gives a very good fit for the leading $\rho-\om$  trajectory, as can be seen from Fig. \ref{alphat}. 
+
+
+The spectral formula \req{M2LFH} corresponds to a positive dilaton profile $\la > 0$. It is important to recall that the solution with $\la <0$ is incompatible with the light front constituent interpretation of hadronic states, where the constituents' LF orbital angular momentum  $L$ plays a key role in the computation of the spectrum~\cite{Brodsky:2014yha}. Additionally, $\la>0$ is the solution compatible with the constraints imposed by the underlying superconformal algebraic structure~\cite{Dosch:2015nwa}, which relates meson and baryon relativistic bound states in LFHQCD.
+
+
+The spectral tower discussed in the previous subsection generates vector meson poles with mass
+\beq
+M^2_{n} = 4 \la(n + 1),  \hspace{20pt} n=0,1,2 \cdots , 
+\enq
+and thus,  a conserved vector current in AdS, implying $\mu=0$, corresponds, in the interpretation of LFHQCD, to a state with orbital angular momentum $J=L=1$ (cf. Eqs. \req{muJL} and \req{M2LFH}). Therefore, this solution  corresponds  to a wrong  vector meson trajectory with quantum numbers $J=1, L=1$, $J^P = 1^+$ and its radial excitations with  poles located at $- Q^2 = 4 \la (n + 1)$. On the other hand,  the physical $\rho$-vector meson with quantum numbers $J=1, L=0$, $J^P = 1^-$ and  time-like poles  located at  $- Q^2 = 4 \la (n+ \half)$, follow from the LFHQCD spectral formula \req{M2LFH}, which also leads to the description of the leading Regge trajectory as shown in Fig. \ref{alphat}. One has to construct the FF based on the physical solution for the $\rho$ with $J=1, L=0$  quantum numbers and pole positions located at
+\beq \lb{LFHpoles}
+M_n^2 = 4 \la \left(n+ \half \right),  \hspace{20pt} n=0,1,2 \cdots.
+\enq 
+
+
+The described  procedure dictates the analytic structure of the Beta function in \req{FBtau}, where we have to shift the argument of the Beta function according to \req{LFHpoles} to describe the propagation of the physical $\rho$-vector meson. We thus have
+\beq \lb{FFlfh}
+F_\ta(Q^2)= N_\tau\, \Be\left(\ta-1, \frac{Q^2}{4 \la} +\half \right),
+\enq
+with normalization
+\beq
+N_\ta = \frac{1}{\Be(\ta-1,\half)} =  \frac{\Gamma\left(\tau - \half\right)}{\sqrt \pi \, \Gamma(\tau - 1)},
+\enq
+and large $Q^2$ counting-rule behavior $F(Q^2) \to \frac{1}{Q^2}$, which follows from the asymtotic behavior of the Beta function \req{asb}.
+
+For integer twist $\tau$ we recover the analytic expression \req{Ftau} with the poles at the correct mass location for the $\rho$ vector meson and its radial excitations.  Indeed, we have followed this procedure successfully to compute the elastic form factors of the nucleon in Ref~\cite{Sufian:2016hwn} and  the pion  in Ref.~\cite{Brodsky:2014yha}, where a realistic  location of the poles is crucial to describe the form factor data in the time-like region.
+
+The analytic structure of the form factor poles in \req{FFlfh} is encoded in the Digamma function from the two-point function  of a vector meson with quantum numbers $J = 1, L= 0$.  One obtains the result (See Appendix F.2 in Ref.~\cite{Brodsky:2014yha})
+\beq \label{Sirho}
+\Si(q^2) \sim \psi\left(- \frac{q^2}{4 \la} + \frac{1}{2}\right),
+\enq
+with the correct pole locations at $q^2 = - Q^2 = 4 \la (n + \frac{1}{2})$.  One cannot, however,  simultaneously impose gauge invariance in AdS and the correct pole positions for the physical $\rho$-meson propagation, since according to \req{muJL} the AdS mass is $\mu = - 1 $ for $J=1$ and $L=0$.
+
+It is interesting to notice than an essential input of the light-front holographic model, namely the equal spacing of the Regge daughter trajectories is similar to the Veneziano model~\cite{Veneziano:1968yb}. This point was noticed in Ref.~\cite{Brodsky:2014yha} and is further discussed in the section below. \ref{Veneziano}.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Relations of LFHQCD with the Veneziano Amplitude \lb{Veneziano}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The spectrum of states of the vector meson field in light-front holographic QCD, that is the states on the degenerate $\rho, a_2,\om, f_2$ trajectory and its radial excitations,  coincides with the poles generated by the Veneziano formula~\cite{Veneziano:1968yb} for hadron-hadron scattering. Veneziano considered the 4-particle amplitude, with linear Regge trajectories $\al(v) \sim  \al'  \,v $  incorporated in the fully  $s-t$ symmetric amplitude in the form of the Euler Beta function
+\beq \lb{vf}
+T(s,t) =B(1-\al(s),1-\al(t)).
+\enq
+It exhibits  for fixed $t$ in the limit $s \to \infty$ Regge behaviour with a parent trajectory $\al(v) = \al' v +\al_{0}$, and an infinite number of daughter trajectories $\al^{(n)}(v) = \al' \, v +\al_{0} - n, \; n=1,2, \cdots$. Here $v$ stands for $s$ or $t$. If the trajectories pass through integers, the amplitude \req{vf}  develops  a pole, representing a particle of total angular momentum $J$,  and the value of $s$ or $t$, at which this integer is reached, is the squared mass. This leads to the spectra:
+\beq \lb{Vamp}
+M^2_{J,n} = \frac{1}{\al'} (J - \al_{0} +n),
+\enq
+where $n=0$ corresponds to the states on the leading trajectory, and $n=1,2 \cdots$ to the states on the daughter trajectories. The leading resonance with $J=1$ is the $\rh$-meson, hence the slope $ \al'=\frac{1-\al_0}{ M_\rh^2}$.  We can compare the spectral result from the Veneziano amplitude~\req{Vamp}  with the spectrum of vector mesons from LFHQCD~\req{M2LFH}. For  $J=L+1$ it is given by
+\beq
+M^2_{J,n} = 4\la\,  \left(J - \half +n\right),
+\enq
+with $M_\rh^2 = 2 \la$. Both spectra are indeed identical if we put the intercept in the Veneziano amplitude $\al_0=\half$, which is also the  intercept for the leading Regge trajectory determined in LFHQCD, Eq.~\req{alLFH}. In LFHQCD the integer $n$  corresponds to the radial excitation quantum number.
+
+
+\begin{figure}[ht]
+\begin{picture}(100,100)(0,0)
+\setlength{\unitlength}{1mm}
+\put(0,0){\line(1,2){20}}
+\put(20,0){\line(-1,2){20}}
+\put(10,20){\circle*{5}}
+\put(25,20){\vector(-1,0){10}}
+\put(21,21){$t$}
+\put(10,0){\vector(0,1){10}}
+\put(11,2){$s$}
+\put(-1,5){$a$}
+\put(19,5){$b$}
+\end{picture}
+\caption{\lb{fig-ven} scattering of scalar particles} 
+\end{figure}
+
+The analogy with the Veneziano formula can be pushed further into the domain of form factors. The  formula \req{vf} applies to the scattering of two hadrons $a$ and $b$, as shown in  Fig.~\ref{fig-ven}. These hadrons  can form resonances in the $s$ and the $t$ channels which show up as poles in both variables of the Beta function, $\al (s)$ and $\al (t)$. Let us extend this  formula to the scattering of a hadron $a$ with a (fictious) scalar particle  $b$ not subject to strong, but to electromagnetic interactions (like for spin $\half$ real electrons). {\color{red}  Particle $a$  does not  form  resonances with the hadron $b$ in the $s$-channel, but a hadron can decay into $b$ and its antiparticle $\bar b$ (also like real electrons). The amplitude for this reaction would be the form factor of the hadron $a$ in the $t$-channel, namely $F_a(t)$, and a constant in the $s$-channel, since there is no resonance in the $s$-variable. Therefore we write  $1-\al_s(s) = C$ in the Beta function. In this scheme the Veneziano amplitude  becomes}
+\beq
+F_a(t) = N_a \,  B(C, 1-\al(t)),
+\enq
+where the normalization factor  $N_a =  1/B( C, 1-\al(0))$ ensures the conventional normalization $F_a(0)=1$. This representation of the form factor using a Veneziano (non-dual amplitude) is identical to the result found in LFHQCD given by Eq~\req{FFlfh}, and fixes the constant  $ C= \ta-1$, where $\ta$ is the twist of the hadron $a$. The argument of the Beta function, $\frac{Q^2}{4 \la}+ \half  = 1-\frac{t}{4 \la} -\half $  in \req{FFlfh},  is indeed the $\rh$ trajectory $1-\al(t)$.  
+
+%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Generalized Parton Distributions in LFHQCD  \lb{FFGPD}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\subsection{Relation Between Generalized Parton Distributions and Flavor Form Factors}
+
+
+The functional form of the generalized parton distributions is expressed in terms of the longitudinal momentum fraction of the active quark $x$, the momentum transfer in the longitudinal direction $\xi$, or  skewness, and the invariant momentum transfer to the hadron bound state, $t = q^2 = - Q^2$. The  flavor form factor, $F^q(t)$, can be written in terms of the GPDs at zero skewness~\cite{GPDsRev}
+\beq \label{GF}
+F^q(t) = \int_0^1 dx \, H^q_{\rm v}(x,t),
+\enq
+with
+\beq
+H^q_{\rm v}(x,t) \equiv H^q(x, 0, t) + H^q(-x, 0, t),
+\enq
+for each quark flavor $q$. Here $H^q(x, \xi, t)$ denotes the unpolarized hadron GPD for the quark $q$. Using the relation~\cite{GPDsRev}
+\beq
+H^{\bar q}(x, 0, t) =  - H^q(- x, 0, t),
+\enq
+we can write \req{GF} at $t=0$ as a sum rule for the longitudinal parton distribution functions $q(x)$ normalized to the number of quarks of flavor $q$ in the hadron:
+\beq \label{qnorm}
+\int_0^1 dx \, [q(x) - \bar q(x)] = N_q,
+\enq
+with $q(x) = H^q(x, 0, t)$ and  $\bar q = H^{\bar q}(x, 0, 0)$ the  quark and antiquark densities. Therefore  $H^q_{\rm v}(x,t) = H^q(x, 0, t) - H^{\bar q}(x, 0, t)$ represents the valence GPD of flavor $q$.  It gives the excess of quarks of flavor $q$ over the corresponding antiquarks at the momentum transfer $t$, subject to the sum rule  \req{qnorm}.
+
+
+\subsection{Generalized Parton Distributions in Light-Front Holographic QCD}
+
+The Beta function has the integral representation
+\beq \label{Bintrep}
+B(u,v) = \int_0^1 dx\,  x^{u-1} \,(1-x)^{v-1}.
+\enq
+This representation, together with the connection \req{GF} of the form factor with the parton distribution function, allows immediately to extract the GPD for a fixed twist $\ta$:
+\beq \label{Gft}
+H_\tau(x,t)  = \,N_\ta \,  (1 - x)^{\tau -2} \, x^{-\frac{t}{4\la} - \half},
+\enq
+with normalization
+\beq
+N_\ta=\frac{\Gamma\left(\tau - \half\right)}{\sqrt \pi \, \Gamma(\tau - 1)} = \frac{1\cdot 3\cdots (2\ta-3)}{2^{\ta-1} \, (\ta-2)!},
+\enq
+for integer twist $\tau$.  
+
+In terms of the hadron PDFs $q(x)$ we can write \req{Gft} as
+\beq \label{GPDtau}
+H_\ta(x,t) = q_\ta(x) \exp \left[\frac{t}{ 4 \la} \log\left(\frac{1}{x}\right)\right],
+\enq
+with 
+\beq \label{qtau}
+ q_\tau(x) = N_\ta  \, x^{-1/2}(1 - x)^{\tau -2}.
+\enq
+
+The integral $ \int_0^1 dx\,  H_\ta(x, t)$, Eq. \req{GF},   diverges for $\Re \left(\frac{t}{4 \la}\right) \geq \half $ at the lower bound, and its value  in this domain, namely in the time-like region for $t \ge 2 \la$, is only defined by analytical continuation in $t$. This is to be expected, since in this region  we have the singularities  due to the intermediate states starting at the nearest pole at $t = M_\rh^2 = 2 \la$. 
+
+Before we come to the discussion of possible ambiguities of \req{Gft}, we point out  two remarkable features of the GPD form given by \req{Gft}:
+
+1) Comparing with our previous results for the parton distributions in Ref.~\cite{Brodsky:2007hb} we note the aditional factor $x^{-1/2}$ in the expression for the PDF \req{qtau}. This new factor turns out to be critical to have time-like poles in the form factors at the right positions, as well as Regge trajectories with the right slope and intercepts. Indeed, several authors~\cite{Goeke:2001tz, Diehl:2004cx, Guidal:2004nd, Diehl:2013xca, Selyugin:2009ic} have parametrized the $t$-dependence of the GPDs for small $x$ values by an ansatz motivated by Regge theory: $x^{-\al(t)}, \; \al(t) = \al(0) + \al'(t)$. Our result \req{Gft} incorporates this feature with the linear trajectory \req{alLFH}, which turns out to be the leading $\rho-\om$ trajectory depicted in Fig.~\ref{alphat}: It yields the  intercept $\al(0) = \half$ and the slope $\al'= \frac{1}{4 \la} =  0.832 \, \mbox{GeV}^{-2}$ obtained from the $\rho$ mass. This result from LFHQCD spectroscopy, namely $\alpha' = \frac{1}{2 M_\rh^2}$ is well compatible with Regge phenomenology (see  e.g. Ref \cite{Donnachie:2002en}, Chapt. 2,  where the $\rho$-trajectory, actually the 4-fold degenerate $\rh, a_2, \om, f_2$ trajectory, is parametrized with an intercept of $\half$ and a slope of 0.9 GeV$^{-2}$).  In the analysis of the form factor data expressed as integrals over the GPDs~in Ref~\cite{Diehl:2013xca} the following values were obtained:
+$0.33 \leq \al(0) \leq 0.62$, $\al' \approx 0.9$ GeV$^{-2}$.
+
+
+2) As expected, this Regge-dictated behaviour for small values of $x$ is independent of the hadron properties and hence the twist $\ta$. On the other hand, the behaviour of the form factor for large values of $t = q^2$ is dictated by the behaviour near $x=1$. The asymptotic behaviour of the Beta function \req{asb} yields $ F(q^2) \to \left(\frac{1}{q^2}\right)^{\ta-1}$,  thus the counting rules also fix the large $x$-behaviour:  The power of the factor $(1-x)$ in \req{Gft} which is $\tau-2$ for any twist $\tau$.
+
+3) It is also  remarkable  that the form of the $x$ dependence in \req{Gft} is well suited for the standard parametrization of the PDFs \cite{Aaron:2009aa, Abramowicz:2015mha}.
+
+
+\paragraph{Ambiguities in the integral representation.} The symmetry with respect to the interchange of $x$ and $\bar x = 1-x$ allows also the form $\sim (1 - \bar x)^{\tau -2} \, {\bar x} ^{-\frac{t}{4\la} - \half}$, but this just corresponds to an exchange of the active quark with a previously passive one. A more serious question is finding out how unique is the GPD extracted from the integral representation of the Beta function in \req{Bintrep}. It is evident that from the zero-moment alone, Eq. \req{GF}, the parton distribution functions cannot be determine uniquely. However, its form can be severely restricted if we impose in addition physical constraints. In particular: 
+
+i) The PDFs represent the probability to find a parton with longitudinal momentum fraction $x$: the parton distributions should be positive,
+
+ ii) One cannot accept distributions which lead to singularities in the physical space-like region for $t<0$, and  
+ 
+ iii) Acceptable GPDs should also generate the sequence of poles in the time-like region for $t \ge M_\rho^2$ and its radial excitations.
+
+As an example consider the partial integration of \req{GF}  with the GPD \req{Gft}. It leads to the modified distribution $H'_\tau(x,t)$ 
+\beq \lb{barf}
+H'_\tau(x,t)  = - \frac{N_\ta}{\tau-1}  \left(\frac{t}{4 \la} + \half\right)  (1 - x)^{\tau -1} \, x^{-\frac{t}{4\la} - \frac{3}{2}},
+\enq
+plus a surface term which vanishes for $\Re \left(\frac{t}{4 \la}\right) < -\half$,  therefore it is not possible to perform  analytical continuation.  Formally, the $x$-integral of the modified distribution \req{barf} does reproduce the expression for the form factor Eq. \req{FFlfh}. However the modified distribution  $H'(x,t)$ is negative in the physical domain  $- t = Q^2 \le 2 \la$, and in particular for $Q^2 = 0$.  Its longitudinal momentum $x \tilde H'(x, t =0)$ is also negative and diverges at $x = 0$.  Successive partial integrations of the modified distribution \req{barf} are even more pathological.
+ 
+There is also the possibility to add a distribution with vanishing first momentum, e.g., of the form $g(x) \, h(t)$ where $g(x)$ is antisymmetric with respect to the point $x=\half$, but it is not clear how such an expression could built the series of poles in the time-like form factor. To conclude,  we may remark, that mathematically we have by no means derived a unique solution for the GPD, but imposing physical constraints severely limit the possibilities of finding an alternative expression which fulfills all the requirements. The form  \req{Gft}  has remarkable  features and contains no free parameters. We shall use this form in the following as the initial nonperturbative distribution to compute the  GPDs of hadrons at different scales.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{\lb{epd} Transverse  Parton Distribution Functions and Light-Front Wave Functions from Holographic Mapping}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+Effective LFWFs follow from a precise holographic mapping of the expression for the form factor in AdS space  to the corresponding light-front QCD expression  in physical space-time, written in terms of an effective single-particle density~\cite{Brodsky:2006uqa}. Furthermore, one requires to incorporate the dressed current propagating in AdS to generate LFWFs which encode the nonpertubative pole structure of the amplitudes~\cite{Brodsky:2011xx, deTeramond:2012rt, Brodsky:2014yha}. These effective LFWFs for arbitrary twist correspond to the two-body decomposition of the transverse light-front density into an active constituent quark and a system of spectators, a form particularly convenient to compute  transverse parton distributions.  In this section we use the exact QCD results described in Appendix~\ref{Soper} for form factors and transverse space parton distributions, written in terms of a sum of overlaps of light-front wave functions in a particle number Fock decomposition.
+
+
+In the limit $\xi = 0$ the impact parton distribution $q(x, \mbf{a}_\perp)$ is computed from the Fourrier transform of the GPD $H^q(x,t)$~\cite{Burkardt:2000za}
+\beq \lb{qxa}
+q(x, \mbf{a}_\perp) = \int \frac{d^2 \mbf{q}_\perp}{(2 \pi)^2} \, e^{-i \mbf{a}_\perp \cdot \mbf{q}_\perp} 
+H^q\left(x, t =  \mbf{q}^2\right),
+\enq
+which gives the probability to find  a quark with longitudinal light front momentum fraction $x$ at a transverse distance $\mbf{a}_\perp$~\cite{notation}. In terms of the transverse density functions $q(x, \mbf{a}_\perp)$ the form factor is written as
+\beq \lb{FFqaq}
+F(q^2) = \sum_q e_q \int^1_0 dx  \int d^2 \mbf{a}_\perp e^{i \mbf{a}_\perp \cdot  \, \mbf{q}_\perp} q(x, \mbf{a}_\perp),
+\enq
+and thus, comparing with \req{FFaq} we obtain an exact expression of the impact dependent transverse parton density $q(x,\mbf{a}_\perp)$ in terms of an overlap of LFWFs, Eq.~\req{rhoax}.
+
+
+From \req{FFqaq} we can compute the light front charge distribution in the light-front transverse plane~\cite{Miller:2007uy}
+\beqa \lb{qa}
+\rho(\mbf{a}_\perp) &=& \int \frac{d^2 \mbf{q}}{(2 \pi)^2} \, e^{-i \mbf{a}_\perp \cdot \mbf{q}_\perp}  F(q^2) \nn  \\
+   &=& \sum_q e_q \int _0^1 dx \, q(x,\mbf{a}_\perp).
+\enqa
+
+
+
+\subsection{Effective transverse parton distributions and light-front wave functions}
+
+
+We can write an effective density $q_{eff}$ in terms of an effective two-body LFWFs for arbitrary twist-$\tau$, $\psi_{eff}$. From \req{rhoxq} we have
+\beqa \lb{rhoeff}
+q_{eff}(x, \mbf{q}_\perp) &=&  \int d^2 \mbf{b}_\perp \, 
+e^{- i \mbf{q}_\perp \cdot   \, \mbf{b}_\perp (1-x)}
+\left\vert  \psi_{eff}(x_j, \mbf{b}_{\perp j})\right\vert^2 \nn \\
+&=& 2 \pi \int_0^\infty \!  b \,  db \, J_0(b q (1-x)) \vert \psi_{eff} (x,b)\vert^2,
+\enqa
+with transverse  separation $b = \vert \mbf{b}_\perp \vert$. Making use of the integral 
+\beq
+\int_0^\infty u \, du  J_0(\al u) e^{- \be u^2} = \frac{1}{2 \be} e^{- \frac{\al^2}{4 \be}},
+\enq
+we can compare \req{rhoeff} with the GPD expression \req{Gft} for arbitrary values of $t= q^2$.  We find the effective  LFWF
+\beq \label{LFWFb}
+\psi_{\it eff}^\tau(x, \mbf{b}_\perp) = \frac{\sqrt{\la}}{\pi^{3/4}} \sqrt{\frac{\Ga\left(\tau - \half\right)}{\Ga(\tau-1)}} 
+~ \frac{x^{-1/4} \, (1-x)^{\tau/2}}{\sqrt{\ln(\frac{1}{x})}}\,
+e^{- \half \la\, \mbf{b}_\perp^2  (1-x)^2 / \ln(\frac{1}{x})},
+\enq
+in impact space.  The momentum space expression follows from the Fourier transform of  \req{LFWFb} and it is given by
+\beqa  \label{LFWFk}
+\psi_{\it eff}^\tau(x, \mbf{k}_\perp) &=&  4 \pi^{3/2} \int_0^\infty \!  b \,  db J_0(b k) \, \psi_{\rm eff}^\tau(x,b) \\
+&=& \frac{4 \, \pi^{3/4}}{\sqrt\la}  \sqrt{\frac{\Ga\left(\tau - \half\right)}{\Ga(\tau-1)}}  \, x^{-1/4} \, (1-x)^{\tau/2 - 2} \sqrt{\ln\left(\frac{1}{x}\right)}\,
+e^{ - \frac{\mbf{k}_\perp^2}{2 \la}  \, \frac{\ln \left(\frac{1}{x} \right)}{(1-x)^2}},
+\enqa
+with normalization\, 
+\beq
+\int_0^1 dx \int \frac{d^2\mbf{k}_\perp}{16 \pi^3} \left\vert  \psi_{\it eff}(x, \mbf{k}_\perp) \right\vert^2 = 
+\int_0^1 dx \int d^2\mbf{b}_\perp \left \vert  \psi_{\it eff}(x, \mbf{b}_\perp) \right\vert^2 = 1.
+\enq
+The effective LFWF represents a sum of an infinite number of Fock components  in the EM effective current. 
+
+
+Substituting the effective LFWFs \req{LFWFb} for  twist-$\ta$ into \req{rhoax} we find
+\beq \lb{qtauxa}
+q_{eff}^\tau(x, \mbf{a}_\perp) =  \frac{\la}{\pi^{3/2}} \frac{\Ga\left(\tau - \half\right)}{\Ga(\tau-1)}
+~ \frac{(1-x)^{\tau-2}}{\sqrt{x} \ln(\frac{1}{x})}\,
+e^{-  \la\, \mbf{a}_\perp^2 / \ln(\frac{1}{x})},
+\enq
+the LFHQCD expression for the effective transverse impact dependent parton distribution for twist-$\tau$. It is normalized to
+\beq
+\int_0^1 dx  \int d^2 \mbf{a}_\perp  \, q_{eff}^\tau(x, \mbf{a}_\perp) = 1.
+\enq
+
+
+
+
+\subsection{Transverse Width Dependence on the Quark Longitudinal Momentum Fraction and Transverse Charge Density}
+
+
+The spatial transverse size dependence of the impact parameter GPD on the quark longitudinal momentum fraction $x$~\cite{Burkardt:2000za, Dupre:2016mai} is  given by the twist-independent result
+\beqa \lb{a2xtau}
+\langle \mbf{a}^2_{\perp} (x)\rangle &=&   
+\frac{\int d^2 \mbf{a}_\perp  \, \mbf{a}^2  \, q^\tau(x, \mbf{a}_\perp)}{\int d^2 \mbf{a}_\perp  \, q^\tau(x, \mbf{a}_\perp)}  \nn\\
+&=&  \frac{1}{\la} \ln\left(\frac{1}{w(x)}\right),
+\enqa
+for the LFWFs~\req{qtauxa}.  For a given hadron, the parton distribution  $q_h(x, \mbf{a}_\perp)$ is an expansion in terms of twist components,  
+\beq
+q_h(x, \mbf{a}_\perp) = \sum_\ta c_h^\ta q^\tau(x, \mbf{a}_\perp),
+\enq
+where the coefficients $c_h^\tau$ are hadron specific. It then follows from~\req{a2xtau} that the transverse space dependence $\langle \mbf{a}^2_{\perp} (x)\rangle^q_\tau$ on the quark longitudidal momentum fraction $x$ is universal
+\beq \lb{a2xhq}
+\langle \mbf{a}^2_{\perp} (x)\rangle^q_h = \frac{1}{\la} \ln\left(\frac{1}{x}\right),
+\enq
+ for any hadron $h$.
+  
+ %%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[ht]
+\bec
+\includegraphics[width=7.6cm]{Pionx} 
+\enc
+\caption{\label{ahx} \color{blue} Universal spatial size dependence of the impact parameter GPD on the quark's longitudinal momentum fraction $x$.}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%
+
+{\color{blue}
+
+We show in Fig. \req{ahx} the tomographic image for the $x$-dependence of the impact parameter GPD from Eq.~\req{a2xhq}. In the limit $x = 1$,  hadrons becomes dimensionless in the transverse direction~\cite{Burkardt:2000za, Dupre:2016mai}. We can also compute the transverse size $x$-dependence  directly in terms of the GPD $H^q(x,t)$ by substituting \req{qxa} in the expression for the $x$-dependent squared distance
+\beqa \lb{a2xHq}
+\langle \mbf{a}^2_{\perp} (x)\rangle^q &=&   
+\frac{\int d^2 \mbf{a}_\perp  \, \mbf{a}^2  \, q(x, \mbf{a}_\perp)}{\int d^2 \mbf{a}_\perp  \, q(x, \mbf{a}_\perp)}  \nn\\
+&=&  - \frac{1}{H^q \left(x,  - Q^2 \right)} \nabla_\mbf{Q}^2 H^q \left(x,  - Q^2 \right) \Big  \vert_{Q^2 = 0}  \nn \\
+&=&  - 4 \frac{\pa}{\pa Q^2} \ln{H^q \left(x, - Q^2\right)} \Big  \vert_{Q^2 = 0} ,
+\enqa
+the result described in~\cite{Dupre:2016mai}. It leads to the universal behavior~\req{a2xhq} for the LFHQCD expression for the GPDs \req{GPDtau}
+\beq \label{GPDq}
+H^q(x,t  ) = q(x) \exp \left[\frac{t}{ 4 \la} \log\left(\frac{1}{x}\right)\right],
+\enq
+evaluated at $t = - Q^2$.
+
+
+Finally, the $x$-integral of \req{qtauxa} (See \req{qa} or \req{rhoa}) is the corresponding transverse charge density~\cite{Miller:2007uy}
+\beqa \lb{qa}
+q_{eff}^{\ta = 2} (a) &=& \frac{\la}{\pi} \, K_0\left(\sqrt{2 \la} \, a\right) ,\\
+q_{eff}^{\ta = 3} (a) &=& \frac{3 \la}{2 \pi} \left(K_0\left(\sqrt{2 \la} \, a\right) -   K_0\left(\sqrt{6 \la} \, a\right) \right), \\
+q_{eff}^{\ta = 4} (a) &=& \frac{15 \la}{8 \pi} \left(K_0\left(\sqrt{2 \la} \, a\right) -   2 K_0\left(\sqrt{6 \la} \, a\right)  +  K_0\left(\sqrt{10 \la} \, a\right)  \right) ,\\
+ & & \cdots \, ,  \nn
+\enqa
+where $K_\al(x)$ is a modified Bessed function and  $a \equiv \sqrt{ \mbf{a}_\perp^2}$.
+}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Pion Generalized Parton Distributions \label{PIONGPD}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The leading twist 2 expression in LFHQCD for the parton valence distributions in the pion looks, at first sight, quite different from the experimental results al large $x$~\cite{Wijesooriya:2005ir}. It was shown however, in a recent article by Bacchetta et.~al.~\cite{Bacchetta:2017vzh}, that a dramatic change in the nonperturbative holographic expressions given in Ref.~\cite{Brodsky:2007hb} for the pion PDF at large $x$ follows from  QCD evolution  from the low energy initial scale to high energy scales, $\mu^2 \simeq 25 \, {\rm GeV}^2$, where the valence pion PDF has been determined from  Eq experiment~\cite{Wijesooriya:2005ir}.
+
+
+In this section we examine the pion GPDs at the initial low-energy scale determined by LFHQCD. We will use here the LFHQCD expressions given by Eq.~\req{Gft}, which include the correct Regge behavior at low $x$. We will also include the contribution from higher Fock components, the meson cloud,  which has been determined from the analysis of the time-like pion form factor data~\cite{deTeramond:2010ez}.
+
+From \cite{Brodsky:2014yha, deTeramond:2010ez}
+\beq
+F_\pi(t) = (1 - \ga) F_{\ta=2}(t) + \ga F_{\ta=4}(t),
+\enq
+where $\ga$ is the large distance pion contribution from the higher Fock components. Thus, for example, for the $\pi^+$
+\beq
+F_{\pi^+}(t) = \int_0^1 dx \left( \frac{2}{3} f_{\rm v}^u(x, t) + \frac{1}{3}  f_{\rm v}^{\bar d}(x, t) \right) ,
+\enq
+where we have used the usual convention $f(x,t)$ to lable the pion GPD with $f_{\rm v}^u = f_{\rm v}^{\bar d}$. We thus have the valence quark contribution to the form factor 
+\beq
+\int_0^1 dx  f^{u, \bar d}_{\rm v}(x, t) =  (1 - \ga) F_{\ta=2}(t) + \ga F_{\ta=4}(t),
+\enq
+corresponding to twist 2 and 4. Inserting \req{Gft} in the expression above
+\beq \lb{fud}
+f^{u,\bar d}_{\rm v}(x,t) =x^{-\half} \,\left( \frac{1 - \ga}{2} +  \frac{15}{16} \, \ga \, (1-x)^2\right) \,  \exp \left[\frac{t}{ 4 \la} \log\left(\frac{1}{x}\right)\right],
+\enq
+defined at the initial scale $\mu_0$,  which has not been fixed yet. The parton distributions $f(x,t)$ are normalized to the valence quark content of the pion:
+\beq 
+\int_0^1 dx  f^{u, \bar d}_{\rm v}(x, 0) = 1.
+\enq
+
+%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[ht]
+\bec
+\includegraphics[width=7.6cm]{pdfpion} \hspace{5pt}
+\includegraphics[width=7.6cm]{gpdpion}
+\enc
+\caption{\label{pionGPD} Pion parton distribution function  $x \, f_{\rm v}(x) \equiv x \,f_{\rm v}(x, t= 0)$ for the $u$ and $\bar d$ valence distributions (left): Small dashed line $\gamma = 0.125$, larger dashed line $\gamma = 0$. Pion generalized parton distribution  $x \,f _{\rm v}(x,t)$ (right): Dashed line $t = 0$, dot-dashed $t = -1 \, \rm GeV^2$ and dotted  $t = - 4 \,\rm GeV^2$.} 
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%
+
+
+To avoid confusion, it is important to notice that the valence GPDs (or PDFs), which are normalized to the quantum numbers of the valence constituents of the proton, weight indeed the excess of the  $u$ quark and the $\bar d$ antiquark  over the $\bar u$ antiquark and the $d$ quark respectively. In this sense, all the components of the pion light-front wave function in a Fock expansion in the number of components contribute to the valence GPD, and not only the 2-quark lowest state in the Fock expansion, the `valence' core. Thus,   the valence GPDs have contributions as well from higher twist components in the Fock expansion, often interpreted as the cloud contribution to the proton form factor.
+
+
+
+We have plotted our results for the parton distribution function $x \, f_{\rm v}(x) \equiv x \,f_{\rm v}(x, t= 0)$ in Fig.~\ref{pionGPD}. The momentum transfer $t$-dependence of the pion GPDs is illustrated in Fig.~\ref{pionGPD}. The pion cloud probability $\gamma$ is 12.5 \%~\cite{Brodsky:2014yha}.  Large $t = -Q^2$ values shift the distribution markedly to $x=1$. 
+
+
+
+\subsection{Transverse Impact Parton Distribution in the Pion}
+
+%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[ht]
+\bec
+\includegraphics[width=7.6cm]{PionGPDa} 
+\enc
+\caption{\lb{pionqGPD} Transverse impact dependent parton distribution function $q^{u, \bar d} (x, \mbf{a}_\perp)$ for the pion.}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%
+
+
+The  transverse impact GPD for $u$- or $\bar d$-quark in the pion follows  from \req{qtauxa}. It is given by
+\beqa \lb{qaxud}
+q^{u, \bar d}(x,\mbf{a}_\perp) &=&   \int \frac{d^2 \mbf{q}_\perp}{(2 \pi)^2} \, e^{-i \mbf{a}_\perp \cdot \mbf{q}_\perp} 
+f^{u, \bar d}\left(x, \mbf{q}^2\right) \\
+&=&\frac{ \la}{\pi} \,\left( \frac{1 - \ga}{2} + \frac{15}{16} \, \ga \, (1-x)^2\right) \,   \frac{1}{\sqrt{x} \ln(\frac{1}{x})}\,
+e^{-  \la\, \mbf{a}_\perp^2 / \ln(\frac{1}{x})},
+\enqa
+where the transverse distributions in the pion are normalized by 
+\beq
+ \int_0^1 dx  \int d^2 \mbf{a}_\perp  \, q^{u, \bar d}(x, \mbf{a}_\perp) =  1.
+\enq
+We show  in Fig. \ref{pionqGPD} the transverse impact GPD for the pion. We note that the transverse distribution is peaked at small transverse distance for large values of $x$.
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{\lb{NUCLEONGPD}Nucleon Generalized Parton Distributions}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+There have been several important attempts to extract the nucleon GPDs from the elastic nucleon form factor data~\cite{Goeke:2001tz,Diehl:2004cx, Guidal:2004nd, Selyugin:2009ic, Diehl:2013xca}. In doing so, one generally chooses an empirical $x$- and  $t$-dependence of the GPDs at zero skewness at a given initial scale. One then finds the best possible fit to reproduce the measured form factors and the valence PDFs, using a factorized exponential factor for the $t$-dependence  of the PDF and pQCD evolution to higher scales where the PDFs (or the GPDs) are measured.
+
+As we have discussed in the previous section, LFHQCD  suggests a  well determined $x$- and $t$-dependence of the GPDs for an arbitrary twist $\tau$; it depends essentially on the low-energy position of the vector meson poles (for a given $\tau$) and on the high energy asymptotic behavior of the form factors determined by the  $twist$, the number of components, for a given hadron Fock state. 
+
+In our recent analysis of the nucleon electromagnetic form factors~\cite{Sufian:2016hwn}, we  required only three free parameters to have a good description of the available precision form factor data. These parameters are not predicted by the holographic approach. They are a parameter $r$, whose deviation from 1 is interpreted as the effect of breaking of the SU(6) spin-flavor symmetry for the Dirac (spin non-flip) neutron form factor; and two additional parameters $\gamma_p$ and $\gamma_n$ which account for the probablities of higher Fock components (meson cloud) in the proton and neutron, which are found to be significant only for the Pauli (spin-flip) form factors. The hadronic scale $\la$ is fixed by the $\rho$ Regge trajectory, whereas the Pauli form factors are normalized to the experimental values of the anomalous magnetic moments. Having fixed the model parameters $r$, $\gamma_p$ and $\gamma_n$ in Ref.~\cite{Sufian:2016hwn} from the elastic form factor data, our LF holographic model for the GPDs  of nucleons is fully constrained, except for the initial reference scale $\mu_0$, which has to be fixed a posteriori.
+
+
+\subsection{Helicity Non-Flip Distributions}
+
+For the  nucleon Dirac form factors we obtained  in~\cite{Sufian:2016hwn}
+\beqa \lb{fft}  F^p_1(Q^2) &=& F_{\tau=3}(Q^2), \\
+F^n_1(Q^2) &=& - \frac{r}{3} \left(F_{\tau=3}(Q^2) - F_{\tau=4}(Q^2)\right).
+\enqa
+The value $r= 2.08$ was found to give a good fit to the data.
+
+The standard representation of the helicity conserving parton valence quark distribution $H_v^q(x, t) \equiv H_v^q(x, \xi = 0, t )$ is, neglecting the  contribution from strange quarks,
+\beqa
+F_1^p(t) &=& \int_0^1 dx \left( \frac{2}{3} H_{\rm v}^u(x, t) - \frac{1}{3}  H_{\rm v}^d(x, t) \right) ,\\
+F_1^n(t) &=& \int_0^1 dx \left( -\frac{1}{3} H_{\rm v}^u(x, t) + \frac{2}{3}  H_{\rm v}^d(x, t) \right) ,
+\enqa
+
+With these relations we can express the valence quark contributions 
+\beqa
+ \int_0^1 dx H_{\rm v}^u(x, t) &=&\left(2-\frac{r}{3}\right)F_{\tau=3}(t) +\frac{r}{3}F_{\tau=4}(t) \\
+\int_0^1 dx H_{\rm v}^d(x, t) &=&\left(1-\frac{2 r}{3}\right) F_{\tau=3}(t) +\frac{2 r}{3}F_{\tau=4}(t)
+\enqa
+in terms of twist 3 and twist 4.  Inserting   \req{Gft} in the expressions above we obtain for the spin non-flip valence distributions $H_{\rm v}^q(x, t)$:
+
+\beqa   \label{Hu}
+ H_{\rm v}^u(x,t) &=& x^{-\half} (1-x)\,\left( \frac{3}{2}-\frac{r}{4}   +\frac{5 r}{16}(1-x)\right) \,  \exp \left[\frac{t}{ 4 \la} \log \left(\frac{1}{x} \right) \right],\\ \label{Hd}
+ H_{\rm v}^d(x,t) &=&x^{-\half} (1-x) \left( \frac{3}{4}-\frac{r}{2}   +\frac{5 r}{8}(1-x)\right) \,  \exp \left[\frac{t}{ 4 \la}  \log \left(\frac{1}{x} \right)\right] ,
+\enqa
+defined at the initial scale $\mu_0$. The GPDs $H_{\rm v}(x, t)$ are normalized to the valence parton content  of the proton:
+\beq \int_0^1 dx  H_{\rm v}^u(x, 0)=2, \quad  \quad \int_0^1 dx  H_{\rm v}^d(x, 0)=1.
+\enq
+
+Notice that even if we limit ourselves to the lowest 3-parton component of the proton wave function, there  is also a twist-4 contribution,  since the nucleon ground state has a component with LF angular momentum  $L=1$. This orbital component contributes to the Dirac neutron form factor and is also responsible for the nucleon anomalous magnetic moment.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[ht]
+\bec
+\includegraphics[width=7.6cm]{pdf} \hspace{5pt}
+\includegraphics[width=7.4cm]{pdflog}
+\enc
+\caption{\label{pdf}The nucleon parton densities  $x \,q_{\rm v}(x) \equiv x \,H^q_{\rm v}(x,0)$ with  linear and logarithmic abscissa. The dashed line is the result with the  spin-flavour $SU(6)$ breaking factor $r=2.08$, the dotted  line is the  $SU(6)$ limit, $r =1$.}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[ht]
+\bec
+\includegraphics[width=7.6cm]{gpdHu} \hspace{5pt}
+\includegraphics[width=7.6cm]{gpdHd}
+\enc
+\caption{\label{gpdH} Nucleon generalized parton distribution  $x \,q_{\rm v}(x,t) \equiv x \,H^q_{\rm v}(x,t)$ for the $u$-quark (left) and $d$-quark (right): Dashed line $t = 0$,
+dot-dashed $t = -1 \, \rm GeV^2$ and  dotted  $t = - 4 \,\rm GeV^2$.}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%
+
+Our results for the parton distribution functions $x \,u_{\rm v}(x) \equiv x \,H_{\rm v}^u(x,0)$ and $x \,d_{\rm v}(x) \equiv x \,H_{\rm v}^d(x,0)$  are displayed in Fig.~\ref{pdf}, where we illustrate the effect of the SU(6) breaking required to describe the neutron form factor data in Ref.~\cite{Sufian:2016hwn}.  The momentum transfer $t$-dependence of the GPDs is illustrated in Fig. \ref{gpdH}. The $t$-dependence shifts the maximum of the distribution to values near $x = 1$, which correspond to large $t = - Q^2$ values where the quark counting rules are satisfied by construction.
+
+
+
+
+
+\subsection{Helicity-Flip Distributions}
+
+The proton and neutron Pauli form factors are written in terms of  helicity-flip  parton density functions
+\beqa
+F_2^p(t) &=& \int_0^1 dx \left( \frac{2}{3} E_{\rm v}^u(x, t) - \frac{1}{3}  E_{\rm v}^d(x, t) \right) ,\\
+F_2^n(t) &=& \int_0^1 dx \left( -\frac{1}{3} E_{\rm v}^u(x, t) + \frac{2}{3}  E_{\rm v}^d(x, t) \right) ,
+\enqa
+with $E^q(x, t) \equiv E^q(x, \xi = 0, t )$ in the usual notation. The Pauli flavor form factors
+\beq \label{FqH}
+F_2^q(t) = \int_0^1 dx \, E_{\rm v}^q(x,t),
+\enq
+are normalized to the flavor anomalous magnetic moment  $F_2^u(0) = \chi_u$ and $F_2^d(0) = \chi_d$, with $\chi_u= 2 \chi_p + \chi_n = 1.673$ and $\chi_d = \chi_p + 2 \chi_n = -2.033$ ($\chi_p=\mu_p-1=1.793$ and $\chi_n=\mu_n=-1.913$ are, respectively, the proton and neutron anomalous magnetic moments).
+It was found in Ref.~\cite{Sufian:2016hwn} that the nucleon Pauli form factors receive an important contribution from higher Fock components. From ~\cite{Sufian:2016hwn}
+\beqa \lb{FFPp}
+F_2^p(Q^2) &=& \chi_p [(1-\gamma_p)F_{i=4}(Q^2) + \gamma_p F_{i=6}(Q^2)], \\ \lb{FFPn}
+F_2^n(Q^2) &=& \chi_n \left[(1- \gamma_n)F_{i=4}(Q^2) + \gamma_n F_{i=6}(Q^2) \right].
+\enqa
+The higher Fock probabilities for the  spin-flip nucleon  form factors $\gamma_{p,n}$ represent the large distance pion contribution and have the values  $\gamma_p=0.27$ and  $\gamma_n=0.38$~\cite{Sufian:2016hwn}.
+
+
+
+From \req{FFPp} and \req{FFPn} we  derive the expression for the spin-flip distributions
+\beqa
+\int_0^1 dx  E_{\rm v}^u(x, t)&=&\left(2 \ch_p(1-\ga_p)+\ch_n(1-\ga_n)\right) \,F_{\ta=4}(t)+
+ (2\ch_p\ga_p\,+\ch_n\,\ga_n) \,F_{\ta=6}(t),\\
+\int_0^1 dx  E_{\rm v}^d(x, t)&=&\left(2 \ch_n(1-\ga_n)-\ch_p(1-\ga_p)\right) \,F_{\ta=4}(t)+
+ (2\ch_n \ga_n\,+\ch_p\,\ga_p) \,F_{\ta=6}(t),
+\enqa
+ in terms of twist-4 and twist 6 contributions.
+
+
+
+From this expression and and the  general expressions  for a twist-$\tau$ GPD, Eq. \req{Gft},  we find  for the helicity flip GPDs $E^q(x,t)$ of the nucleon at the initial scale $\mu_0$
+\beqa \lb{Eu}
+ E_{\rm v}^u(x,Q^2) &=& \chi_u
+ x^{-\half} (1-x)^2\,\left( \frac{15}{16} (1 - \gamma_u)   +\frac{315}{256} \gamma_u (1-x)^2\right) \,  \exp \left[ \frac{t}{ 4 \la} \log\left(\frac{1}{x}\right)\right],
+\\ \lb{Ed}
+ E_{\rm v}^d(x,Q^2) &=&\chi_d \,
+ x^{-\half} (1-x)^2 \left( \frac{15}{16} (1 - \gamma_d)   +\frac{315}{256} \gamma_d (1-x)^2\right) \,   \exp \left[ \frac{t}{ 4 \la} \log\left(\frac{1}{x}\right)\right],
+\enqa
+where
+\beqa
+\gamma_u &\equiv& \frac{2 \chi_p \gamma_p+ \chi_n \gamma_n}{2 \chi_p + \chi_n},\\
+\gamma_d &\equiv& \frac{ \chi_p \gamma_p + 2 \chi_n \gamma_n}{ \chi_p + 2 \chi_n}.
+\enqa
+
+%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[ht]
+\bec
+\includegraphics[width=7.6cm]{gpdEu} \hspace{5pt}
+\includegraphics[width=7.6cm]{gpdEd}
+\enc
+\caption{\label{gpdE} Nucleon generalized parton distribution  $x \,e^q_{\rm v}(x,t) \equiv x \,H^q_{\rm v}(x,t)/\chi_q$ for the $u$-quark (left) and $d$-quark (right): Dashed line $t = 0$,
+dot-dashed $t =  -1 \, \rm GeV^2$ and  dotted  $t =  -4 \,\rm GeV^2$.}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%
+
+Our results for the spin-flip GPDs $x \,e^q_{\rm v}(x,t) \equiv x \,E_{\rm v}^q(x,t)/\chi_q$   are displayed in Fig. \ref{gpdE}.
+
+
+\subsection{Ji's Sum Rule and Total Angular Momentum of Quarks}
+
+The use of GPDs provide an important framework for the study of the nonperturbative contributions to the spin structure of the nucleon~\cite{Deur:2007xxx}. The first moment of the GPDs are the gravitational form factors of a composite hadron:
+\beq
+\int_0^1 x \, dx \, H_{\rm v}^q(x, t = 0) = A^q(t),
+\enq
+is the spin non-flip gravitational form factor, which gives the longitudinal momentum fraction carried by the constituent $q$, and
+\beq
+\int_0^1 x \, dx \, E_{\rm v}^q(x, t = 0) = B^q(t),
+\enq
+the spin-filp form factor, analogous to the Pauli form factor, gives the contribution to the angular momentum of the hadron for each constituent $q$. At $t =0$ Ji's sum rule~\cite{Ji:1996ek} gives the total angular momentum for  quarks of flavor $q$~\cite{Brodsky:2000ii}
+\beq \lb{Jq}
+J^q = \half \int_0^1 x \, dx \left[H_{\rm v}^q(x, t = 0) + E_{\rm v}^q(x, t=0)\right],
+\enq
+at a given reference scale $\mu_0$. From Eqs.  \req{Hu}, \req{Hd}, \req{Eu} and \req{Ed} we obtain
+the values given in Table \ref{tab1}, first line. This value corresponds to the total angular momentum carried by the quarks of flavor $q = u,d$ minus the corresponding antiquark contribution.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}
+\caption{\lb{tab1} Results for the total angular momentum
+of quarks minus the contribution from antiquarks
+according to Ji's sum rule. The first line shows our result, lines 2 and 3 are obtained from phenomenological fits to the PDF constrained by nucleon form factors,  line 4 is the  result of a quenched lattice simulation,  extrapolated to the physical pion mass.}
+\begin{tabular}{l cc c c} 
+\hline \hline
+&  &$2 J^u$ &&$ 2 J^d $\\ \hline
+1 ~~& this work&  0.586&&-0.12\\
+2 ~~&\cite{Radyushkin:1996nd}&0.58&&-0.06\\
+3 ~~&\cite{Diehl:2013xca}&0.46, \,0.56 &&~~ -0.007, \, -0.019\\
+4 ~~&\cite{Gockeler:2003jfa}&$0.74\pm 0.12$&&$ 0.08 \pm 0.08$\\
+\hline \hline
+\end{tabular}
+\end{table}
+
+
+\subsection{Transverse Impact Parton Distribution in the Nucleon}
+
+
+The  transverse impact GPD for $u$ and $d$ quarks  in the proton follows  from \req{qtauxa}. It is given by
+\beqa \lb{uax}
+u(x,\mbf{a}_\perp) &=&   \int \frac{d^2 \mbf{q}_\perp}{(2 \pi)^2} \, e^{-i \mbf{a}_\perp \cdot \mbf{q}_\perp} 
+H^u \left(x, \mbf{q}^2\right) \\
+&=&\frac{ \la}{\pi} \,(1-x)\,\left( \frac{3}{2}-\frac{r}{4}   +\frac{5 r}{16}(1-x)\right) \,   \frac{1}{\sqrt{x} \ln(\frac{1}{x})}\,
+e^{-  \la\, \mbf{a}_\perp^2 / \ln(\frac{1}{x})},
+\enqa
+and
+\beqa \lb{dax}
+d(x,\mbf{a}_\perp) &=&   \int \frac{d^2 \mbf{q}_\perp}{(2 \pi)^2} \, e^{-i \mbf{a}_\perp \cdot \mbf{q}_\perp} 
+H^d \left(x, \mbf{q}^2\right) \\
+&=&\frac{ \la}{\pi} \, (1-x) \left( \frac{3}{4}-\frac{r}{2}   +\frac{5 r}{8}(1-x)\right) \,   \frac{1}{\sqrt{x} \ln(\frac{1}{x})}\,
+e^{-  \la\, \mbf{a}_\perp^2 / \ln(\frac{1}{x})},
+\enqa
+where the transverse space distributions are normalized to the quark content of the proton:
+\beq
+ \int_0^1 dx  \int d^2 \mbf{a}_\perp  \, u (x, \mbf{a}_\perp) =  2,   \hspace{20pt}  \int_0^1 dx  \int d^2 \mbf{a}_\perp  \, d(x, \mbf{a}_\perp) =  1.
+\enq
+
+%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[ht]
+\bec
+\includegraphics[width=7.6cm]{Nucleonuax}  \hspace{20pt}
+\includegraphics[width=7.6cm]{Nucleondax} 
+\enc
+\caption{\lb{protonaGPD} Transverse impact dependent parton distribution functions in the nucloen: left $u(x, \mbf{a}_\perp)$, and right $d(x, \mbf{a}_\perp)$.}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%
+
+We show  in Fig. \ref{protonaGPD} the transverse impact GPDs for the $u$ and $d$ quarks in the nucleon at an  low energy initial scale  to be determined.
+
+
+\subsection{Nucleon Transverse Charge Density}
+
+Finally, it is illustrative to describe the transverse charge density in the nucleon~\cite{Miller:2007uy} 
+\beqa \lb{qaN}
+\rho(\mbf{a}_\perp) &=& \int \frac{d^2 \mbf{q}}{(2 \pi)^2} \, e^{-i \mbf{a}_\perp \cdot \mbf{q}_\perp}  F_1(q^2) \nn  \\
+   &=& \sum_q e_q \int_0^1 dx \, q(x, \mbf{a}_\perp).
+\enqa  
+   
+From Eq.~\req{qa} we find for the proton
+\beq \lb{rhop}
+\rho(\mbf{a}_\perp)_p = \frac{3 \la}{2 \pi} \left(K_0\left(\sqrt{2 \la} \, a\right)  -   K_0\left(\sqrt{6 \la} \, a\right) \right),
+\enq
+and for the neutron
+\beq \lb{rhon}
+\rho(\mbf{a_\perp})_n = \frac{\la}{8\pi} \,r \left(K_0\left(\sqrt{2 \la} \, a\right)  -  6 \, K_0\left(\sqrt{6 \la} \, a\right) +  5 \, K_0\left(\sqrt{10 \la} \, a\right) \right),
+\enq
+where $a = \vert \mbf{a_\perp} \vert$. The nucleon transverse densities are normalized to the nucleon charge:  
+\beq
+ \int d^2 \mbf{a}_\perp  \, \rho_p(\mbf{a}_\perp) =  1,   \hspace{20pt}   \int d^2 \mbf{a}_\perp  \, \rho_n(\mbf{a}_\perp) =  0.
+\enq
+
+%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[ht]
+\bec
+\includegraphics[width=7.6cm]{rhop}  \hspace{20pt}
+\includegraphics[width=7.6cm]{rhon} 
+\enc
+\caption{\lb{rhoN} Transverse charge densities for  the nucleon: left proton, and right the neutron distribution with, from top to bottom, $r=1$, $r = 3/2$ and $r = 2$.}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%
+
+We show the nucleon charge densities in Fig. \ref{rhoN}. The charge density in the neutron is negative at short transverse  distance~\cite{Miller:2007uy}  and depends on the  $SU(6)$ breaking parameter $r$.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{\lb{conclusion} Conclusions and Outlook}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\dots
+
+The observed relation with the Veneziano model discussed in Appendix~\ref{Veneziano} could give further insights into the light-front holographic QCD framework and the constraints from superconformal quantum mechanics, and hopefully indicate the direction how to improve it. Indeed, the  breaking of the maximal symmetry of the AdS$_5$, as obtained by the implementation of the superconformal algebra in LFHQCD, is essential to get the close relation with the Veneziano model.  The Veneziano formula can be considered as the result of a first order (hadronic) string theory~(see e.g. \cite{DiVecchia:2007vd})  without unitarity corrections, and therefore with zero width resonances. The unitarization of the Veneziano model, which finally led to a unitary dual string model of hadrons, was essentially abandoned when quantum chromodynamics became the standard theory of the strong interactions.  In order to get rid of the zero width, also inherent to LFHQCD,  one has  to go beyond the leading $1/N_C$ approximation, which implies that one has to take into account quantum corrections in the 5-dimensional gravitational theory. LFHQCD was inspired in the usual gauge/gravity duality or AdS/CFT correspondence~\cite{Maldacena:1997re}, which is rooted in the classical limit of supergravity or superstring theory.  The connection of LFHQCD with the Veneziano model may indicate a more profound connection with string theory, and one might hope to develop a dual theory of hadrons, also based on string theory, but without the problems of the old dual model. 
+
+
+\dots
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%t%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\acknowledgments
+
+GdT wants to thanks Alessandro Bacchetta, Sabrina Cotogno and Barbara Pasquini for helpful remarks. HGD thanks \dots. This work is supported by \dots .
+
+
+
+\appendix 
+
+
+
+
+\section{\lb{Soper} Form Factors and Transverse Single-Particle Densities in Light-Front QCD}
+
+
+The light-front formalism provides an exact  representation of current  matrix elements in terms of the overlap of frame-independent light-front wave functions in a light-front Fock basis with components $\psi_n(x_i, \mbf{k}_{\perp i},\lambda_i)$, where the internal partonic coordinates, the longitudinal momentum fraction $x_i$ and the transverse momentum $\mbf{k}_{\perp i}$, obey the momentum conservation sum rules $\sum_{i=1}^n x_i =1$, and $\sum_{i=1}^n \mbf{k}_{\perp i}=0$. The LFWFs also depend on  $\lambda_i$, the projection of the constituent's spin along the $z$ direction. 
+
+
+In terms of overlap of LFWFs in momentum space the electromagnetic form factor is given by the Drell-Yan-West (DYW) expression~\cite{Drell:1969km, West:1970av} 
+ \begin{multline} \lb{DYW}
+F(q^2) =  \sum_n  \prod_{i=1}^n \int 
+dx_i \, \frac{d^2 \mbf{k}_{\perp i}}{2 (2\pi)^3} \, 16 \pi^3 \,
+\delta \Bigl(1 - \sum_{j=1}^n x_j\Bigr) \, \delta^{(2)} \negthinspace\Bigl(\sum_{j=1}^n\mbf{k}_{\perp j}\Bigr) \\
+\sum_j e_j \psi^*_n (x_i, \mbf{k}'_{\perp i},\lambda_i) 
+\psi_n (x_i, \mbf{k}_{\perp i},\lambda_i),  \hspace{20pt}
+\end{multline}
+where  the variables of the light-front  Fock components in the final state are given by $\mbf{k}'_{\perp i} = \mbf{k}_{\perp i} + (1 - x_i)\, \mbf{q}_\perp $ for a struck  constituent quark and $\mbf{k}'_{\perp i} = \mbf{k}_{\perp i} - x_i \, \mbf{q}_\perp$ for each spectator. The formula is exact if the sum is over all Fock states $n$. 
+
+
+The DYW expression for the  form factor  can be written in impact space  by Fourrier transforming \req{DYW} in momentum space to impact transverse space~\cite{Soper:1976jc}.  This is a convenient form to obtain the impact dependent representation of GPDs~\cite{Burkardt:2000za}, but also for the holographic mapping of AdS results, 
+since the form factor can be expressed in terms of the product of light-front wave functions  with identical variables.  To this purpose,  we express \req{DYW} in terms of  $n\! - \! 1$ independent transverse impact variables $\mbf{b}_{\perp j}$, $j = 1,2,\dots,n-1$, conjugate to the relative coordinates $\mbf{k}_{\perp i}$ for the spectator constituents~\cite{Soper:1976jc}, and label by $n$  the active charged parton which interacts with the  current. Using the Fourier expansion
+\begin{equation} \label{eq:LFWFb}
+\psi_n(x_j, \mathbf{k}_{\perp j}) =  (4 \pi)^{(n-1)/2}
+\prod_{j=1}^{n-1}\int d^2 \mbf{b}_{\perp j}
+\exp{\left(i \sum_{k=1}^{n-1} \mathbf{b}_{\perp k} \cdot \mbf{k}_{\perp k}\right)} \,
+{\psi}_n(x_j, \mathbf{b}_{\perp j}),
+\end{equation}
+where $\sum_{i=1}^n \mbf{b}_{\perp i} = 0$, we find~\cite{Soper:1976jc, Brodsky:2006uqa}
+\beq  \lb{FFb} 
+F(q^2) =  \sum_n  \prod_{j=1}^{n-1}\int d x_j d^2 \mbf{b}_{\perp j} 
+\exp \! {\Bigl(i \mbf{q}_\perp \cdot \sum_{j=1}^{n-1} x_j \mbf{b}_{\perp j}\Bigr)} \left\vert  \psi_n(x_j, \mbf{b}_{\perp j})\right\vert^2,
+\enq
+corresponding to a change of transverse momentum $x_j \mbf{q}_\perp$ for each of the $n-1$ spectators. The internal parton variables, the longitudinal momentum fraction $x_i$ and the transverse impact variable $\mbf{b}_{\perp i}$, conjugate to the relative transverse momentum coordinate $\mbf{k}_{\perp i}$, obey the sum rules $\sum_{i=1}^n x_i = 1$ and $\sum_{i=1}^n \mbf{b}_{\perp i} = 0$.
+
+
+
+\subsection{Transverse Single-Particle Distributions}
+
+
+The form factor in light-front quantization has an exact representation in terms of a single particle  
+density~\cite{Soper:1976jc, Brodsky:2006uqa}
+\beq
+F(q^2) = \int_0^1 dx ~\rho(x, \mbf{q}_\perp),
+\enq
+where $\rho(x, \mbf{q}_\perp)$ is given by
+\begin{multline} \lb{rhoxq}
+\rho(x, \mbf{q}_\perp) = \sum_n \prod_{j=1}^{n-1} 
+\int dx_j \, d^2 \mbf{b}_{\perp j} \, \delta \Bigl(1-x - \sum_{j=1}^{n-1} x_j\Bigr) \\ \times
+\exp{\Bigl(i \mbf{q}_\perp
+\cdot \sum_{j=1}^{n-1} x_j \mbf{b}_{\perp j}\Bigr)}
+\left\vert  \psi_n(x_j, \mbf{b}_{\perp j})\right\vert^2.
+\end{multline}
+The integration in \req{rhoxq} is over the coordinates of the $n-1$ spectator
+partons, and  $x = x_n$ is the coordinate of the active charged
+quark.  
+
+We can also write the form factor in terms of a  single
+particle transverse distribution $\rho(x,\mbf{a}_\perp)$~\cite{Soper:1976jc} in transverse impact space
+\beq \label{FFaq}
+F(q^2) =\int^1_0 dx  \int d^2 \mbf{a}_\perp e^{i \mbf{a}_\perp \cdot  \, \mbf{q}_\perp} \rho(x, \mbf{a}_\perp),
+\enq
+where
+$\mbf{a}_\perp = \sum^{n-1}_{j=1} x_j \mbf{b}_{\perp j}$
+is the $x$-weighted transverse position coordinate of the $n-1$
+spectators. The corresponding transverse density is
+\beqa \label{rhoax}
+\rho(x,\mbf{a}_\perp)   
+&=& \int \frac{d^2 \mbf{q}_\perp}{(2 \pi)^2}  
+e^{-i \mbf{a}_\perp \cdot \mbf{q}_\perp} \rho(x, \mbf{q}_\perp)  \\ 
+&=& \sum_n \prod_{j=1}^{n-1} \int dx_j \, d^2\mbf{b}_{\perp j} 
+\,\delta \Bigl(1-x-\sum_{j=1}^{n-1} x_j\Bigr) 
+\delta^{(2)}\Bigl(\sum_{j=1}^{n-1} x_j \mbf{b}_{\perp j} - \mbf{a}_\perp\Bigr)
+\left\vert \psi_n(x_j, \mbf{b}_{\perp j}) \right\vert^2. \nn
+\enqa
+The procedure is valid for any Fock state $n,$ and thus the results can be summed over 
+$n$ to obtain an exact representation of the impact parameter dependent parton distribution  introduced in Ref.~\cite{Burkardt:2000za},
+%These results agree with Soper's analysis if we identify
+%$\vec \eta_\perp \equiv \vec r_\perp^{Soper} =  (1-x) \vec y_\perp $ where
+%$\vec y_\perp = \vec b_\perp$ is conjugate to $\vec k_\perp.$
+which gives the probability to find  a quark with longitudinal light front momentum fraction $x$ at a transverse distance $\mbf{a}_\perp$~\cite{notation}.
+
+From \req{FFaq} we can compute the charge distribution of a hadron in the light-front transverse plane~\cite{Miller:2007uy}
+\beqa \lb{rhoa}
+\rho(\mbf{a}_\perp) &=& \int \frac{d^2 \mbf{q}}{(2 \pi)^2} \, e^{-i \mbf{a}_\perp \cdot \mbf{q}_\perp}  F(q^2) \nn  \\
+   &=&  \int _0^1 dx \, \rho(x,\mbf{a}_\perp).
+\enqa
+
+
+
+
+%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{thebibliography}{99}
+
+
+\bibitem{Mueller:1998fv}
+  D.~M\"uller, D.~Robaschik, B.~Geyer, F.-M.~Dittes and J.~Ho\v{r}ej\v{s}i,
+  Wave functions, evolution equations and evolution kernels from light-ray operators of QCD,
+  \href{http://onlinelibrary.wiley.com/doi/10.1002/prop.2190420202/abstract;jsessionid=D3A83A89DC0A2F6868418EF29E9C8AB4.f04t01}{Fortsch.\ Phys.\  {\bf 42}, 101 (1994)}
+  [\href{https://arxiv.org/abs/hep-ph/9812448}{\tt arXiv:hep-ph/9812448]}.
+
+
+\bibitem{Ji:1996ek}
+  X.~D.~Ji,
+  Gauge-invariant decomposition of nucleon spin,
+  \href{https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.78.610}{Phys.\ Rev.\ Lett.\  {\bf 78}, 610 (1997)}
+  [\href{https://arxiv.org/abs/hep-ph/9603249}{\tt arXiv:hep-ph/9603249]}.
+  
+  
+  \bibitem{Radyushkin:1996nd}
+  A.~V.~Radyushkin,
+  Scaling limit of deeply virtual Compton scattering,
+  \href{http://www.sciencedirect.com/science/article/pii/037026939600528X?via%3Dihub}{Phys.\ Lett.\ B {\bf 380}, 417 (1996)}
+  [\href{https://arxiv.org/abs/hep-ph/9604317}{\tt arXiv:hep-ph/9604317}];
+  %\bibitem{Radyushkin:1997ki}
+ % A.~V.~Radyushkin,
+  Nonforward parton distributions,
+  \href{https://journals.aps.org/prd/abstract/10.1103/PhysRevD.56.5524}{Phys.\ Rev.\ D {\bf 56}, 5524 (1997)}
+  [\href{https://arxiv.org/abs/hep-ph/9704207}{\tt hep-ph/9704207}].
+
+
+\bibitem{GPDsRev}
+ For reviews on GPDs see, for example, Refs.~\cite{Goeke:2001tz, Diehl:2003ny, Belitsky:2005qn, Boffi:2007yc, Guidal:2013rya} and references therein. The earliest reference to GPDs is probably the remarkable 1977 article by D. E. Soper~\cite{Soper:1976jc} which is described in Appendix~\ref{Soper} and is also at the origin of light-front holographic mapping~\cite{Brodsky:2006uqa, Brodsky:2014yha}.
+
+  
+  \bibitem{Goeke:2001tz}
+  K.~Goeke, M.~V.~Polyakov and M.~Vanderhaeghen,
+  Hard exclusive reactions and the structure of hadrons,
+  \href{http://www.sciencedirect.com/science/article/pii/S0146641001001582?via%3Dihub}{Prog.\ Part.\ Nucl.\ Phys.\  {\bf 47} (2001) 401}
+  [\href{https://arxiv.org/abs/hep-ph/0106012}{\tt arXiv:hep-ph/0106012}].
+
+
+\bibitem{Diehl:2003ny}
+  M.~Diehl,
+  Generalized parton distributions,
+  \href{http://www.sciencedirect.com/science/article/pii/S0370157303003338?via%3Dihub}{Phys.\ Rept.\  {\bf 388}, 41 (2003)}
+  [\href{https://arxiv.org/abs/hep-ph/0307382}{\tt arXiv:hep-ph/0307382}].
+
+
+ \bibitem{Belitsky:2005qn}
+  A.~V.~Belitsky and A.~V.~Radyushkin,
+  Unraveling hadron structure with generalized parton distributions,
+  \href{http://www.sciencedirect.com/science/article/pii/S0370157305002644?via%3Dihub}{Phys.\ Rept.\  {\bf 418}, 1 (2005)}
+  [\href{https://arxiv.org/abs/hep-ph/0504030}{\tt arXiv:hep-ph/0504030]}.
+
+
+\bibitem{Boffi:2007yc}
+  S.~Boffi and B.~Pasquini,
+  Generalized parton distributions and the structure of the nucleon,
+  \href{https://www.sif.it/riviste/ncr/econtents/2007/030/09/article/0}{Riv.\ Nuovo Cim.\  {\bf 30}, 387 (2007)}
+  [\href{https://arxiv.org/abs/0711.2625}{\tt arXiv:0711.2625 [hep-ph]}].
+
+
+\bibitem{Guidal:2013rya}
+  M.~Guidal, H.~Moutarde and M.~Vanderhaeghen,
+  Generalized parton distributions in the valence region from deeply virtual Compton scattering,
+  \href{http://iopscience.iop.org/article/10.1088/0034-4885/76/6/066202/meta}{Rept.\ Prog.\ Phys.\  {\bf 76}, 066202 (2013)}
+  [\href{https://arxiv.org/abs/1303.6600}{\tt arXiv:1303.6600 [hep-ph]}].
+  
+  
+\bibitem{Soper:1976jc}
+  D.~E.~Soper,
+  The parton model and the Bethe-Salpeter wave function,
+  \href{http://prd.aps.org/abstract/PRD/v15/i4/p1141_1}{Phys.\ Rev.\ D {\bf 15}, 1141 (1977)}.  
+
+
+\bibitem{Pisano:2015iqa}
+  See, S.~Pisano {\it et al.} [CLAS Collaboration],
+  Single and double spin asymmetries for deeply virtual Compton scattering measured with CLAS and a longitudinally polarized proton target,
+   \href{https://journals.aps.org/prd/abstract/10.1103/PhysRevD.91.052014}{Phys.\ Rev.\ D {\bf 91}, 052014 (2015)}
+   [\href{https://arxiv.org/abs/1501.07052}{\tt arXiv:1501.07052 [hep-ex]}], and references therein.
+
+
+\bibitem{Bedlinskiy:2014tvi}
+  See, I.~Bedlinskiy {\it et al.} [CLAS Collaboration],
+  Exclusive ${\pi}^0$ electroproduction at $W>2$ GeV with CLAS,
+  \href{https://journals.aps.org/prc/abstract/10.1103/PhysRevC.90.025205}{Phys.\ Rev.\ C {\bf 90},  025205 (2014)}
+  [Addendum: \href{https://journals.aps.org/prc/abstract/10.1103/PhysRevC.90.039901}{Phys.\ Rev.\ C {\bf 90},  039901 (2014)}]
+  [\href{https://arxiv.org/abs/1405.0988}{\tt arXiv:1405.0988 [nucl-ex]}], and references therein.
+
+
+\bibitem{Burkardt:2000za}
+  M.~Burkardt,
+  Impact parameter dependent parton distributions and off-forward parton distributions for $\xi \to 0$,
+  \href{https://journals.aps.org/prd/abstract/10.1103/PhysRevD.62.071503}{Phys.\ Rev.\ D {\bf 62}, 071503 (2000)},
+  [Erratum: \href{https://journals.aps.org/prd/abstract/10.1103/PhysRevD.66.119903}{Phys.\ Rev.\ D {\bf 66}, 119903 (2002)}]
+  [\href{https://arxiv.org/abs/hep-ph/0005108}{\tt arXiv:hep-ph/0005108}];
+ {\color{blue}
+ % \bibitem{Burkardt:2002hr}
+ % M.~Burkardt,
+  Impact parameter space interpretation for generalized parton distributions,
+ \href{https://arxiv.org/pdf/hep-ph/0207047.pdf}{Int.\ J.\ Mod.\ Phys.\ A {\bf 18} (2003) 173}
+  [\href{https://arxiv.org/pdf/hep-ph/0207047}{\tt arXiv:hep-ph/0207047}].}
+  
+{\color{blue}  
+\bibitem{Diehl:2002he} 
+  M.~Diehl,
+  Generalized parton distributions in impact parameter space,
+  \href{https://link.springer.com/article/10.1007%2Fs10052-002-1016-9}{Eur.\ Phys.\ J.\ C {\bf 25}, 223 (2002)}
+  [Erratum: Eur.\ Phys.\ J.\ C {\bf 31}, 277 (2003)]  
+  [\href{https://arxiv.org/abs/hep-ph/0205208}{\tt arXiv:hep-ph/0205208}].
+  }
+
+\bibitem{Angeles-Martinez:2015sea}
+  R.~Angeles-Martinez {\it et al.},
+  Transverse momentum dependent (TMD) parton distribution functions: Status and prospects,''
+  \href{http://www.actaphys.uj.edu.pl/findarticle?series=Reg&vol=46&page=2501}{Acta Phys.\ Polon.\ B {\bf 46},  2501 (2015)}
+  [\href{https://arxiv.org/abs/1507.05267}{\tt arXiv:1507.05267 [hep-ph]}], and references therein.
+  
+
+\bibitem{Ji:2013dva}   
+  X.~Ji,
+  Parton physics on a Euclidean lattice,
+  \href{https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.110.262002}{Phys.\ Rev.\ Lett.\  {\bf 110}, 262002 (2013)}
+  [\href{https://arxiv.org/abs/1305.1539}{\tt arXiv:1305.1539 [hep-ph]}].  
+  
+{\color{blue}  
+
+\cite{Lin:2014zya}
+\bibitem{Lin:2014zya} 
+  H.~W.~Lin, J.~W.~Chen, S.~D.~Cohen and X.~Ji,
+  Flavor structure of the nucleon sea from lattice QCD,
+  \href{https://journals.aps.org/prd/abstract/10.1103/PhysRevD.91.054510}{Phys.\ Rev.\ D {\bf 91}, 054510 (2015)}
+  [\href{https://arxiv.org/abs/1402.1462}{\tt arXiv:1402.1462 [hep-ph]}].
+  
+  
+\bibitem{Alexandrou:2015rja} 
+  C.~Alexandrou, K.~Cichy, V.~Drach, E.~Garcia-Ramos, K.~Hadjiyiannakou, K.~Jansen, F.~Steffens and C.~Wiese,
+  Lattice calculation of parton distributions,
+  \href{https://journals.aps.org/prd/abstract/10.1103/PhysRevD.92.014502}{Phys.\ Rev.\ D {\bf 92}, 014502 (2015)}
+  [\href{https://arxiv.org/abs/1504.07455}{\tt arXiv:1504.07455 [hep-lat]}].
+  
+
+\bibitem{Alexandrou:2016jqi} 
+  C.~Alexandrou, K.~Cichy, M.~Constantinou, K.~Hadjiyiannakou, K.~Jansen, F.~Steffens and C.~Wiese,
+  Updated lattice results for parton distributions,
+  \href{https://journals.aps.org/prd/abstract/10.1103/PhysRevD.96.014513}{Phys.\ Rev.\ D {\bf 96}, 014513 (2017)}
+  [\href{https://arxiv.org/abs/1610.03689}{\tt arXiv:1610.03689 [hep-lat]}].  
+  
+ 
+\bibitem{Lin:2017ani}   
+H.~W.~Lin, J.~W.~Chen, T.~Ishikawa and J.~H.~Zhang,
+Improved parton distribution functions at physical pion mass,
+\href{https://arxiv.org/pdf/1708.05301.pdf}{\tt arXiv:1708.05301 [hep-lat]}.  
+  
+  
+\bibitem{altLQCD}   
+Recent alternative lattice calculations of PDFs and nucleon structure functions have been proposed in~\cite{Ma:2014jla, Liu:2016djw, Radyushkin:2017cyf, Orginos:2017kos, Chambers:2017dov}. 
+  
+  
+\bibitem{Ma:2014jla} 
+  Y.~Q.~Ma and J.~W.~Qiu,
+  Extracting parton distribution functions from lattice QCD calculations,
+ \href{https://arxiv.org/abs/1404.6860}{\tt arXiv:1404.6860 [hep-ph]};
+ %\bibitem{Ma:2017pxb} 
+  %Y.~Q.~Ma and J.~W.~Qiu,
+ Exploring hadrons' partonic structure using ab initio lattice QCD calculations,
+ \href{https://arxiv.org/abs/1709.03018}{\tt arXiv:1709.03018 [hep-ph]}.
+
+
+\bibitem{Liu:2016djw}
+  K.~F.~Liu,
+  Parton distribution function from the hadronic tensor on the lattice,
+  PoS LATTICE {\bf 2015}, 115 (2016)
+  [\href{https://arxiv.org/abs/1603.07352}{\tt arXiv:1603.07352 [hep-ph]}].
+  
+  
+\bibitem{Radyushkin:2017cyf}
+  A.~V.~Radyushkin,
+  Quasi-parton distribution functions, momentum distributions, and pseudo-parton distribution functions,
+  \href{https://journals.aps.org/prd/abstract/10.1103/PhysRevD.96.034025}{Phys.\ Rev.\ D {\bf 96}, 034025 (2017)}
+  [\href{https://arxiv.org/abs/1705.01488}{\tt arXiv:1705.01488 [hep-ph]}].  
+  
+  
+\bibitem{Orginos:2017kos} 
+  K.~Orginos, A.~Radyushkin, J.~Karpie and S.~Zafeiropoulos,
+  Lattice QCD exploration of pseudo-PDFs,
+  \href{https://arxiv.org/abs/1706.05373}{\tt arXiv:1706.05373 [hep-ph]}.  
+  
+ 
+ \bibitem{Chambers:2017dov} 
+  A.~J.~Chambers {\it et al.},
+  Nucleon structure functions from operator product expansion on the lattice,
+  \href{https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.118.242001}{Phys.\ Rev.\ Lett.\  {\bf 118}, 242001 (2017)}
+  [\href{https://arxiv.org/abs/1703.01153}{\tt arXiv:1703.01153 [hep-lat]}]. 
+  }
+
+\bibitem{Maldacena:1997re}
+ J.~M.~Maldacena,
+ The large-N limit of superconformal field theories and supergravity,
+ \href{http://www.springerlink.com/content/q508214382421612/}{Int.\ J.\ Theor.\ Phys.\  {\bf 38}, 1113 (1999)}
+ [\href{http://arXiv.org/abs/hep-th/9711200}{\tt arXiv:hep-th/9711200}].
+
+
+ \bibitem{Polchinski:2001tt}
+  J.~Polchinski and M.~J.~Strassler,
+ Hard scattering and gauge/string duality,
+  \href{http://prl.aps.org/abstract/PRL/v88/i3/e031601}{Phys.\ Rev.\ Lett.\  {\bf 88}, 031601 (2002)}
+  [\href{http://arXiv.org/abs/hep-th/0109174}{\tt arXiv:hep-th/0109174}].
+
+
+\bibitem{Brodsky:1973kr}
+  S.~J.~Brodsky and G.~R.~Farrar,
+ Scaling laws at large transverse momentum,
+ \href{http://prl.aps.org/abstract/PRL/v31/i18/p1153_1}{ Phys.\ Rev.\ Lett.\  {\bf 31}, 1153 (1973)}.
+
+
+\bibitem{Matveev:ra}
+  V.~A.~Matveev, R.~M.~Muradian and A.~N.~Tavkhelidze,
+ Automodellism in the large-angle elastic scattering and structure of hadrons,
+  \href{http://www.springerlink.com/content/d272226535833524/}{ Lett.\ Nuovo Cim.\  {\bf 7}, 719 (1973)}.
+
+
+\bibitem{Polchinski:2002jw}
+  J.~Polchinski and M.~J.~Strassler,
+  Deep inelastic scattering and gauge/string duality,
+  \href{http://iopscience.iop.org/1126-6708/2003/05/012/}{ JHEP {\bf 0305}, 012 (2003)}
+  [\href{http://arXiv.org/abs/hepth/0209211}{\tt arXiv:hep-th/0209211}].
+
+
+\bibitem{Brodsky:2006uqa}
+  S.~J.~Brodsky and G.~F.~de Teramond,
+  Hadronic spectra and light-front wave functions in holographic QCD,
+  \href{http://prl.aps.org/abstract/PRL/v96/i20/e201601}{Phys.\ Rev.\ Lett.\  {\bf 96}, 201601 (2006)}
+  [\href{http://arXiv.org/abs/hep-ph/0602252}{\tt arXiv:hep-ph/0602252}].
+
+
+\bibitem{deTeramond:2008ht}
+  G.~F.~de Teramond and S.~J.~Brodsky,
+  Light-front holography: A first approximation to QCD,
+  \href{http://prl.aps.org/abstract/PRL/v102/i8/e081601}{Phys.\ Rev.\ Lett.\  {\bf 102}, 081601 (2009)}
+ [\href{http://arXiv.org/abs/0809.4899}{\tt arXiv:0809.4899 [hep-ph]}].
+
+
+ \bibitem{deTeramond:2013it}
+ G.~F.~de Teramond, H.~G.~Dosch and S.~J.~Brodsky,
+ Kinematical and dynamical aspects of higher-spin bound-state equations in holographic QCD,
+ \href{http://prd.aps.org/abstract/PRD/v87/i7/e075005}{Phys.\ Rev.\ D {\bf 87}, 075005 (2013)}
+ [\href{http://arxiv.org/abs/arXiv:1301.1651}{\tt arXiv:1301.1651 [hep-ph]}].
+
+
+\bibitem{deTeramond:2014asa}
+ G.~F.~de Teramond, H.~G.~Dosch and S.~J.~Brodsky,
+ Baryon spectrum from superconformal quantum mechanics and its light-front holographic embedding,
+ \href{http://journals.aps.org/prd/abstract/17.1103/PhysRevD.91.045040}{Phys.\
+ Rev.\ D {\bf 91}, 045040 (2015)}
+ [\href{http://arxiv.org/abs/arXiv:1411.5243}{\tt arXiv:1411.5243 [hep-ph]}].
+
+
+\bibitem{Dosch:2015nwa}
+ H.~G.~Dosch, G.~F.~de Teramond and S.~J.~Brodsky,
+ Superconformal baryon-meson symmetry and light-front holographic QCD,
+ \href{https://journals.aps.org/prd/abstract/17.1103/PhysRevD.91.085016}{Phys.\
+ Rev.\ D {\bf 91}, 085016 (2015)}
+ [\href{http://arxiv.org/abs/1501.00959}{\tt arXiv:1501.00959 [hep-th]}].
+
+
+\bibitem{Brodsky:2014yha}
+ For a review of LFHQCD see, S.~J.~Brodsky, G.~F.~de Teramond, H.~G.~Dosch and J.~Erlich,
+ Light-front holographic QCD and emerging confinement,
+ \href{http://www.sciencedirect.com/science/article/pii/S0370157315002306}{Phys.\ Rept.\  {\bf 584}, 1 (2015)}
+ [\href{http://arxiv.org/abs/1407.8131}{\tt arXiv:1407.8131 [hep-ph]}].
+
+
+ \bibitem{Abidin:2008sb}
+   Z.~Abidin and C.~E.~Carlson,
+  Hadronic momentum densities in the transverse plane,
+  \href{https://journals.aps.org/prd/abstract/10.1103/PhysRevD.78.071502}{Phys.\ Rev.\ D {\bf 78}, 071502 (2008)}
+  [\href{https://arxiv.org/abs/0808.3097}{\tt arXiv:0808.3097 [hep-ph]}].
+
+
+  \bibitem{Vega:2010ns}
+  A.~Vega, I.~Schmidt, T.~Gutsche and V.~E.~Lyubovitskij,
+  Generalized parton distributions in AdS/QCD,
+  \href{https://journals.aps.org/prd/abstract/10.1103/PhysRevD.83.036001}{Phys.\ Rev.\ D {\bf 83}, 036001 (2011)}
+  [\href{https://arxiv.org/abs/1010.2815}{\tt arXiv:1010.2815 [hep-ph]}];
+ %\bibitem{Vega:2012iz}
+ % A.~Vega, I.~Schmidt, T.~Gutsche and V.~E.~Lyubovitskij,
+  Generalized parton distributions in an AdS/QCD hard-wall model,
+  \href{https://journals.aps.org/prd/abstract/10.1103/PhysRevD.85.096004}{Phys.\ Rev.\ D {\bf 85}, 096004 (2012)}
+  [\href{https://arxiv.org/abs/1202.4806}{\tt arXiv:1202.4806 [hep-ph]}].
+
+
+\bibitem{Gutsche:2013zia}
+  T.~Gutsche, V.~E.~Lyubovitskij, I.~Schmidt and A.~Vega,
+  Light-front quark model consistent with Drell-Yan-West duality and quark counting rules,
+  \href{https://journals.aps.org/prd/abstract/10.1103/PhysRevD.89.054033}{Phys.\ Rev.\ D {\bf 89},  054033 (2014)}
+  [Erratum: \href{https://journals.aps.org/prd/abstract/10.1103/PhysRevD.92.019902}{Phys.\ Rev.\ D {\bf 92}, 019902 (2015)}]
+  [\href{https://arxiv.org/abs/1411.1710}{\tt arXiv:1306.0366 [hep-ph]}];
+%\bibitem{Gutsche:2014zua}
+  %T.~Gutsche, V.~E.~Lyubovitskij, I.~Schmidt and A.~Vega,
+  Pion light-front wave function, parton distribution and the electromagnetic form factor,
+  \href{http://iopscience.iop.org/article/10.1088/0954-3899/42/9/095005/meta;jsessionid=29360E23C1D7E8AC2FB3E30661060B97.c2.iopscience.cld.iop.org}{J.\ Phys.\ G {\bf 42},  095005 (2015)}
+  [\href{https://arxiv.org/abs/1410.6424}{\tt arXiv:1410.6424 [hep-ph]}];
+%\bibitem{Gutsche:2014yea}
+  %T.~Gutsche, V.~E.~Lyubovitskij, I.~Schmidt and A.~Vega,
+  Nucleon structure in a light-front quark model consistent with quark counting rules and data,
+  \href{https://journals.aps.org/prd/abstract/10.1103/PhysRevD.91.054028}{Phys.\ Rev.\ D {\bf 91}, 054028 (2015)}
+  [\href{https://arxiv.org/abs/1411.1710}{\tt arXiv:1411.1710 [hep-ph]}].
+
+
+ \bibitem{Chakrabarti:2013gra}
+  D.~Chakrabarti and C.~Mondal,
+  Generalized parton distributions for the proton in AdS/QCD,
+  \href{https://journals.aps.org/prd/abstract/10.1103/PhysRevD.88.073006}{Phys.\ Rev.\ D {\bf 88},  073006 (2013)}
+  [\href{https://arxiv.org/abs/1307.5128}{\tt arXiv:1307.5128 [hep-ph]}];
+ %\bibitem{Chakrabarti:2015ama}
+  %D.~Chakrabarti and C.~Mondal,
+  Chiral-odd generalized parton distributions for proton in a light-front quark-diquark model,
+  \href{https://journals.aps.org/prd/abstract/10.1103/PhysRevD.92.074012}{Phys.\ Rev.\ D {\bf 92}, no. 7, 074012 (2015)}
+  [\href{https://arxiv.org/abs/1509.00598}{\tt arXiv:1509.00598 [hep-ph]}].
+
+
+ \bibitem{Sharma:2014voa}
+  N.~Sharma,
+  Generalized parton distributions in the soft-wall model of AdS/QCD,
+  \href{https://journals.aps.org/prd/abstract/10.1103/PhysRevD.90.095024}{Phys.\ Rev.\ D {\bf 90}, 095024 (2014)}
+  [\href{https://arxiv.org/abs/1411.7486}{\tt arXiv:1411.7486 [hep-ph]}];
+%\bibitem{Sharma:2016uaa}
+  % N.~Sharma,
+  Hard gluon evolution of nucleon Generalized parton distributions in the Light-front quark model,
+  \href{https://link.springer.com/article/10.1140%2Fepja%2Fi2016-16091-4}{Eur.\ Phys.\ J.\ A {\bf 52}, 91 (2016)}
+  [\href{https://arxiv.org/abs/1602.07222}{\tt arXiv:1602.07222 [hep-ph]}].
+
+
+\bibitem{Dehghani:2015jva}
+  M.~Dehghani,
+  Hard-gluon evolution of nucleon generalized parton distributions in soft-wall AdS/QCD model,
+  \href{https://journals.aps.org/prd/abstract/10.1103/PhysRevD.91.076009}{Phys.\ Rev.\ D {\bf 91}, 076009 (2015)}
+  [\href{https://arxiv.org/abs/1501.02318}{\tt arXiv:1501.02318 [hep-ph]}].
+
+
+\bibitem{Mondal:2015uha}
+  C.~Mondal and D.~Chakrabarti,
+  Generalized parton distributions and transverse densities in a light-front quark-diquark model for the nucleons,
+  \href{https://link.springer.com/article/10.1140%2Fepjc%2Fs10052-015-3486-6}{Eur.\ Phys.\ J.\ C {\bf 75}, no. 6, 261 (2015)}
+  \href{https://arxiv.org/abs/1501.05489}{\tt arXiv:1501.05489 [hep-ph]}].
+
+
+\bibitem{Chakrabarti:2015lba}
+  D.~Chakrabarti, C.~Mondal and A.~Mukherjee,
+  Gravitational form factors and transverse spin sum rule in a light front quark-diquark model in AdS/QCD,
+  \href{https://journals.aps.org/prd/abstract/10.1103/PhysRevD.91.114026}{Phys.\ Rev.\ D {\bf 91}, 114026 (2015)}
+  [\href{https://arxiv.org/abs/1505.02013}{\tt arXiv:1505.02013 [hep-ph]}].
+
+
+  \bibitem{Maji:2015vsa}
+  T.~Maji, C.~Mondal, D.~Chakrabarti and O.~V.~Teryaev,
+  Relating transverse structure of various parton distributions,
+  \href{https://link.springer.com/article/10.1007%2FJHEP01%282016%29165}{JHEP {\bf 1601}, 165 (2016)}
+  [\href{https://arxiv.org/abs/1506.04560}{\tt arXiv:1506.04560 [hep-ph]}].
+
+
+\bibitem{Mondal:2015fok}
+  C.~Mondal,
+  Longitudinal momentum densities in transverse plane for nucleons,
+  \href{https://link.springer.com/article/10.1140%2Fepjc%2Fs10052-016-3922-2}{Eur.\ Phys.\ J.\ C {\bf 76},  74 (2016)}
+  [\href{https://arxiv.org/abs/1511.01736}{\tt arXiv:1511.01736 [hep-ph]}];
+  %\bibitem{Mondal:2016xpk}
+  %C.~Mondal,
+  Form factors and transverse charge and magnetization densities in the hard-wall AdS/QCD model,
+  \href{https://journals.aps.org/prd/abstract/10.1103/PhysRevD.94.073001}{Phys.\ Rev.\ D {\bf 94}, 073001 (2016)}
+  [\href{https://arxiv.org/abs/1609.07759}{\tt arXiv:1609.07759 [hep-ph]}].
+
+
+  \bibitem{Chakrabarti:2016yuw}
+  D.~Chakrabarti, T.~Maji, C.~Mondal and A.~Mukherjee,
+  Wigner distributions and orbital angular momentum of a proton,
+  \href{https://link.springer.com/article/10.1140%2Fepjc%2Fs10052-016-4258-7}{Eur.\ Phys.\ J.\ C {\bf 76},  409 (2016)}
+  [\href{https://arxiv.org/abs/1601.03217}{\tt arXiv:1601.03217 [hep-ph]}];
+ %\bibitem{Chakrabarti:2017teq}
+  %D.~Chakrabarti, T.~Maji, C.~Mondal and A.~Mukherjee,
+  Quark Wigner distributions and spin-spin correlations,
+  \href{https://journals.aps.org/prd/abstract/10.1103/PhysRevD.95.074028}{Phys.\ Rev.\ D {\bf 95}, 074028 (2017)}
+  [\href{https://arxiv.org/abs/1701.08551}{\tt arXiv:1701.08551 [hep-ph]}].
+
+
+\bibitem{Mondal:2016xsm}
+  C.~Mondal, N.~Kumar, H.~Dahiya and D.~Chakrabarti,
+  Charge and longitudinal momentum distributions in transverse coordinate space,
+  \href{https://journals.aps.org/prd/abstract/10.1103/PhysRevD.94.074028}{Phys.\ Rev.\ D {\bf 94},  074028 (2016)}
+  [\href{https://arxiv.org/abs/1608.01095}{\tt arXiv:1608.01095 [hep-ph]}].
+
+
+\bibitem{Maji:2016yqo}
+  T.~Maji and D.~Chakrabarti,
+  Light front quark-diquark model for the nucleons,
+  \href{https://journals.aps.org/prd/abstract/10.1103/PhysRevD.94.094020}{Phys.\ Rev.\ D {\bf 94}, 094020 (2016)}
+  [\href{https://arxiv.org/abs/1608.07776}{\tt arXiv:1608.07776 [hep-ph]}];
+  %\bibitem{Maji:2017bcz}
+  %T.~Maji and D.~Chakrabarti,
+  Transverse structure of a proton in a light-front quark-diquark model,
+  \href{https://journals.aps.org/prd/abstract/10.1103/PhysRevD.95.074009}{Phys.\ Rev.\ D {\bf 95}, 074009 (2017)}
+  [\href{https://arxiv.org/abs/1702.04557}{\tt arXiv:1702.04557 [hep-ph]}].
+
+
+ \bibitem{Traini:2016jko}
+  M.~C.~Traini,
+  Generalized parton distributions: confining potential effects within AdS/QCD,
+  \href{https://link.springer.com/article/10.1140%2Fepjc%2Fs10052-017-4775-z}{Eur.\ Phys.\ J.\ C {\bf 77},  246 (2017)}
+  [\href{https://arxiv.org/abs/1608.08410}{\tt arXiv:1608.08410 [hep-ph]}].
+
+
+\bibitem{Traini:2016jru}
+  M.~Traini, M.~Rinaldi, S.~Scopetta and V.~Vento,
+  The effective cross section for double parton scattering within a holographic AdS/QCD approach,
+  \href{http://www.sciencedirect.com/science/article/pii/S0370269317301740?via%3Dihub}{Phys.\ Lett.\ B {\bf 768}, 270 (2017)}
+  [\href{https://arxiv.org/abs/1609.07242}{\tt arXiv:1609.07242 [hep-ph]}].
+
+
+\bibitem{Gutsche:2016gcd}
+  T.~Gutsche, V.~E.~Lyubovitskij and I.~Schmidt,
+  Nucleon parton distributions in a light-front quark model,
+  \href{https://link.springer.com/article/10.1140%2Fepjc%2Fs10052-017-4648-5}{Eur.\ Phys.\ J.\ C {\bf 77},  86 (2017)}
+  [\href{https://arxiv.org/abs/1610.03526}{\tt arXiv:1610.03526 [hep-ph]}].
+
+
+\bibitem{Maji:2017ill}
+  T.~Maji, C.~Mondal and D.~Chakrabarti,
+  Leading twist generalized parton distributions and spin densities in a proton,
+  \href{https://journals.aps.org/prd/abstract/10.1103/PhysRevD.96.013006}{Phys.\ Rev.\ D {\bf 96},  013006 (2017)}
+  [\href{https://arxiv.org/abs/1702.02493}{\tt arXiv:1702.02493 [hep-ph]}].
+
+
+\bibitem{Rinaldi:2017roc}
+  M.~Rinaldi,
+  GPDs at non-zero skewness in ADS/QCD model,
+  \href{http://www.sciencedirect.com/science/article/pii/S0370269317304707?via%3Dihub}{Phys.\ Lett.\ B {\bf 771}, 563 (2017)}
+  [\href{https://arxiv.org/abs/1703.00348}{\tt arXiv:1703.00348 [hep-ph]}].
+
+
+\bibitem{Bacchetta:2017vzh}
+  A.~Bacchetta, S.~Cotogno and B.~Pasquini,
+  The transverse structure of the pion in momentum space inspired by the AdS/QCD correspondence,
+  \href{http://www.sciencedirect.com/science/article/pii/S0370269317304355?via%3Dihub}{Phys.\ Lett.\ B {\bf 771}, 546 (2017)}
+  [\href{https://arxiv.org/abs/1703.07669}{\tt arXiv:1703.07669 [hep-ph]}].
+
+
+\bibitem{Mondal:2017lph}
+  C.~Mondal, D.~Chakrabarti and X.~Zhao,
+  Deuteron transverse densities in holographic QCD,
+  \href{https://link.springer.com/article/10.1140%2Fepja%2Fi2017-12292-7}{Eur.\ Phys.\ J.\ A {\bf 53}, 106 (2017)}
+  [\href{https://arxiv.org/abs/1705.05808}{\tt arXiv:1705.05808 [hep-ph]}].
+
+
+\bibitem{Huang:2017gih}
+  C.~Huang and B.~Q.~Ma,
+  Transverse charge densities of the deuteron in soft-wall AdS/QCD,
+  \href{https://arxiv.org/abs/1705.06399}{\tt arXiv:1705.06399 [hep-ph]}.
+
+
+\bibitem{Nikkhoo:2017won}
+  N.~S.~Nikkhoo and M.~R.~Shojaei,
+  Unpolarized and polarized densities based on a light-front quark-diquark model,
+  \href{http://www.worldscientific.com/doi/abs/10.1142/S0217751X1750097X}{Int.\ J.\ Mod.\ Phys.\ A {\bf 32},  1750097 (2017)}.
+  
+  
+\bibitem{Mondal:2017wbf} 
+  C.~Mondal,
+  Helicity-dependent generalized parton distributions for nonzero skewness,
+  \href{https://arxiv.org/abs/1709.06877}{\tt arXiv:1709.06877 [hep-ph]}.
+  
+
+\bibitem{Brodsky:2007hb}
+ S.~J.~Brodsky and G.~F.~de Teramond,
+ Light-front dynamics and AdS/QCD correspondence: the pion form factor in the space- and time-like regions,
+ \href{http://prd.aps.org/abstract/PRD/v77/i5/e056007}{ Phys.\ Rev.\  D {\bf 77}, 056007 (2008)}
+ [\href{http://arXiv.org/abs/0707.3859}{\tt arXiv:0707.3859 [hep-ph]}].
+ 
+ 
+ \bibitem{exclusive-inclusive}
+ Constraints from high energy power-counting rules were originally used to study the exclusive-inclusive connection in 
+% \bibitem{Brodsky:1979qm} 
+  S.~J.~Brodsky and G.~P.~Lepage,
+  Exclusive processes and the exclusive inclusive connection in quantum chromodynamics,
+  SLAC-PUB-2294.
+
+
+\bibitem{Brodsky:2011xx}
+  S.~J.~Brodsky, F.-G.~Cao and G.~F.~de Teramond,
+  Meson transition form factors in light-front holographic QCD,
+  \href{http://prd.aps.org/abstract/PRD/v84/i7/e075012}{Phys.\ Rev.\ D\ {\bf 84}, 075012  (2011)}
+  [\href{http://arXiv.org/abs/1105.3999}{\tt arXiv:1105.3999 [hep-ph]}].
+
+
+ \bibitem{deTeramond:2012rt}
+  G.~F.~de Teramond and S.~J.~Brodsky,
+  Hadronic form factor models and spectroscopy within the gauge/gravity correspondence,
+  \href{http://arxiv.org/abs/arXiv:1203.4025}{\tt arXiv:1203.4025 [hep-ph]}.
+
+
+\bibitem{Sufian:2016hwn}
+  R.~S.~Sufian, G.~F.~de Teramond, S.~J.~Brodsky, A.~Deur and H.~G.~Dosch,
+  Analysis of nucleon electromagnetic form factors from light-front holographic QCD : The spacelike region,
+  \href{https://journals.aps.org/prd/abstract/10.1103/PhysRevD.95.014011}{Phys.\ Rev.\ D {\bf 95},  014011 (2017)}
+  [\href{https://arxiv.org/abs/1609.06688}{\tt arXiv:1609.06688 [hep-ph]}].
+
+
+\bibitem{Karch:2006pv}
+  A.~Karch, E.~Katz, D.~T.~Son and M.~A.~Stephanov,
+  Linear confinement and AdS/QCD,
+ \href{http://prd.aps.org/abstract/PRD/v74/i1/e015005}{ Phys.\ Rev.\  D {\bf 74}, 015005 (2006)}
+  [\href{http://arXiv.org/abs/hep-ph/0602229}{\tt arXiv:hep-ph/0602229}].
+
+
+\bibitem{Sakurai:1960ju}
+  J.~J.~Sakurai,
+  Theory of strong interactions,
+  \href{http://www.sciencedirect.com/science/article/pii/0003491660901263}{Annals Phys.\  {\bf 11}, 1 (1960)}.
+  
+ 
+\bibitem{deTeramond:2010ge} 
+  G.~F.~de Teramond and S.~J.~Brodsky,
+  Gauge/gravity duality and hadron physics at the light-front,''
+  \href{http://aip.scitation.org/doi/abs/10.1063/1.3523157}{AIP Conf.\ Proc.\  {\bf 1296}, 128 (2010)}
+  [\href{https://arxiv.org/abs/1006.2431}{\tt arXiv:1006.2431 [hep-ph]}].  
+  
+ 
+\bibitem{Veneziano:1968yb}
+G.~Veneziano,
+Construction of a crossing-symmetric, Regge-behaved amplitude for linearly rising trajectories,
+\href{http://link.springer.com/article/10.1007%2FBF02824451}{Nuovo Cim.\ A {\bf 57}, 190 (1968)}.
+
+ 
+\bibitem{Diehl:2004cx}
+  M.~Diehl, T.~Feldmann, R.~Jakob and P.~Kroll,
+  Generalized parton distributions from nucleon form-factor data,
+  \href{https://link.springer.com/article/10.1140%2Fepjc%2Fs2004-02063-4}{Eur.\ Phys.\ J.\ C {\bf 39}, 1 (2005)}
+  [\href{https://arxiv.org/abs/hep-ph/0408173}{\tt arXiv:hep-ph/0408173}].
+  
+  
+  \bibitem{Guidal:2004nd}
+  M.~Guidal, M.~V.~Polyakov, A.~V.~Radyushkin and M.~Vanderhaeghen,
+  Nucleon form-factors from generalized parton distributions,''
+  Phys.\ Rev.\ D {\bf 72} (2005) 054013
+  [hep-ph/0410251].
+  
+  
+  \bibitem{Diehl:2013xca}
+  M.~Diehl and P.~Kroll,
+  Nucleon form factors, generalized parton distributions and quark angular momentum,
+  \href{https://link.springer.com/article/10.1140%2Fepjc%2Fs2004-02063-4}{Eur.\ Phys.\ J.\ C {\bf 73}, 2397 (2013)}
+  [\href{https://arxiv.org/abs/1302.4604}{\tt arXiv:1302.4604 [hep-ph]}].
+
+
+\bibitem{Selyugin:2009ic}
+  O.~V.~Selyugin and O.~V.~Teryaev,
+  Generalized parton distributions and description of electromagnetic and graviton form factors of nucleon,
+  \href{https://journals.aps.org/prd/abstract/10.1103/PhysRevD.79.033003}{Phys.\ Rev.\ D {\bf 79}, 033003 (2009)}
+  [\href{https://arxiv.org/abs/0901.1786}{\tt arXiv:0901.1786 [hep-ph]}].
+  
+  
+\bibitem{Donnachie:2002en}
+  S.~Donnachie, H.~G.~Dosch, O.~Nachtmann and P.~Landshoff,
+  {\it Pomeron Physics and QCD},
+  Camb.\ Monogr.\ Part.\ Phys.\ Nucl.\ Phys.\ Cosmol.\  {\bf 19}, 1 (2002).
+  
+  
+\bibitem{Aaron:2009aa}
+  F.~D.~Aaron {\it et al.} [H1 and ZEUS Collaborations],
+  Combined measurement and QCD analysis of the inclusive $e^\pm p$ scattering cross sections at HERA,
+  \href{https://link.springer.com/article/10.1007%2FJHEP01%282010%29109}{JHEP {\bf 1001}, 109 (2010)}
+  [\href{https://arxiv.org/abs/0911.0884}{\tt arXiv:0911.0884 [hep-ex]}].
+
+
+\bibitem{Abramowicz:2015mha}
+  H.~Abramowicz {\it et al.} [H1 and ZEUS Collaborations],
+  Combination of measurements of inclusive deep inelastic ${e^{\pm }p}$ scattering cross sections and QCD analysis of HERA data,
+  \href{https://link.springer.com/article/10.1140%2Fepjc%2Fs10052-015-3710-4}{Eur.\ Phys.\ J.\ C {\bf 75}, 580 (2015)}
+  [\href{https://arxiv.org/abs/1506.06042}{\tt arXiv:1506.06042 [hep-ex]}].
+    
+ 
+\bibitem{notation}
+In Ref.~\cite{Burkardt:2000za} the transverse light-front distance in Eq.~\req{qxr} is labeled $\mbf{b}_\perp$ instead of $\mbf{a}_\perp$. Here we use $\mbf{b_\perp}$ as the variable conjugate to the light-front transverse momentum $\mbf{k}_\perp$ (see Appendix~\ref{Soper}).
+
+
+\bibitem{Miller:2007uy} 
+  G.~A.~Miller,
+  Charge density of the neutron,
+  \href{https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.99.112001}{Phys.\ Rev.\ Lett.\  {\bf 99}, 112001 (2007)}
+  [\href{https://arxiv.org/abs/0705.2409}{\tt arXiv:0705.2409 [nucl-th]}].
+  
+  
+\bibitem{Dupre:2016mai}
+  R.~Dupre, M.~Guidal and M.~Vanderhaeghen,
+  Tomographic image of the proton,
+  \href{https://journals.aps.org/prd/abstract/10.1103/PhysRevD.95.011501}{Phys.\ Rev.\ D {\bf 95}, 011501 (2017)}
+  [\href{https://arxiv.org/abs/1606.07821}{\tt arXiv:1606.07821 [hep-ph]]}.
+
+
+
+  \bibitem{Wijesooriya:2005ir} 
+ K.~Wijesooriya, P.~E.~Reimer and R.~J.~Holt,
+  The pion parton distribution function in the valence region,
+  \href{https://journals.aps.org/prc/abstract/10.1103/PhysRevC.72.065203}{Phys.\ Rev.\ C {\bf 72}, 065203 (2005)}
+  [\href{https://arxiv.org/abs/nucl-ex/0509012}{\tt nucl-ex/0509012}]. 
+  
+  
+ \bibitem{deTeramond:2010ez} 
+  G.~F.~de Teramond and S.~J.~Brodsky,
+  Gauge/gravity duality and strongly coupled fight-front dynamics,
+  PoS LC {\bf 2010}, 029 (2010)
+  [\href{https://arxiv.org/abs/1010.1204}{\tt arXiv:1010.1204 [hep-ph]}].   
+    
+  
+\bibitem{Deur:2016cxb}
+A. Deur, S. J. Brodsky and G. F. de Teramond, 
+On the interface between perturbative and nonperturbative QCD,
+\href{http://www.sciencedirect.com/science/article/pii/S037026931630048X}{Phys. Lett. B {\bf 757}, 275 (2016)} 
+[\href{https://arxiv.org/abs/1601.06568}{\tt arXiv:1601.06568 [hep-ph]}].
+    
+
+\bibitem{Deur:2007xxx} For a recent review, see
+ A .~Deur, S.~J.~Brodsky and G.~F.~de Teramond,  The spin structure of the nucleon (Invited review for ROPP, in preparation).
+ 
+ 
+\bibitem{Brodsky:2000ii} 
+  S.~J.~Brodsky, D.~S.~Hwang, B.~Q.~Ma and I.~Schmidt,
+  Light-cone representation of the spin and orbital angular momentum of relativistic composite systems,
+  \href{http://www.sciencedirect.com/science/article/pii/S055032130000626X?via%3Dihub}{Nucl.\ Phys.\ B {\bf 593}, 311 (2001)}
+  \href{https://arxiv.org/abs/hep-th/0003082}{[\tt arXiv:hep-th/0003082}]. 
+  
+
+\bibitem{Gockeler:2003jfa}
+  M.~Gockeler {\it et al.} [QCDSF Collaboration],
+  Generalized parton distributions from lattice QCD,
+  \href{https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.92.042002}{Phys.\ Rev.\ Lett.\  {\bf 92} (2004) 042002}
+  [\href{https://arxiv.org/abs/hep-ph/0304249}{\tt arXiv:hep-ph/0304249}].
+  
+     
+\bibitem{DiVecchia:2007vd}
+  P.~Di Vecchia,
+  The birth of string theory,
+  Lect.\ Notes Phys.\  {\bf 737} (2008) 59
+  [\href{https://arxiv.org/abs/0704.0101}{\tt arXiv:0704.0101 [hep-th]}].
+  
+  
+\bibitem{Drell:1969km}
+  S.~D.~Drell and T.~M.~Yan,
+ Connection of elastic electromagnetic nucleon form-factors at large $Q^2$
+ and deep inelastic structure functions near threshold,
+  \href{http://prl.aps.org/abstract/PRL/v24/i4/p181_1}{Phys.\ Rev.\ Lett.\  {\bf 24}, 181 (1970)}.
+ 
+
+\bibitem{West:1970av}
+  G.~B.~West,
+  Phenomenological model for the electromagnetic structure of the proton,
+  \href{http://prl.aps.org/abstract/PRL/v24/i21/p1206_1}{Phys.\ Rev.\ Lett.\  {\bf 24}, 1206 (1970)}
+  
+  
+
+ \end{thebibliography}
+ 
+
+\end{document}
+
+
+
