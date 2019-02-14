@@ -5,6 +5,7 @@
 #include <cstdio>
 
 #include "gsl/gsl_sf_gamma.h"
+//#include "gsl/gsl_sf_beta.h"
 
 using namespace std;
 
@@ -18,8 +19,16 @@ void model0(const double & x, const double & Q, double * pdf);
 void model1(const double & x, const double & Q, double * pdf);
 void model2(const double & x, const double & Q, double * pdf);
 
+double Beta(const double a, const double b){
+  return gsl_sf_beta(a, b);
+}
+
 //----------------------------------------------------------------------
 int main(const int argc, const char * argv[]){
+
+  cout << Beta(3, -0.09) << endl;
+
+  return 0;
   
   if (argc < 2){
     cout << "./evolution <input>" << endl;
@@ -129,7 +138,7 @@ double dwx(const double x){
 }
 
 double qx(const double x, const double tau){
-  //double lambda = pow(0.5482, 2);
+  double alpha0 = 0.48400716838522223;
   double a = a0;
   double result = gsl_sf_gamma(tau - 0.5) / (sqrt(M_PI) * gsl_sf_gamma(tau - 1.0)) * pow(wx(x), -0.5) * dwx(x) * pow(1.0 - wx(x), tau - 2.0);
   return result;
